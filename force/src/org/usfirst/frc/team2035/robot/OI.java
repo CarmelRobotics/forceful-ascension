@@ -49,6 +49,9 @@ public class OI {
 	public static Button cubeOut;
 	
 	public static void initialize() {
+		/**
+		 * Set software buttons to hardware buttons
+		 */
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		

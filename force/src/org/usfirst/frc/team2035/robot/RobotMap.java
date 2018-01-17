@@ -27,9 +27,7 @@ public class RobotMap {
 	public static final double CUBEMECH_IN_SPEED= 1.0;
 	public static final double CUBEMECH_OUT_SPEED= -1.0;
 	
-	/*
-     * Joystick
-     */
+	/* Joystick */
     public static final int USB = 0;
     public static final Joystick GENERIC = new Joystick(USB);
 	

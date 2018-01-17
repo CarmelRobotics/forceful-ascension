@@ -21,6 +21,7 @@ public class CubeMech extends Subsystem {
 	private Victor rollerL; //left side cube mechanism roller
 	
 	public CubeMech() {
+		//sets roller variables to pins on Roborio
 		rollerR = new Victor(RobotMap.R_CUBEMECH_MOTOR_PWM);
 		rollerL = new Victor(RobotMap.L_CUBEMECH_MOTOR_PWM);
 	}
@@ -29,6 +30,7 @@ public class CubeMech extends Subsystem {
 	 * Rolls cubes into mechanism
 	 */
 	public void rollIn() {
+		//sets cube mech motors to positive speed
 		rollerR.set(RobotMap.CUBEMECH_IN_SPEED);
 		rollerL.set(RobotMap.CUBEMECH_IN_SPEED);
 	}
@@ -37,6 +39,7 @@ public class CubeMech extends Subsystem {
 	 * Rolls cubes out of mechanism
 	 */
 	public void rollOut() {
+		//sets cube mech motors to negative speed
 		rollerR.set(RobotMap.CUBEMECH_OUT_SPEED);
 		rollerL.set(RobotMap.CUBEMECH_OUT_SPEED);
 	}
@@ -45,6 +48,7 @@ public class CubeMech extends Subsystem {
 	 * Stops rollers from moving
 	 */
 	public void stopRoll() {
+		//stops cube mech motors
 		rollerR.set(0.0);
 		rollerL.set(0.0);
 	}

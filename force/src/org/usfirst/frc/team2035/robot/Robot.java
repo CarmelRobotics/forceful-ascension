@@ -12,12 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
-import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
 
-
-//fang has infiltrated
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -26,6 +22,7 @@ import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
+	
 	public static CubeMech cbm;
 	public static OI oi;
 
@@ -39,7 +36,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		
 		cbm = new CubeMech();
 	}
 
