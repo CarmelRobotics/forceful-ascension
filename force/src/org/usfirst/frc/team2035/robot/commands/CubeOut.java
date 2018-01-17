@@ -13,8 +13,8 @@ import org.usfirst.frc.team2035.robot.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-	public ExampleCommand() {
+public class CubeOut extends Command {
+	public CubeOut() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.kExampleSubsystem);
 	}

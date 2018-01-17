@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2035.robot.subsystems.CubeIntake;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
 
 
@@ -25,8 +26,7 @@ import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
+	public static CubeIntake cbi;
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
@@ -42,6 +42,8 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		
+		cbi = new CubeIntake();
 	}
 
 	/**
@@ -119,5 +121,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	}
+	
+	public static CubeIntake getCubeIntake(){
+		return cbi;
 	}
 }
