@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
-import org.usfirst.frc.team2035.robot.subsystems.CubeIntake;
+import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
 
 
@@ -26,8 +26,8 @@ import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-	public static CubeIntake cbi;
-	public static OI m_oi;
+	public static CubeMech cbm;
+	public static OI oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -38,12 +38,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		oi = new OI();
 		
-		cbi = new CubeIntake();
+		cbm = new CubeMech();
 	}
 
 	/**
@@ -123,7 +120,7 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 	}
 	
-	public static CubeIntake getCubeIntake(){
-		return cbi;
+	public static CubeMech getCubeMech(){
+		return cbm;
 	}
 }

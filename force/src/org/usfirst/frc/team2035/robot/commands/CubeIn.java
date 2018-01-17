@@ -8,30 +8,34 @@
 package org.usfirst.frc.team2035.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
-import org.usfirst.frc.team2035.robot.subsystems.CubeIntake;
+import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 
 /**
  * An example command.  You can replace me with your own command.
  */
 public class CubeIn extends Command {
 	
-	private final CubeIntake cbi;
+	public static OI oi;
+	private final CubeMech cbm;
 	
 	public CubeIn() {
-		cbi = Robot.getCubeIntake();
-		requires(cbi);
+		cbm = Robot.getCubeMech();
+		requires(cbm);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-	
+		oi = new OI();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		cbm.rollIn();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -43,11 +47,13 @@ public class CubeIn extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		cbm.stopRoll();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		cbm.stopRoll();
 	}
 }

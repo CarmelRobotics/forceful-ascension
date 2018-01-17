@@ -20,25 +20,25 @@ public class CubeMech extends Subsystem {
 	private Victor rollerR; //right side cube mechanism roller
 	private Victor rollerL; //left side cube mechanism roller
 	
-	public CubeIntake() {
-		rollerR = new Victor(RobotMap.R_CUBEINTAKE_MOTOR_PWM);
-		rollerL = new Victor(RobotMap.L_CUBEINTAKE_MOTOR_PWM);
+	public CubeMech() {
+		rollerR = new Victor(RobotMap.R_CUBEMECH_MOTOR_PWM);
+		rollerL = new Victor(RobotMap.L_CUBEMECH_MOTOR_PWM);
 	}
 
 	/**
 	 * Rolls cubes into mechanism
 	 */
 	public void rollIn() {
-		rollerR.set(RobotMap.INTAKE_SPEED);
-		rollerL.set(RobotMap.INTAKE_SPEED);
+		rollerR.set(RobotMap.CUBEMECH_IN_SPEED);
+		rollerL.set(RobotMap.CUBEMECH_IN_SPEED);
 	}
 	
 	/**
 	 * Rolls cubes out of mechanism
 	 */
 	public void rollOut() {
-		rollerR.set(-1*RobotMap.INTAKE_SPEED);
-		rollerL.set(-1*RobotMap.INTAKE_SPEED);
+		rollerR.set(RobotMap.CUBEMECH_OUT_SPEED);
+		rollerL.set(RobotMap.CUBEMECH_OUT_SPEED);
 	}
 	
 	/**
