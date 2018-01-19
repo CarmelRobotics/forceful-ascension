@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * An example subsystem.  You can replace me with your own Subsystem.
+ * Controls the cube intake and carrying mechanism.
  */
 public class CubeMech extends Subsystem {
 	
@@ -22,8 +22,8 @@ public class CubeMech extends Subsystem {
 	
 	public CubeMech() {
 		//sets roller variables to pins on Roborio
-		rollerR = new Victor(RobotMap.R_CUBEMECH_MOTOR_PWM);
-		rollerL = new Victor(RobotMap.L_CUBEMECH_MOTOR_PWM);
+		rollerR = new Victor(RobotMap.R_CUBEMECH_MOTOR_DIO);
+		rollerL = new Victor(RobotMap.L_CUBEMECH_MOTOR_DIO);
 	}
 
 	/**

@@ -7,14 +7,14 @@ import org.usfirst.frc.team2035.robot.subsystems.Wings;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Turns off the wing solenoids, causing the wings to fall onto the ground. Used for lifting robots.
+ * Turns the solenoids keeping the wings up on. Keep this on until lifting robots.
  */
-public class WingsOut extends Command {
+public class WingsLatch extends Command {
 
 	public static OI oi;
 	private final Wings wng;
 	
-	public WingsOut() {
+	public WingsLatch() {
 		wng = Robot.getWings();
 		requires(wng);
     }
@@ -26,7 +26,7 @@ public class WingsOut extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	wng.wingsSolenoidsOff();
+    	wng.wingsSolenoidsOn();
     }
 
     // Make this return true when this Command no longer needs to run execute()

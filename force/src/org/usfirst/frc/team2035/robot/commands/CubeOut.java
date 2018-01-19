@@ -14,7 +14,7 @@ import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 
 /**
- * An example command.  You can replace me with your own command.
+ * Rolls the cube carrying mechanism's rollers out, rejecting cubes.
  */
 public class CubeOut extends Command {
 	

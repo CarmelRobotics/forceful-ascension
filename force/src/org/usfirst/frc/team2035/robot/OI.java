@@ -9,6 +9,7 @@ package org.usfirst.frc.team2035.robot;
 
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.CubeOut;
+import org.usfirst.frc.team2035.robot.commands.WingsOut;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
@@ -56,6 +57,8 @@ public class OI {
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		wingsOut = RobotMap.WINGS_OUT;
+		
+		wingsOut.whenPressed(new WingsOut());
 		
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());

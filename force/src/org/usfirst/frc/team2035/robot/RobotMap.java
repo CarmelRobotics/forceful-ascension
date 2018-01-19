@@ -22,12 +22,17 @@ public class RobotMap {
 	// public static int leftMotor = 1;
 	// public static int rightMotor = 2;
 	
-	public static final int L_CUBEMECH_MOTOR_PWM = 0;
-	public static final int R_CUBEMECH_MOTOR_PWM = 0;
+	/* DIO */
+	public static final int L_CUBEMECH_MOTOR_DIO = 0;
+	public static final int R_CUBEMECH_MOTOR_DIO = 0;
+	
+	/* Motor Speeds */
 	public static final double CUBEMECH_IN_SPEED= 1.0;
 	public static final double CUBEMECH_OUT_SPEED= -1.0;
-	public static final int L_WINGS_MOTOR_PWM = 0;
-	public static final int R_WINGS_MOTOR_PWM = 0;
+	
+	/* Solenoids */
+	public static final int L_WINGS = 0;
+	public static final int R_WINGS = 0;
 	
 	/* Joystick */
     public static final int USB = 0;

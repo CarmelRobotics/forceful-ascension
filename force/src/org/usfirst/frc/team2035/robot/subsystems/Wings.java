@@ -6,26 +6,25 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ *Controls the wing management system.
  */
 public class Wings extends Subsystem {
 	
-	private Solenoid wingR;
-	private Solenoid wingL;
+	private Solenoid wingR; //right side solenoid keeping wings up
+	private Solenoid wingL; //left side solenoid keeping wings up
 	
 	public Wings() {
-		wingR = new Solenoid(RobotMap.R_WINGS_MOTOR_PWM);
-		wingL = new Solenoid(RobotMap.L_WINGS_MOTOR_PWM);
+		wingR = new Solenoid(RobotMap.R_WINGS);
+		wingL = new Solenoid(RobotMap.L_WINGS);
 	}
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
+	//turns wing solenoids on, keeping the wings up
     public void wingsSolenoidsOn() {
         wingR.set(true);
         wingL.set(false);
     }
     
+  //turns wing solenoids off, dropping the wings
     public void wingsSolenoidsOff() {
     	wingR.set(false);
     	wingL.set(false);
@@ -34,5 +33,6 @@ public class Wings extends Subsystem {
     public void initDefaultCommand() {
 		
 	}
+
 }
 
