@@ -47,6 +47,7 @@ public class OI {
 	
 	public static Button cubeIn;
 	public static Button cubeOut;
+	public static Button wingsOut;
 	
 	public static void initialize() {
 		/**
@@ -54,6 +55,7 @@ public class OI {
 		 */
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
+		wingsOut = RobotMap.WINGS_OUT;
 		
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());

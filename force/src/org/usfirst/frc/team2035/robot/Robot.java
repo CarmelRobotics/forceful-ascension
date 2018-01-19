@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
+import org.usfirst.frc.team2035.robot.subsystems.Wings;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,7 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 public class Robot extends TimedRobot {
 	
 	public static CubeMech cbm;
+	public static Wings wng;
 	public static OI oi;
 
 	Command m_autonomousCommand;
@@ -37,6 +39,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		cbm = new CubeMech();
+		wng = new Wings();
 	}
 
 	/**
@@ -118,5 +121,9 @@ public class Robot extends TimedRobot {
 	
 	public static CubeMech getCubeMech(){
 		return cbm;
+	}
+	
+	public static Wings getWings(){
+		return wng;
 	}
 }

@@ -26,6 +26,8 @@ public class RobotMap {
 	public static final int R_CUBEMECH_MOTOR_PWM = 0;
 	public static final double CUBEMECH_IN_SPEED= 1.0;
 	public static final double CUBEMECH_OUT_SPEED= -1.0;
+	public static final int L_WINGS_MOTOR_PWM = 0;
+	public static final int R_WINGS_MOTOR_PWM = 0;
 	
 	/* Joystick */
     public static final int USB = 0;
@@ -34,6 +36,7 @@ public class RobotMap {
 	/* Buttons */
 	public static final JoystickButton CUBE_IN = new JoystickButton(GENERIC, 1);
 	public static final JoystickButton CUBE_OUT = new JoystickButton(GENERIC, 1);
+	public static final JoystickButton WINGS_OUT = new JoystickButton(GENERIC, 1);
 	
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:
