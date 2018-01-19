@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team2035.robot.RobotMap;
 import edu.wpi.first.wpilibj.Solenoid;
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.FeedbackDevice;
+import com.ctre.CANTalon.TalonControlMode;
 
 
 public class Arm extends Subsystem{
