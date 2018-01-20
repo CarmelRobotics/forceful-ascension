@@ -5,13 +5,13 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArmRaise extends Command {
+public class ArmLower extends Command {
 	
 	private Arm arm;
 	
-	public ArmRaise() {
+	public ArmLower() {
 		// Use requires() here to declare subsystem dependencies
-		super("ArmRaise");
+		super("ArmLower");
 		
 		arm = Robot.getArm();
 		

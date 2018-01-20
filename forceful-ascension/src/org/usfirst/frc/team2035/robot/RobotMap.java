@@ -7,6 +7,9 @@
 
 package org.usfirst.frc.team2035.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -24,19 +27,42 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
-	
+	//Arm
 	public static final int ARM_ANGLE_SPEED = 1;
 	public static final int ARM_EXTEND_SPEED = 1;
+	public static final int ARM_STARTING_POSITION = 2;
+	public static final int ARM_POSITION_0 = 0;
+	public static final int ARM_POSITION_1 = 1;
+	public static final int ARM_POSITION_2 = 2;
+	public static final int ARM_POSITION_3 = 3;
+	public static final int ARM_POSITION_4 = 4;
 	
 	//PWMS
-	public static final int LEFT_ARM_ANGLE = 4; //change later
-	public static final int RIGHT_ARM_ANGLE = 5; //change later
-	public static final int ARM_EXTEND_1 = 6; //change later
-	public static final int ARM_EXTEND_2 = 7; //change later
-	public static final int ARM_EXTEND_3 = 8; //change later
+	public static final int LEFT_ARM_ANGLE = 4;
+	public static final int RIGHT_ARM_ANGLE = 5; 
+	public static final int ARM_EXTEND_1 = 6; 
+	public static final int ARM_EXTEND_2 = 7; 
+	public static final int ARM_EXTEND_3 = 8; 
 	
 	//CAN
 	public static final int ARM_SOLENOID = 0;
+	
+	//Encoder channel
+	
+	public static final int ANGLER_ID = 0;
+	
+	
+	//Joysticks
+	
+	public static final int JOYSTICK_A_USB_NUMBER = 0;
+    public static final Joystick DRIVER_JOYSTICK_A = new Joystick(JOYSTICK_A_USB_NUMBER);
+    
+    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(DRIVER_JOYSTICK_A,1); //change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(DRIVER_JOYSTICK_A,2);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(DRIVER_JOYSTICK_A,3);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(DRIVER_JOYSTICK_A,4);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(DRIVER_JOYSTICK_A,5);//change later
+	
 	
 	
 }

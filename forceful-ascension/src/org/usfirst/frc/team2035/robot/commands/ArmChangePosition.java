@@ -5,16 +5,18 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArmRaise extends Command {
+public class ArmChangePosition extends Command {
 	
 	private Arm arm;
+	private double desiredPos;
 	
-	public ArmRaise() {
+	
+	public ArmChangePosition(double desiredPos) {
 		// Use requires() here to declare subsystem dependencies
-		super("ArmRaise");
+		super("ArmChangePosition");
 		
 		arm = Robot.getArm();
-		
+		this.desiredPos = desiredPos;
 		requires(Robot.getArm());
 	}
 
@@ -27,7 +29,7 @@ public class ArmRaise extends Command {
 	@Override
 	protected void execute() {
 		
-		arm.armRaiseAngle();
+		arm.armChangeAngle(desiredPos);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -39,11 +41,13 @@ public class ArmRaise extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		arm.armAnglerStop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
+		arm.armAnglerStop();
 	}
 }
