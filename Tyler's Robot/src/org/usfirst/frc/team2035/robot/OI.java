@@ -8,7 +8,7 @@
 package org.usfirst.frc.team2035.robot;
 
 /**
- * This class is the glue that binds the controls on the physical operator
+ * This class is the glue that binds the controls on the physical operator sdfg
  * interface to the commands and command groups that allow control of the robot. wow lol
  */
 public class OI {
