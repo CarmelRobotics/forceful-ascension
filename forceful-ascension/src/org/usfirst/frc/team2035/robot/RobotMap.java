@@ -30,12 +30,14 @@ public class RobotMap {
 	//Arm
 	public static final int ARM_ANGLE_SPEED = 1;
 	public static final int ARM_EXTEND_SPEED = 1;
-	public static final int ARM_STARTING_POSITION = 2;
-	public static final int ARM_POSITION_0 = 0;
-	public static final int ARM_POSITION_1 = 1;
-	public static final int ARM_POSITION_2 = 2;
-	public static final int ARM_POSITION_3 = 3;
-	public static final int ARM_POSITION_4 = 4;
+	public static final double ARM_STARTING_POSITION = 2;
+	
+		//switch to angle measurements later
+	public static final double ARM_POSITION_0 = 0; 
+	public static final double ARM_POSITION_1 = 1;
+	public static final double ARM_POSITION_2 = 2;
+	public static final double ARM_POSITION_3 = 3;
+	public static final double ARM_POSITION_4 = 4;
 	
 	//PWMS
 	public static final int LEFT_ARM_ANGLE = 4;

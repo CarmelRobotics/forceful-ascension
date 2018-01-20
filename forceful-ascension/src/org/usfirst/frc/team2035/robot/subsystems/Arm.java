@@ -19,7 +19,7 @@ public class Arm extends Subsystem{
 	private Victor armExtender3;
 	private Solenoid armSolenoid;
 	private CANTalon angler;
-	private int currentArmPosition;
+	private double startingPos;
 	
 	
 	public Arm() {
@@ -32,9 +32,12 @@ public class Arm extends Subsystem{
 		armExtender3 = new Victor(RobotMap.ARM_EXTEND_3);
 		armSolenoid = new Solenoid(RobotMap.ARM_SOLENOID);
 		angler = new CANTalon(RobotMap.ANGLER_ID);
-		currentArmPosition = RobotMap.ARM_STARTING_POSITION;
+		startingPos = RobotMap.ARM_STARTING_POSITION;
 		
 		
+	
+		
+		angler.setPosition(startingPos);
 		
 		
 		
@@ -51,6 +54,27 @@ public class Arm extends Subsystem{
 		armExtender2.set(RobotMap.ARM_EXTEND_SPEED);
 		armExtender3.set(RobotMap.ARM_EXTEND_SPEED);
 		
+		
+		
+		
+	}
+	
+	public void resetAngle() {
+		
+		double currentPos = (angler.getEncPosition()/4096);
+		if ((currentPos - startingPos) > 0) {
+			armLowerAngle();
+			
+		}
+		
+		else if ((currentPos - startingPos) < 0) {
+			armRaiseAngle();
+			
+		}
+		else {
+			armAnglerStop();
+			
+		}
 		
 		
 		
