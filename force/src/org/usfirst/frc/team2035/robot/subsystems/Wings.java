@@ -19,18 +19,18 @@ public class Wings extends Subsystem {
 	}
 
 	//turns wing solenoids on, keeping the wings up
-    public void wingsSolenoidsOn() {
-        wingR.set(true);
-        wingL.set(true);
+	public void wingsSolenoidsOn() {
+		wingR.set(true);
+		wingL.set(true);
     }
     
   //turns wing solenoids off, dropping the wings
-    public void wingsSolenoidsOff() {
-    	wingR.set(false);
-    	wingL.set(false);
+	public void wingsSolenoidsOff() {
+		wingR.set(false);
+		wingL.set(false);
     }
     
-    public void initDefaultCommand() {
+	public void initDefaultCommand() {
 		
 	}
 
