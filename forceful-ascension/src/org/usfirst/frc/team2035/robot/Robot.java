@@ -13,7 +13,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2035.robot.subsystems.EncoderTest;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
+
+import com.ctre.CANTalon;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +32,7 @@ public class Robot extends TimedRobot {
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	private static EncoderTest test;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -40,6 +44,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		test = new EncoderTest();
 	}
 
 	/**
@@ -118,4 +123,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testPeriodic() {
 	}
+	
+	public static EncoderTest getEncoder() {
+		
+		return test;
+		
+	}
+	
+	
 }
