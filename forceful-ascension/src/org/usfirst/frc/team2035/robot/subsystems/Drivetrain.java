@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2035.robot.subsystems;
 import org.usfirst.frc.team2035.robot.RobotMap;
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,7 +16,7 @@ public class Drivetrain extends Subsystem {
 	private SpeedControllerGroup leftGroup;
 	private SpeedControllerGroup rightGroup;
 	private DifferentialDrive train;
-	private Solenoid gearshift;
+	private DoubleSolenoid gearshift;
 	
 	public Drivetrain() {
     	super("Drivetrain");
@@ -27,18 +27,27 @@ public class Drivetrain extends Subsystem {
     	leftGroup = new SpeedControllerGroup(leftFront, leftBack);
     	rightGroup = new SpeedControllerGroup(rightFront, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
-    	gearshift = new Solenoid(RobotMap.GEARSHIFT);
+    	gearshift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_ID, RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
     }
 	
 	//takes joystick position as speed and direction, drives using those values
-	public void joystickDrive() {
-		train.arcadeDrive(xSpeed, zRotation);
+	public void joystickDrive(double speed, double rotation) {
+		train.arcadeDrive(speed, rotation);
 	}
 	
 	//takes set doubles as speed and direction, drives using those values; boolean is whether to turn in place
 	public void numericDrive(double speed, double rotation, boolean turnInPlace) {
 		train.curvatureDrive(speed, rotation, turnInPlace);
 	}
+	
+	public void gearshiftHigh() {
+		gearshift.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void gearshiftLow() {
+		gearshift.set(DoubleSolenoid.Value.kReverse);
+	}
+	
     public void initDefaultCommand() {
     	
     }

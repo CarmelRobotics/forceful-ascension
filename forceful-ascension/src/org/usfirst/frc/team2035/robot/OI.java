@@ -9,6 +9,8 @@ package org.usfirst.frc.team2035.robot;
 
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.CubeOut;
+import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
+import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -18,7 +20,9 @@ import edu.wpi.first.wpilibj.buttons.Button;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	
+	//buttons, buttons, just buttons
+	public static Button gearshiftHigh;
+	public static Button gearshiftLow;
 	public static Button cubeIn;
 	public static Button cubeOut;
 	public static Button wingsOut;
@@ -27,12 +31,16 @@ public class OI {
 		/**
 		 * Sets software buttons to hardware buttons
 		 */
+		gearshiftHigh = RobotMap.GEARSHIFT_HIGH;
+		gearshiftLow = RobotMap.GEARSHIFT_LOW;
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		wingsOut = RobotMap.WINGS_OUT;
 		
 		wingsOut.whenPressed(new WingsOut());
 		
+		gearshiftHigh.whileHeld(new GearshiftHigh());
+		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());
 	}

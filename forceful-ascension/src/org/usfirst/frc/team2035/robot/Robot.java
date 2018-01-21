@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
+import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 
 /**
@@ -28,6 +29,7 @@ public class Robot extends TimedRobot {
 	
 	public static CubeMech cbm;
 	public static Wings wng;
+	public static Drivetrain drt;
 	public static OI oi;
 	public static WingsOut wingSetup;
 
@@ -43,6 +45,7 @@ public class Robot extends TimedRobot {
 		oi = new OI();
 		cbm = new CubeMech();
 		wng = new Wings();
+		drt = new Drivetrain();
 		wingSetup = new WingsOut();
 	}
 
@@ -129,5 +132,9 @@ public class Robot extends TimedRobot {
 	
 	public static Wings getWings(){
 		return wng;
+	}
+	
+	public static Drivetrain getDrivetrain(){
+		return drt;
 	}
 }

@@ -35,14 +35,18 @@ public class RobotMap {
 	/* Solenoids */
 	public static final int L_WINGS = 0;
 	public static final int R_WINGS = 0;
-	public static final int GEARSHIFT = 0;
+	public static final int SOLE_GEARSHIFT_ID = 0;
+	public static final int SOLE_GEARSHIFT_HIGH = 0;
+	public static final int SOLE_GEARSHIFT_LOW = 0;
 	
 	/* Joystick */
-    public static final int USB = 0;
-    public static final Joystick GENERIC = new Joystick(USB);
+    public static final int JOY_DRIVE_USB = 0;
+    public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
 	
 	/* Buttons */
-	public static final JoystickButton CUBE_IN = new JoystickButton(GENERIC, 1);
-	public static final JoystickButton CUBE_OUT = new JoystickButton(GENERIC, 1);
-	public static final JoystickButton WINGS_OUT = new JoystickButton(GENERIC, 1);
+    public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 1);
+    public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 1);
 }
