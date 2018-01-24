@@ -18,8 +18,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class RobotMap {
 	
-	public static final int START_POS = 0; //leftmost is 0, rightmost is 2
-	
 	/* PWM */
 	public static final int LF_DRIVETRAIN_MOTOR_PWM = 0;
 	public static final int LB_DRIVETRAIN_MOTOR_PWM = 0;
@@ -29,6 +27,8 @@ public class RobotMap {
 	public static final int L_CUBEMECH_MOTOR_PWM = 0;
 	
 	/* DIO */
+	public static final int LIMITSWITCH_L = 0;
+	public static final int LIMITSWITCH_R = 0;
 	
 	/* Motor Speeds */
 	public static final double CUBEMECH_IN_SPEED= 1.0;

@@ -14,9 +14,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2035.robot.commands.AutoSW_A;
+import org.usfirst.frc.team2035.robot.commands.AutoSW_B;
+import org.usfirst.frc.team2035.robot.commands.AutoSW_C;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2035.robot.subsystems.PositionLSwitch;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 
 /**
@@ -31,6 +35,7 @@ public class Robot extends TimedRobot {
 	public static CubeMech cbm;
 	public static Wings wng;
 	public static Drivetrain drt;
+	public static PositionLSwitch pls;
 	public static OI oi;
 	Command wingSetup;
 
@@ -47,6 +52,7 @@ public class Robot extends TimedRobot {
 		cbm = new CubeMech();
 		wng = new Wings();
 		drt = new Drivetrain();
+		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
 		wingSetup.start();
 	}
@@ -83,11 +89,11 @@ public class Robot extends TimedRobot {
 		char swNear;
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
-		if(RobotMap.START_POS == 0)
+		if(getLSwitch() == 0)
 			autonomousCommand = new AutoSW_A(swNear);
-		else if(RobotMap.START_POS == 1)
+		else if(getLSwitch() == 1)
 			autonomousCommand = new AutoSW_B(swNear);
-		else if(RobotMap.START_POS == 2)
+		else if(getLSwitch() == 2)
 			autonomousCommand = new AutoSW_C(swNear);
 		/*
 		 * m_autonomousCommand = m_chooser.getSelected();
@@ -148,5 +154,9 @@ public class Robot extends TimedRobot {
 	
 	public static Drivetrain getDrivetrain(){
 		return drt;
+	}
+	
+	public static int getLSwitch(){
+		return pls.getRobotStart();
 	}
 }
