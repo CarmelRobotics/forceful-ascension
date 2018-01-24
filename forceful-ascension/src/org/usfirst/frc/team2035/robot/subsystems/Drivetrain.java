@@ -28,7 +28,7 @@ public class Drivetrain extends Subsystem {
     	rightGroup = new SpeedControllerGroup(rightFront, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
     	gearshift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_ID, RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
-    }
+	}
 	
 	//takes joystick position as speed and direction, drives using those values
 	public void joystickDrive(double speed, double rotation) {
@@ -48,7 +48,7 @@ public class Drivetrain extends Subsystem {
 		gearshift.set(DoubleSolenoid.Value.kReverse);
 	}
 	
-    public void initDefaultCommand() {
+	public void initDefaultCommand() {
     	
-    }
+	}
 }

@@ -42,12 +42,12 @@ public class RobotMap {
 	public static final int SOLE_GEARSHIFT_LOW = 0;
 	
 	/* Joystick */
-    public static final int JOY_DRIVE_USB = 0;
-    public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
+	public static final int JOY_DRIVE_USB = 0;
+	public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
 	
 	/* Buttons */
-    public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 1);
-    public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 1);
 	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 1);
 	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 1);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 1);
