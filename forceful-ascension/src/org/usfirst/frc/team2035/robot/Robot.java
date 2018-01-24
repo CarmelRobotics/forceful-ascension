@@ -30,12 +30,12 @@ public class Robot extends TimedRobot {
 	private static Arm arm;
 	private String gameData;
 	//private char switchLocation;
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
-	public static OI m_oi;
+	
+	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
+	public static OI oi;
 
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -43,12 +43,14 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		oi = new OI();
+		chooser.addDefault("Default Auto", new ExampleCommand());
 		
 		arm = new Arm();
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putData("Auto mode", chooser);
+		
+		OI.initialize();
 	}
 
 	/**
@@ -58,7 +60,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		
 	}
 
 	@Override
@@ -79,7 +81,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = chooser.getSelected();
 		
 		
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
@@ -93,6 +95,14 @@ public class Robot extends TimedRobot {
 		 */
 
 		// schedule the autonomous command (example)
+		
+		if(gameData.charAt(0) == 'L')
+		{
+			//Put left auto code here
+		} else {
+			//Put right auto code here
+		}
+		
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
 		}
@@ -105,12 +115,7 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		
-		if(gameData.charAt(0) == 'L')
-		{
-			//Put left auto code here
-		} else {
-			//Put right auto code here
-		}
+		
 
 	}
 
