@@ -1,1 +1,1 @@
-This is the test robot's code. Intented for use with the 2014 aeriel assist bot. written in the iterative format, as opposed to command based.
+This is the test robot's code. Intended for use with the 2014 aerial assist robot (catapult). written in the iterative format, as opposed to command based.
