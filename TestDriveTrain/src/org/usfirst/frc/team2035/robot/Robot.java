@@ -33,7 +33,6 @@ public class Robot extends IterativeRobot {
 	  
 	  /** Driver Station related imports */
 	  private final Joystick JStick;
-	  private final SmartDashboard SDBoard;
 	  
 	public Robot()
 	{
@@ -49,8 +48,6 @@ public class Robot extends IterativeRobot {
 		RSControlGroup = new SpeedControllerGroup(FRightMotor, MRightMotor, BRightMotor);
 		drive = new DifferentialDrive(LSControlGroup, RSControlGroup);
 		JStick = new Joystick(0); // Change # in driver station, not here. 
-		SDBoard = new SmartDashboard();
-		DBoard = new Dashboard(); 
 	}
 	    /**
 	 * This function is run when the robot is first started up and should be
@@ -85,9 +82,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() 
 	{
+		SmartDashboard.putString("Test", "This is a test");
+		
 	}
 
-	/**
+	/** 
 	 * This is were everything is going to happen, as this is a bot used to test drivers/drivetrain code.
 	 */ 
 	@Override
