@@ -10,12 +10,14 @@ package org.usfirst.frc.team2035.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
- * Code for using the 2014 bot as a test robot. 
+ * Code for using the 2014 bot as a test robot.
+ * Made by Robbie. 
  */
 public class Robot extends IterativeRobot {
 	  private final DifferentialDrive drive; // actual drive
@@ -28,11 +30,14 @@ public class Robot extends IterativeRobot {
 
 	  private final SpeedControllerGroup LSControlGroup; //Left Speed Controller group
 	  private final SpeedControllerGroup RSControlGroup; // Right Speed Controller group
+	  
+	  /** Driver Station related imports */
 	  private final Joystick JStick;
+	  private final SmartDashboard SDBoard;
 	  
 	public Robot()
 	{
-		
+		/** Speed Controllers */
 		FRightMotor = new Victor(0);
 		MRightMotor = new Victor(1);
 		BRightMotor = new Victor(2);
@@ -43,7 +48,9 @@ public class Robot extends IterativeRobot {
 		LSControlGroup = new SpeedControllerGroup(FLeftMotor, MLeftMotor, BLeftMotor);
 		RSControlGroup = new SpeedControllerGroup(FRightMotor, MRightMotor, BRightMotor);
 		drive = new DifferentialDrive(LSControlGroup, RSControlGroup);
-		JStick = new Joystick(0); // Change # in case of emergency
+		JStick = new Joystick(0); // Change # in driver station, not here. 
+		SDBoard = new SmartDashboard();
+		DBoard = new Dashboard(); 
 	}
 	    /**
 	 * This function is run when the robot is first started up and should be
