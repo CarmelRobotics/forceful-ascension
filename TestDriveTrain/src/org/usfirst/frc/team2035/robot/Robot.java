@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
  * Code for using the 2014 bot as a test robot.
- * Made by Robbie. 
+ * Made by Robbie. And some other people I guess. 
  */
 public class Robot extends IterativeRobot {
 	  private final DifferentialDrive drive; // actual drive
