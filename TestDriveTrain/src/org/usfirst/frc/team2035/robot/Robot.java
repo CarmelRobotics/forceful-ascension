@@ -82,7 +82,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() 
 	{
-		SmartDashboard.putString("Test", "This is a test");
+		
 		
 	}
 
@@ -92,6 +92,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() 
 	{
+		SmartDashboard.putString("Test", "This is a test");
 		drive.arcadeDrive(JStick.getY(), JStick.getX());
 	}
 
