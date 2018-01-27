@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	private static EncoderTest test;
+	
 
 	/**
 	 * This function is run when the robot is first started up and should be
