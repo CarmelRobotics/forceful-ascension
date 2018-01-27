@@ -13,13 +13,14 @@ import org.usfirst.frc.team2035.robot.RobotMap;
 
 
 /**
- *
+ * Autonomous for placing cube on switch and crossing line - modified from branch "Tyer's_Branch"
  */
 public class AutoSW extends Command {
 
 	public static OI oi;
 	public Timer sTimer;
 	private Drivetrain driver;
+	private Arm arm;
 	private char sw;
 	private int start;
 	private double spd1;
@@ -147,4 +148,9 @@ public class AutoSW extends Command {
         	}
         }
     }
+    
+    private void ARMSOnTheNintendoSwitch() { //currently referencing code in branch "FangTaoTheRealOne"
+    	arm.armChangeAngle()
+    }
+    
 }
