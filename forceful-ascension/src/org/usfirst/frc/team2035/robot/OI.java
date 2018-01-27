@@ -14,6 +14,7 @@ import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -21,11 +22,11 @@ import edu.wpi.first.wpilibj.buttons.Button;
  */
 public class OI {
 	//buttons, buttons, just buttons
-	public static Button gearshiftHigh;
-	public static Button gearshiftLow;
-	public static Button cubeIn;
-	public static Button cubeOut;
-	public static Button wingsOut;
+	public static JoystickButton gearshiftHigh;
+	public static JoystickButton gearshiftLow;
+	public static JoystickButton cubeIn;
+	public static JoystickButton cubeOut;
+	public static JoystickButton wingsOut;
 	
 	public static void initialize() {
 		/**

@@ -14,9 +14,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2035.robot.commands.AutoSW_A;
-import org.usfirst.frc.team2035.robot.commands.AutoSW_B;
-import org.usfirst.frc.team2035.robot.commands.AutoSW_C;
+import org.usfirst.frc.team2035.robot.commands.AutoSW;
+import org.usfirst.frc.team2035.robot.commands.CubeIn;
+import org.usfirst.frc.team2035.robot.commands.CurveDrive;
+import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
@@ -33,11 +34,12 @@ import org.usfirst.frc.team2035.robot.subsystems.Wings;
 public class Robot extends TimedRobot {
 	
 	public static CubeMech cbm;
-	public static Wings wng;
+	public static Wings wing;
 	public static Drivetrain drt;
 	public static PositionLSwitch pls;
 	public static OI oi;
 	Command wingSetup;
+	Command drive;
 
 	Command autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -50,7 +52,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		oi = new OI();
 		cbm = new CubeMech();
-		wng = new Wings();
+		wing = new Wings();
 		drt = new Drivetrain();
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
@@ -87,14 +89,16 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		String swPos;
 		char swNear;
+		int startPos;
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
-		if(getLSwitch() == 0)
-			autonomousCommand = new AutoSW_A(swNear);
-		else if(getLSwitch() == 1)
-			autonomousCommand = new AutoSW_B(swNear);
-		else if(getLSwitch() == 2)
-			autonomousCommand = new AutoSW_C(swNear);
+		startPos = pls.getRobotStart();
+		//if(startPos == 1)
+		//	drt.testMotor(0.0);
+		//else if(startPos == 0)
+		//while (true) {
+		//drt.testMotor(1.0); }
+		autonomousCommand = new AutoSW(swNear, startPos);
 		/*
 		 * m_autonomousCommand = m_chooser.getSelected();
 		 * 
@@ -106,8 +110,8 @@ public class Robot extends TimedRobot {
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
-			autonomousCommand.start();
-		}
+			autonomousCommand.start(); }
+		//}
 	}
 
 	/**
@@ -127,6 +131,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		drive = new TeleopDrive();
 	}
 
 	/**
@@ -135,6 +140,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		drive.start();
 	}
 
 	/**
@@ -149,14 +155,11 @@ public class Robot extends TimedRobot {
 	}
 	
 	public static Wings getWings(){
-		return wng;
+		return wing;
 	}
 	
 	public static Drivetrain getDrivetrain(){
 		return drt;
 	}
 	
-	public static int getLSwitch(){
-		return pls.getRobotStart();
-	}
 }

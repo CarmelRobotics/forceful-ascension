@@ -20,7 +20,7 @@ public class TeleopDrive extends Command {
 	
     public TeleopDrive() {
     	drt = Robot.getDrivetrain();
-    	stk = new Joystick(RobotMap.JOY_DRIVE_USB);
+    	stk = RobotMap.JOY_DRIVE;
 		requires(drt);
     }
 
@@ -31,7 +31,7 @@ public class TeleopDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drt.joystickDrive(stk.getY(), stk.getX());
+    	drt.drive(stk.getY(), stk.getX());
     }
 
     // Make this return true when this Command no longer needs to run execute()

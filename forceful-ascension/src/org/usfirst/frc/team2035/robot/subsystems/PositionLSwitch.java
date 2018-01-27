@@ -19,19 +19,19 @@ public class PositionLSwitch extends Subsystem {
 		posC = new DigitalInput(RobotMap.LIMITSWITCH_R);
 	}
 	
-	private boolean getPosA() {
-		return posA.get();
-	}
+//	private boolean getPosA() {
+//		return posA.get();
+//	}
 	
-	private boolean getPosC() {
-		return posC.get();
-	}
+//	private boolean getPosC() {
+	//	return posC.get();
+//	}
 	
 	public int getRobotStart() {
 		if(posA.get())
 			return 0;
-		if(posC.get())
-			return 3;
+		else if(posC.get())
+			return 2;
 		else
 			return 1;
 	}

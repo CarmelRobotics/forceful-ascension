@@ -31,12 +31,12 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	//takes joystick position as speed and direction, drives using those values
-	public void joystickDrive(double speed, double rotation) {
+	public void drive(double speed, double rotation) {
 		train.arcadeDrive(speed, rotation);
 	}
 	
 	//takes set doubles as speed and direction, drives using those values; boolean is whether to turn in place
-	public void numericDrive(double speed, double rotation, boolean turnInPlace) {
+	public void driveCurve(double speed, double rotation, boolean turnInPlace) {
 		train.curvatureDrive(speed, rotation, turnInPlace);
 	}
 	
@@ -47,6 +47,11 @@ public class Drivetrain extends Subsystem {
 	public void gearshiftLow() {
 		gearshift.set(DoubleSolenoid.Value.kReverse);
 	}
+	
+	public void testMotor(double heyEveryoneThisIsAVariableWow) {
+		leftFront.set(heyEveryoneThisIsAVariableWow);
+	}
+	
 	
 	public void initDefaultCommand() {
     	
