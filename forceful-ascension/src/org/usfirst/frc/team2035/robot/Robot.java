@@ -42,10 +42,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
+		System.out.println("pls work");
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		test = new EncoderTest();
+		OI.initialize();
 	}
 
 	/**

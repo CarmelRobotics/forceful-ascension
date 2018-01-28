@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2035.robot.commands;
 
+import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.subsystems.EncoderTest;
 
@@ -8,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class EncoderTestOutput extends Command {
 	private EncoderTest test;
-	
+	public static OI oi;
 	public EncoderTestOutput() {
 		// Use requires() here to declare subsystem dependencies
 		
@@ -19,12 +20,13 @@ public class EncoderTestOutput extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		oi = new OI();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		
+		System.out.println("hi from command");
 		test.test();
 		
 	}
