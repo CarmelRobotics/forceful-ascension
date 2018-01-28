@@ -27,7 +27,7 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	
-	public static final int JOYSTICK_A_USB_NUMBER = 0;
+	public static final int JOYSTICK_A_USB_NUMBER = 0; 
     public static final Joystick DRIVER_JOYSTICK_A = new Joystick(JOYSTICK_A_USB_NUMBER);
     
     public static final JoystickButton TEST_ENCODER = new JoystickButton(DRIVER_JOYSTICK_A,3);

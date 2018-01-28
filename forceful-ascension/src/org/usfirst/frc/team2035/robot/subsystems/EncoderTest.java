@@ -15,7 +15,7 @@ public class EncoderTest extends Subsystem {
 	public EncoderTest() {
 		super("EncoderTest");
 		
-		angler = new WPI_TalonSRX(0);
+		angler = new WPI_TalonSRX(0); 
 		
 		
 	}

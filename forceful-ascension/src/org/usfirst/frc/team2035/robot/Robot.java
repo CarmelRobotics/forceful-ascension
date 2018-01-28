@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		test = new EncoderTest();
-		OI.initialize();
+		OI.initialize(); 
 	}
 
 	/**
