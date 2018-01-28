@@ -1,6 +1,5 @@
 package org.usfirst.frc.team2035.robot.subsystems;
 
-import com.ctre.CANTalon;
 //import com.ctre.CANTalon.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
