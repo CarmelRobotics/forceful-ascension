@@ -163,4 +163,6 @@ public class Robot extends TimedRobot {
 		return drt;
 	}
 	
+	public static EncoderTest getEncoder() { 
+		return test; }
 }

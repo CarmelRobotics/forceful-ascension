@@ -27,6 +27,7 @@ public class OI {
 	public static JoystickButton cubeIn;
 	public static JoystickButton cubeOut;
 	public static JoystickButton wingsOut;
+	public static JoystickButton b1;
 	
 	public static void initialize() {
 		/**
@@ -37,6 +38,7 @@ public class OI {
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		wingsOut = RobotMap.WINGS_OUT;
+		b1 = RobotMap.TEST_ENCODER;
 		
 		wingsOut.whenPressed(new WingsOut());
 		
@@ -44,6 +46,12 @@ public class OI {
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());
+		b1.whileHeld(new EncoderTestOutput());
 	}
+	b1 = RobotMap.TEST_ENCODER;
 	
+	
+	
+	
+	b1.whileHeld(new EncoderTestOutput());
 }
