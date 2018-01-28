@@ -21,6 +21,7 @@ import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2035.robot.subsystems.EncoderTest;
 import org.usfirst.frc.team2035.robot.subsystems.PositionLSwitch;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 
@@ -38,6 +39,7 @@ public class Robot extends TimedRobot {
 	public static Drivetrain drt;
 	public static PositionLSwitch pls;
 	public static OI oi;
+	public static EncoderTest test;
 	Command wingSetup;
 	Command drive;
 
@@ -56,6 +58,7 @@ public class Robot extends TimedRobot {
 		drt = new Drivetrain();
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
+		test = new EncoderTest();
 		wingSetup.start();
 		OI.initialize();
 	}

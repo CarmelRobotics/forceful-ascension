@@ -2,8 +2,7 @@ package org.usfirst.frc.team2035.robot.subsystems;
 
 import com.ctre.CANTalon;
 //import com.ctre.CANTalon.*;
-import com.ctre.CANTalon.FeedbackDevice;
-
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -17,16 +16,15 @@ public class EncoderTest extends Subsystem {
 	public EncoderTest() {
 		super("EncoderTest");
 		
-		angler = new CANTalon(0);
-		angler.setFeedbackDevice(FeedbackDevice.CtreMagEncoder_Relative);
+		//angler = new WPI_TalonSRX(0);
 		encoderMotor = new Talon(0);
 		
 	}
 	
 	
 	public void test() {
-		encoderMotor.set(.5);
-		System.out.println(angler.getEncPosition());
+		//encoderMotor.set(.5);
+		System.out.println(angler.getSelectedSensorPosition(0));
 		
 	}
 	public void initDefaultCommand() {
