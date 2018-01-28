@@ -24,6 +24,7 @@ public class EncoderTest extends Subsystem {
 	
 	public void test() {
 		//encoderMotor.set(.5);
+		System.out.println("oooo");
 		System.out.println(angler.getSelectedSensorPosition(0));
 		
 	}

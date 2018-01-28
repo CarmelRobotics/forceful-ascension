@@ -48,9 +48,10 @@ public class RobotMap {
 	/* Buttons */
 	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 6);
 	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 2);
-	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 2);
+	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 7);
 	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 3);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 5);
+	public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 2);
 	
 	/* Autonomous Speeds... "POS_L2_SPEED1" Means switch Position Left, and Robot Placement Two */
 	public static final double POS1_SWL_SPD1 = 0.0;

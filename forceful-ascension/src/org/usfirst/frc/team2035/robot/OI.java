@@ -9,6 +9,7 @@ package org.usfirst.frc.team2035.robot;
 
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.CubeOut;
+import org.usfirst.frc.team2035.robot.commands.EncoderTestOutput;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
@@ -38,7 +39,7 @@ public class OI {
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		wingsOut = RobotMap.WINGS_OUT;
-		b1 = RobotMap.TEST_ENCODER;
+		b1 = RobotMap.ENC;
 		
 		wingsOut.whenPressed(new WingsOut());
 		
@@ -48,10 +49,4 @@ public class OI {
 		cubeOut.whileHeld(new CubeOut());
 		b1.whileHeld(new EncoderTestOutput());
 	}
-	b1 = RobotMap.TEST_ENCODER;
-	
-	
-	
-	
-	b1.whileHeld(new EncoderTestOutput());
 }
