@@ -20,7 +20,7 @@ public class AutoSW extends Command {
 	public static OI oi;
 	public Timer sTimer;
 	private Drivetrain driver;
-	private Arm arm;
+	//private Arm arm;
 	private char sw;
 	private int start;
 	private double spd1;
@@ -149,8 +149,8 @@ public class AutoSW extends Command {
         }
     }
     
-    private void ARMSOnTheNintendoSwitch() { //currently referencing code in branch "FangTaoTheRealOne"
-    	arm.armChangeAngle()
-    }
+   // private void ARMSOnTheNintendoSwitch() { //currently referencing code in branch "FangTaoTheRealOne"
+    //	arm.armChangeAngle()
+//    }
     
 }

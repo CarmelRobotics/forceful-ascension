@@ -20,19 +20,19 @@ public class RobotMap {
 	
 	/* PWM */
 	public static final int LF_DRIVETRAIN_MOTOR_PWM = 0;
-	public static final int LB_DRIVETRAIN_MOTOR_PWM = 4;
-	public static final int RF_DRIVETRAIN_MOTOR_PWM = 5;
+	public static final int LB_DRIVETRAIN_MOTOR_PWM = 5;
+	public static final int RF_DRIVETRAIN_MOTOR_PWM = 4;
 	public static final int RB_DRIVETRAIN_MOTOR_PWM = 3;
-	public static final int R_CUBEMECH_MOTOR_PWM = 1;
-	public static final int L_CUBEMECH_MOTOR_PWM = 2;
+	public static final int R_CUBEMECH_MOTOR_PWM = 2;
+	public static final int L_CUBEMECH_MOTOR_PWM = 1;
 	
 	/* DIO */
 	public static final int LIMITSWITCH_L = 0;
 	public static final int LIMITSWITCH_R = 1;
 	
 	/* Motor Speeds */
-	public static final double CUBEMECH_IN_SPEED= 1.0;
-	public static final double CUBEMECH_OUT_SPEED= -1.0;
+	public static final double CUBEMECH_IN_SPEED= 0.6;
+	public static final double CUBEMECH_OUT_SPEED= -0.6;
 
 	/* Solenoids */
 	public static final int L_WINGS = 0;
@@ -46,10 +46,10 @@ public class RobotMap {
 	public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
 	
 	/* Buttons */
-	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 6);
 	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 2);
-	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 3);
-	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 4);
+	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 2);
+	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 3);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 5);
 	
 	/* Autonomous Speeds... "POS_L2_SPEED1" Means switch Position Left, and Robot Placement Two */
