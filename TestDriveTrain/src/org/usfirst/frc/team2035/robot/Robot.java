@@ -10,8 +10,7 @@ package org.usfirst.frc.team2035.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.DriverStation;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
@@ -49,16 +48,14 @@ public class Robot extends IterativeRobot {
 		drive = new DifferentialDrive(LSControlGroup, RSControlGroup);
 		JStick = new Joystick(0); // Change # in driver station, not here. 
 	}
+	
 	    /**
 	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
+	 * used for any initialization scode.
 	 */
 	@Override
 	public void robotInit()
 	{
-		//FLeftMotor.setInverted(true);
-		//MLeftMotor.setInverted(true); 
-		//BLeftMotor.setInverted(true);
 	}
 
 	/**
@@ -92,7 +89,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() 
 	{
-		SmartDashboard.putString("Test", "This is a test");
+		//SmartDashboard.putString("Test", "This is a test");
 		drive.arcadeDrive(JStick.getY(), JStick.getX());
 	}
 
