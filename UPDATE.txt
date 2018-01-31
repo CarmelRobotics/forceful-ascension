@@ -1,1 +1,0 @@
-This project (the test bot) has been moved to it's own repository under testy-boi.
