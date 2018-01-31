@@ -37,7 +37,6 @@ public class OI {
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		wingsOut = RobotMap.WINGS_OUT;
-		System.out.print("")
 		wingsOut.whenPressed(new WingsOut());
 		
 		gearshiftHigh.whileHeld(new GearshiftHigh());

@@ -9,7 +9,7 @@ import org.usfirst.frc.team2035.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Timer;
 
 import org.usfirst.frc.team2035.robot.Robot;
-import org.usfirst.frc.team2035.robot.RobotMap;
+import org.usfirst.frc.team2035.robot.AutoValues;
 
 
 /**
@@ -33,10 +33,14 @@ public class AutoSW extends Command {
 	private double t3;
 	private double t4;
 	private double t5;
+	private double cubeReleaseTime;
+	Command releaseTheCube;
 	
     public AutoSW(char whichSwitch, int startS_POS) {
         sw = whichSwitch;
         start = startS_POS;
+        releaseTheCube = new CubeOut();
+        cubeReleaseTime = 0.0;
     }
 
     // Called just before this Command runs the first time
@@ -55,34 +59,34 @@ public class AutoSW extends Command {
     
     	// First Movement (Forward)
     	sTimer.start();
-    	double loopStartTime = sTimer.get();
     	while(sTimer.get() <= (t1)) {
     		driver.drive(spd1, 0.0);
     	}
     	
     	// Second Movement (Turn)
-    	loopStartTime = sTimer.get();
     	while(sTimer.get() <= (t2)) {
     		driver.drive(0.0, rot1);
     	}
     	
     	// Third Movement (Forward)
-    	loopStartTime = sTimer.get();
     	while(sTimer.get() <= (t3)) {
     		driver.drive(spd2, 0.0);
     	}
     	
     	// Fourth Movement (Turn)
-    	loopStartTime = sTimer.get();
     	while(sTimer.get() <= (t4))
     	{
     		driver.drive(0.0, rot2);
     	}
     	
     	// Fifth Movement (Forward)
-    	loopStartTime = sTimer.get();
     	while(sTimer.get() <= (t5)) {
     		driver.drive(spd3, 0.0);
+    	}
+    	
+    	//Cube Release
+    	while(sTimer.get() <= (cubeReleaseTime)) {
+    		releaseTheCube.start();
     	}
     	
     }
@@ -104,56 +108,85 @@ public class AutoSW extends Command {
         {
         	if (start == 1)
         	{
-        		spd1 = RobotMap.S_POS1_SWL_SPD1;
-        		spd2 = RobotMap.S_POS1_SWL_SPD2;
-        		spd3 = RobotMap.S_POS1_SWL_SPD3;
-        		rot1 = RobotMap.S_POS1_SWL_ROT1;
-        		rot2 = RobotMap.S_POS1_SWL_ROT2;
+        		spd1 = AutoValues.S_POS1_SWL_SPD1;
+        		spd2 = AutoValues.S_POS1_SWL_SPD2;
+        		spd3 = AutoValues.S_POS1_SWL_SPD3;
+        		rot1 = AutoValues.S_POS1_SWL_ROT1;
+        		rot2 = AutoValues.S_POS1_SWL_ROT2;
+        		t1 = AutoValues.S_POS1_SWL_T1;
+        		t2 = AutoValues.S_POS1_SWL_T2;
+        		t3 = AutoValues.S_POS1_SWL_T3;
+        		t4 = AutoValues.S_POS1_SWL_T4;
+        		t5 = AutoValues.S_POS1_SWL_T5;
         	}
         	if (start == 2)
         	{
-        		spd1 = RobotMap.S_POS2_SWL_SPD1;
-        		spd2 = RobotMap.S_POS2_SWL_SPD2;
-        		spd3 = RobotMap.S_POS2_SWL_SPD3;
-        		rot1 = RobotMap.S_POS2_SWL_ROT1;
-        		rot2 = RobotMap.S_POS2_SWL_ROT2;
+        		spd1 = AutoValues.S_POS2_SWL_SPD1;
+        		spd2 = AutoValues.S_POS2_SWL_SPD2;
+        		spd3 = AutoValues.S_POS2_SWL_SPD3;
+        		rot1 = AutoValues.S_POS2_SWL_ROT1;
+        		rot2 = AutoValues.S_POS2_SWL_ROT2;
+        		t1 = AutoValues.S_POS2_SWL_T1;
+        		t2 = AutoValues.S_POS2_SWL_T2;
+        		t3 = AutoValues.S_POS2_SWL_T3;
+        		t4 = AutoValues.S_POS2_SWL_T4;
+        		t5 = AutoValues.S_POS2_SWL_T5;
         	}
         	if (start == 3) {
-        		spd1 = RobotMap.S_POS3_SWL_SPD1;
-        		spd2 = RobotMap.S_POS3_SWL_SPD2;
-        		spd3 = RobotMap.S_POS3_SWL_SPD3;
-        		rot1 = RobotMap.S_POS3_SWL_ROT1;
-        		rot2 = RobotMap.S_POS3_SWL_ROT2;
+        		spd1 = AutoValues.S_POS3_SWL_SPD1;
+        		spd2 = AutoValues.S_POS3_SWL_SPD2;
+        		spd3 = AutoValues.S_POS3_SWL_SPD3;
+        		rot1 = AutoValues.S_POS3_SWL_ROT1;
+        		rot2 = AutoValues.S_POS3_SWL_ROT2;
+        		t1 = AutoValues.S_POS3_SWL_T1;
+        		t2 = AutoValues.S_POS3_SWL_T2;
+        		t3 = AutoValues.S_POS3_SWL_T3;
+        		t4 = AutoValues.S_POS3_SWL_T4;
+        		t5 = AutoValues.S_POS3_SWL_T5;
         	}
         }
         else if (sw == 'R') // If Switch is on the right
         {
         	if (start == 1)
         	{
-        		spd1 = RobotMap.S_POS1_SWR_SPD1;
-        		spd2 = RobotMap.S_POS1_SWR_SPD2;
-        		spd3 = RobotMap.S_POS1_SWR_SPD3;
-        		rot1 = RobotMap.S_POS1_SWR_ROT1;
-        		rot2 = RobotMap.S_POS1_SWR_ROT2;
+        		spd1 = AutoValues.S_POS1_SWR_SPD1;
+        		spd2 = AutoValues.S_POS1_SWR_SPD2;
+        		spd3 = AutoValues.S_POS1_SWR_SPD3;
+        		rot1 = AutoValues.S_POS1_SWR_ROT1;
+        		rot2 = AutoValues.S_POS1_SWR_ROT2;
+        		t1 = AutoValues.S_POS1_SWR_T1;
+        		t2 = AutoValues.S_POS1_SWR_T2;
+        		t3 = AutoValues.S_POS1_SWR_T3;
+        		t4 = AutoValues.S_POS1_SWR_T4;
+        		t5 = AutoValues.S_POS1_SWR_T5;
         	}
         	if (start == 2)
         	{
-        		spd1 = RobotMap.S_POS2_SWR_SPD1;
-        		spd2 = RobotMap.S_POS2_SWR_SPD2;
-        		spd3 = RobotMap.S_POS2_SWR_SPD3;
-        		rot1 = RobotMap.S_POS2_SWR_ROT1;
-        		rot2 = RobotMap.S_POS2_SWR_ROT2;
+        		spd1 = AutoValues.S_POS2_SWR_SPD1;
+        		spd2 = AutoValues.S_POS2_SWR_SPD2;
+        		spd3 = AutoValues.S_POS2_SWR_SPD3;
+        		rot1 = AutoValues.S_POS2_SWR_ROT1;
+        		rot2 = AutoValues.S_POS2_SWR_ROT2;
+        		t1 = AutoValues.S_POS1_SWR_T1;
+        		t2 = AutoValues.S_POS1_SWR_T2;
+        		t3 = AutoValues.S_POS1_SWR_T3;
+        		t4 = AutoValues.S_POS1_SWR_T4;
+        		t5 = AutoValues.S_POS1_SWR_T5;
         	}
         	if (start == 3) {
-        		spd1 = RobotMap.S_POS3_SWR_SPD1;
-        		spd2 = RobotMap.S_POS3_SWR_SPD2;
-        		spd3 = RobotMap.S_POS3_SWR_SPD3;
-        		rot1 = RobotMap.S_POS3_SWR_ROT1;
-        		rot2 = RobotMap.S_POS3_SWR_ROT2;
+        		spd1 = AutoValues.S_POS3_SWR_SPD1;
+        		spd2 = AutoValues.S_POS3_SWR_SPD2;
+        		spd3 = AutoValues.S_POS3_SWR_SPD3;
+        		rot1 = AutoValues.S_POS3_SWR_ROT1;
+        		rot2 = AutoValues.S_POS3_SWR_ROT2;
+        		t1 = AutoValues.S_POS1_SWR_T1;
+        		t2 = AutoValues.S_POS1_SWR_T2;
+        		t3 = AutoValues.S_POS1_SWR_T3;
+        		t4 = AutoValues.S_POS1_SWR_T4;
+        		t5 = AutoValues.S_POS1_SWR_T5;
         	}
         }
-    }
-    
+    } 
    // private void ARMSOnTheNintendoSwitch() { //currently referencing code in branch "FangTaoTheRealOne"
     //	arm.armChangeAngle()
 //    }
