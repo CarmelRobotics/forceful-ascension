@@ -28,10 +28,15 @@ public class AutoSW extends Command {
 	private double spd3;
 	private double rot1;
 	private double rot2;
+	private double t1;
+	private double t2;
+	private double t3;
+	private double t4;
+	private double t5;
 	
-    public AutoSW(char whichSwitch, int startPos) {
+    public AutoSW(char whichSwitch, int startS_POS) {
         sw = whichSwitch;
-        start = startPos;
+        start = startS_POS;
     }
 
     // Called just before this Command runs the first time
@@ -51,32 +56,32 @@ public class AutoSW extends Command {
     	// First Movement (Forward)
     	sTimer.start();
     	double loopStartTime = sTimer.get();
-    	while(sTimer.get() <= (loopStartTime + 1)) {
+    	while(sTimer.get() <= (t1)) {
     		driver.drive(spd1, 0.0);
     	}
     	
     	// Second Movement (Turn)
     	loopStartTime = sTimer.get();
-    	while(sTimer.get() <= (loopStartTime + 1)) {
+    	while(sTimer.get() <= (t2)) {
     		driver.drive(0.0, rot1);
     	}
     	
     	// Third Movement (Forward)
     	loopStartTime = sTimer.get();
-    	while(sTimer.get() <= (loopStartTime + 1)) {
+    	while(sTimer.get() <= (t3)) {
     		driver.drive(spd2, 0.0);
     	}
     	
     	// Fourth Movement (Turn)
     	loopStartTime = sTimer.get();
-    	while(sTimer.get() <= (loopStartTime + 1))
+    	while(sTimer.get() <= (t4))
     	{
     		driver.drive(0.0, rot2);
     	}
     	
     	// Fifth Movement (Forward)
     	loopStartTime = sTimer.get();
-    	while(sTimer.get() <= (loopStartTime + 1)) {
+    	while(sTimer.get() <= (t5)) {
     		driver.drive(spd3, 0.0);
     	}
     	
@@ -99,52 +104,52 @@ public class AutoSW extends Command {
         {
         	if (start == 1)
         	{
-        		spd1 = RobotMap.POS1_SWL_SPD1;
-        		spd2 = RobotMap.POS1_SWL_SPD2;
-        		spd3 = RobotMap.POS1_SWL_SPD3;
-        		rot1 = RobotMap.POS1_SWL_ROT1;
-        		rot2 = RobotMap.POS1_SWL_ROT2;
+        		spd1 = RobotMap.S_POS1_SWL_SPD1;
+        		spd2 = RobotMap.S_POS1_SWL_SPD2;
+        		spd3 = RobotMap.S_POS1_SWL_SPD3;
+        		rot1 = RobotMap.S_POS1_SWL_ROT1;
+        		rot2 = RobotMap.S_POS1_SWL_ROT2;
         	}
         	if (start == 2)
         	{
-        		spd1 = RobotMap.POS2_SWL_SPD1;
-        		spd2 = RobotMap.POS2_SWL_SPD2;
-        		spd3 = RobotMap.POS2_SWL_SPD3;
-        		rot1 = RobotMap.POS2_SWL_ROT1;
-        		rot2 = RobotMap.POS2_SWL_ROT2;
+        		spd1 = RobotMap.S_POS2_SWL_SPD1;
+        		spd2 = RobotMap.S_POS2_SWL_SPD2;
+        		spd3 = RobotMap.S_POS2_SWL_SPD3;
+        		rot1 = RobotMap.S_POS2_SWL_ROT1;
+        		rot2 = RobotMap.S_POS2_SWL_ROT2;
         	}
         	if (start == 3) {
-        		spd1 = RobotMap.POS3_SWL_SPD1;
-        		spd2 = RobotMap.POS3_SWL_SPD2;
-        		spd3 = RobotMap.POS3_SWL_SPD3;
-        		rot1 = RobotMap.POS3_SWL_ROT1;
-        		rot2 = RobotMap.POS3_SWL_ROT2;
+        		spd1 = RobotMap.S_POS3_SWL_SPD1;
+        		spd2 = RobotMap.S_POS3_SWL_SPD2;
+        		spd3 = RobotMap.S_POS3_SWL_SPD3;
+        		rot1 = RobotMap.S_POS3_SWL_ROT1;
+        		rot2 = RobotMap.S_POS3_SWL_ROT2;
         	}
         }
         else if (sw == 'R') // If Switch is on the right
         {
         	if (start == 1)
         	{
-        		spd1 = RobotMap.POS1_SWR_SPD1;
-        		spd2 = RobotMap.POS1_SWR_SPD2;
-        		spd3 = RobotMap.POS1_SWR_SPD3;
-        		rot1 = RobotMap.POS1_SWR_ROT1;
-        		rot2 = RobotMap.POS1_SWR_ROT2;
+        		spd1 = RobotMap.S_POS1_SWR_SPD1;
+        		spd2 = RobotMap.S_POS1_SWR_SPD2;
+        		spd3 = RobotMap.S_POS1_SWR_SPD3;
+        		rot1 = RobotMap.S_POS1_SWR_ROT1;
+        		rot2 = RobotMap.S_POS1_SWR_ROT2;
         	}
         	if (start == 2)
         	{
-        		spd1 = RobotMap.POS2_SWR_SPD1;
-        		spd2 = RobotMap.POS2_SWR_SPD2;
-        		spd3 = RobotMap.POS2_SWR_SPD3;
-        		rot1 = RobotMap.POS2_SWR_ROT1;
-        		rot2 = RobotMap.POS2_SWR_ROT2;
+        		spd1 = RobotMap.S_POS2_SWR_SPD1;
+        		spd2 = RobotMap.S_POS2_SWR_SPD2;
+        		spd3 = RobotMap.S_POS2_SWR_SPD3;
+        		rot1 = RobotMap.S_POS2_SWR_ROT1;
+        		rot2 = RobotMap.S_POS2_SWR_ROT2;
         	}
         	if (start == 3) {
-        		spd1 = RobotMap.POS3_SWR_SPD1;
-        		spd2 = RobotMap.POS3_SWR_SPD2;
-        		spd3 = RobotMap.POS3_SWR_SPD3;
-        		rot1 = RobotMap.POS3_SWR_ROT1;
-        		rot2 = RobotMap.POS3_SWR_ROT2;
+        		spd1 = RobotMap.S_POS3_SWR_SPD1;
+        		spd2 = RobotMap.S_POS3_SWR_SPD2;
+        		spd3 = RobotMap.S_POS3_SWR_SPD3;
+        		rot1 = RobotMap.S_POS3_SWR_ROT1;
+        		rot2 = RobotMap.S_POS3_SWR_ROT2;
         	}
         }
     }

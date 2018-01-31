@@ -48,44 +48,119 @@ public class RobotMap {
 	/* Buttons */
 	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 6);
 	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 2);
-	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 7);
-	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 3);
+	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 3);
+	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 2);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 5);
 	public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 2);
 	
-	/* Autonomous Speeds... "POS_L2_SPEED1" Means switch Position Left, and Robot Placement Two */
-	public static final double POS1_SWL_SPD1 = 0.0;
-	public static final double POS1_SWL_SPD2 = 0.0;
-	public static final double POS1_SWL_SPD3 = 0.0;
-	public static final double POS2_SWL_SPD1 = 0.0;
-	public static final double POS2_SWL_SPD2 = 0.0;
-	public static final double POS2_SWL_SPD3 = 0.0;
-	public static final double POS3_SWL_SPD1 = 0.0;
-	public static final double POS3_SWL_SPD2 = 0.0;
-	public static final double POS3_SWL_SPD3 = 0.0;
 	
-	public static final double POS1_SWR_SPD1 = 0.0;
-	public static final double POS1_SWR_SPD2 = 0.0;
-	public static final double POS1_SWR_SPD3 = 0.0;
-	public static final double POS2_SWR_SPD1 = 0.0;
-	public static final double POS2_SWR_SPD2 = 0.0;
-	public static final double POS2_SWR_SPD3 = 0.0;
-	public static final double POS3_SWR_SPD1 = 0.0;
-	public static final double POS3_SWR_SPD2 = 0.0;
-	public static final double POS3_SWR_SPD3 = 0.0;
 	
-	/* Autonomous Rotations*/
-	public static final double POS1_SWL_ROT1 = 0.0;
-	public static final double POS1_SWL_ROT2 = 0.0;
-	public static final double POS2_SWL_ROT1 = 0.0;
-	public static final double POS2_SWL_ROT2 = 0.0;
-	public static final double POS3_SWL_ROT1 = 0.0;
-	public static final double POS3_SWL_ROT2 = 0.0;
+	/*AutoSW Speeds and Rotations*/
+		/* Autonomous Speeds...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = speed 1*/
+		public static final double S_POS1_SWL_SPD1 = 0.0;
+		public static final double S_POS1_SWL_SPD2 = 0.0;
+		public static final double S_POS1_SWL_SPD3 = 0.0;
+		public static final double S_POS2_SWL_SPD1 = 0.0;
+		public static final double S_POS2_SWL_SPD2 = 0.0;
+		public static final double S_POS2_SWL_SPD3 = 0.0;
+		public static final double S_POS3_SWL_SPD1 = 0.0;
+		public static final double S_POS3_SWL_SPD2 = 0.0;
+		public static final double S_POS3_SWL_SPD3 = 0.0;
+		
+		public static final double S_POS1_SWR_SPD1 = 0.0;
+		public static final double S_POS1_SWR_SPD2 = 0.0;
+		public static final double S_POS1_SWR_SPD3 = 0.0;
+		public static final double S_POS2_SWR_SPD1 = 0.0;
+		public static final double S_POS2_SWR_SPD2 = 0.0;
+		public static final double S_POS2_SWR_SPD3 = 0.0;
+		public static final double S_POS3_SWR_SPD1 = 0.0;
+		public static final double S_POS3_SWR_SPD2 = 0.0;
+		public static final double S_POS3_SWR_SPD3 = 0.0;
+		
+		/* Autonomous Rotations...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = rotation 1*/
+		public static final double S_POS1_SWL_ROT1 = 0.0;
+		public static final double S_POS1_SWL_ROT2 = 0.0;
+		public static final double S_POS2_SWL_ROT1 = 0.0;
+		public static final double S_POS2_SWL_ROT2 = 0.0;
+		public static final double S_POS3_SWL_ROT1 = 0.0;
+		public static final double S_POS3_SWL_ROT2 = 0.0;
+		
+		public static final double S_POS1_SWR_ROT1 = 0.0;
+		public static final double S_POS1_SWR_ROT2 = 0.0;
+		public static final double S_POS2_SWR_ROT1 = 0.0;
+		public static final double S_POS2_SWR_ROT2 = 0.0;
+		public static final double S_POS3_SWR_ROT1 = 0.0;
+		public static final double S_POS3_SWR_ROT2 = 0.0;
+		
+		/* Autonomous Times...S = switch routing, POS1 = position 1, SWL = switch left, T1 = time length 1*/
+		public static final double S_POS1_SWL_T1 = 0.0;
+		public static final double S_POS1_SWL_T2 = 0.0;
+		public static final double S_POS1_SWL_T3 = 0.0;
+		public static final double S_POS1_SWL_T4 = 0.0;
+		public static final double S_POS1_SWL_T5 = 0.0;
+		public static final double S_POS2_SWL_T1 = 0.0;
+		public static final double S_POS2_SWL_T2 = 0.0;
+		public static final double S_POS2_SWL_T3 = 0.0;
+		public static final double S_POS2_SWL_T4 = 0.0;
+		public static final double S_POS2_SWL_T5 = 0.0;
+		public static final double S_POS3_SWL_T1 = 0.0;
+		public static final double S_POS3_SWL_T2 = 0.0;
+		public static final double S_POS3_SWL_T3 = 0.0;
+		public static final double S_POS3_SWL_T4 = 0.0;
+		public static final double S_POS3_SWL_T5 = 0.0;
+		
+		public static final double S_POS1_SWR_T1 = 0.0;
+		public static final double S_POS1_SWR_T2 = 0.0;
+		public static final double S_POS1_SWR_T3 = 0.0;
+		public static final double S_POS1_SWR_T4 = 0.0;
+		public static final double S_POS1_SWR_T5 = 0.0;
+		public static final double S_POS2_SWR_T1 = 0.0;
+		public static final double S_POS2_SWR_T2 = 0.0;
+		public static final double S_POS2_SWR_T3 = 0.0;
+		public static final double S_POS2_SWR_T4 = 0.0;
+		public static final double S_POS2_SWR_T5 = 0.0;
+		public static final double S_POS3_SWR_T1 = 0.0;
+		public static final double S_POS3_SWR_T2 = 0.0;
+		public static final double S_POS3_SWR_T3 = 0.0;
+		public static final double S_POS3_SWR_T4 = 0.0;
+		public static final double S_POS3_SWR_T5 = 0.0;
+		
+		
+		
+	/*AutoCL Speeds and Rotations*/
+		/* Autonomous Speeds...C = cross line only routing, POS1 = position 1, SWL = switch left, SP1 = speed 1*/
+		public static final double C_POS1_SWL_SPD1 = 0.0;
+		public static final double C_POS1_SWL_SPD2 = 0.0;
+		public static final double C_POS1_SWL_SPD3 = 0.0;
+		public static final double C_POS2_SWL_SPD1 = 0.0;
+		public static final double C_POS2_SWL_SPD2 = 0.0;
+		public static final double C_POS2_SWL_SPD3 = 0.0;
+		public static final double C_POS3_SWL_SPD1 = 0.0;
+		public static final double C_POS3_SWL_SPD2 = 0.0;
+		public static final double C_POS3_SWL_SPD3 = 0.0;
 	
-	public static final double POS1_SWR_ROT1 = 0.0;
-	public static final double POS1_SWR_ROT2 = 0.0;
-	public static final double POS2_SWR_ROT1 = 0.0;
-	public static final double POS2_SWR_ROT2 = 0.0;
-	public static final double POS3_SWR_ROT1 = 0.0;
-	public static final double POS3_SWR_ROT2 = 0.0;
+		public static final double C_POS1_SWR_SPD1 = 0.0;
+		public static final double C_POS1_SWR_SPD2 = 0.0;
+		public static final double C_POS1_SWR_SPD3 = 0.0;
+		public static final double C_POS2_SWR_SPD1 = 0.0;
+		public static final double C_POS2_SWR_SPD2 = 0.0;
+		public static final double C_POS2_SWR_SPD3 = 0.0;
+		public static final double C_POS3_SWR_SPD1 = 0.0;
+		public static final double C_POS3_SWR_SPD2 = 0.0;
+		public static final double C_POS3_SWR_SPD3 = 0.0;
+		
+		/* Autonomous Rotations...C = cross line only routing, POS1 = position 1, SWL = switch left, SP1 = rotation 1*/
+		public static final double C_POS1_SWL_ROT1 = 0.0;
+		public static final double C_POS1_SWL_ROT2 = 0.0;
+		public static final double C_POS2_SWL_ROT1 = 0.0;
+		public static final double C_POS2_SWL_ROT2 = 0.0;
+		public static final double C_POS3_SWL_ROT1 = 0.0;
+		public static final double C_POS3_SWL_ROT2 = 0.0;
+		
+		public static final double C_POS1_SWR_ROT1 = 0.0;
+		public static final double C_POS1_SWR_ROT2 = 0.0;
+		public static final double C_POS2_SWR_ROT1 = 0.0;
+		public static final double C_POS2_SWR_ROT2 = 0.0;
+		public static final double C_POS3_SWR_ROT1 = 0.0;
+		public static final double C_POS3_SWR_ROT2 = 0.0;
 }

@@ -10,5 +10,7 @@
 	<classpathentry kind="lib" path="C:/Users/Robotics.CARMEL-UIRFG6MV/Desktop/CTRE_Phoenix.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Robotics.CARMEL-UIRFG6MV/Desktop/CTRE_Phoenix-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Robotics.CARMEL-UIRFG6MV/Desktop/CTRLib.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix-sources.jar"/>
+	<classpathentry kind="var" path="USERLIBS_DIR/CTRE_Phoenix.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

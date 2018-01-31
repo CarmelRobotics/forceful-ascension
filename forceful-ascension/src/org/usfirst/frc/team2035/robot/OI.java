@@ -9,7 +9,6 @@ package org.usfirst.frc.team2035.robot;
 
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.CubeOut;
-import org.usfirst.frc.team2035.robot.commands.EncoderTestOutput;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
@@ -28,7 +27,6 @@ public class OI {
 	public static JoystickButton cubeIn;
 	public static JoystickButton cubeOut;
 	public static JoystickButton wingsOut;
-	public static JoystickButton b1;
 	
 	public static void initialize() {
 		/**
@@ -39,14 +37,12 @@ public class OI {
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		wingsOut = RobotMap.WINGS_OUT;
-		b1 = RobotMap.ENC;
-		
+		System.out.print("")
 		wingsOut.whenPressed(new WingsOut());
 		
 		gearshiftHigh.whileHeld(new GearshiftHigh());
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());
-		b1.whileHeld(new EncoderTestOutput());
 	}
 }

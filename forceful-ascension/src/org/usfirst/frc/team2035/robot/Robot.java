@@ -14,14 +14,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2035.robot.commands.AutoSW;
+//import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team2035.robot.subsystems.EncoderTest;
 import org.usfirst.frc.team2035.robot.subsystems.PositionLSwitch;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 
@@ -39,7 +38,6 @@ public class Robot extends TimedRobot {
 	public static Drivetrain drt;
 	public static PositionLSwitch pls;
 	public static OI oi;
-	public static EncoderTest test;
 	Command wingSetup;
 	Command drive;
 
@@ -58,7 +56,6 @@ public class Robot extends TimedRobot {
 		drt = new Drivetrain();
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
-		test = new EncoderTest();
 		wingSetup.start();
 		OI.initialize();
 	}
@@ -102,7 +99,7 @@ public class Robot extends TimedRobot {
 		//else if(startPos == 0)
 		//while (true) {
 		//drt.testMotor(1.0); }
-		autonomousCommand = new AutoSW(swNear, startPos);
+		//autonomousCommand = new AutoSW(swNear, startPos);
 		/*
 		 * m_autonomousCommand = m_chooser.getSelected();
 		 * 
@@ -135,7 +132,8 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		drive = new TeleopDrive();
+		
+
 	}
 
 	/**
@@ -166,6 +164,4 @@ public class Robot extends TimedRobot {
 		return drt;
 	}
 	
-	public static EncoderTest getEncoder() { 
-		return test; }
 }
