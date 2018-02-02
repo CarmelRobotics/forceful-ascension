@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2035.robot.commands.AutoSW1;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
@@ -92,14 +93,15 @@ public class Robot extends TimedRobot {
 		char swNear;
 		int startPos;
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
-		swNear = swPos.charAt(0);
-		startPos = pls.getRobotStart();
+		swNear = 'L';//swPos.charAt(0);
+		startPos = 2;//pls.getRobotStart();
 		//if(startPos == 1)
 		//	drt.testMotor(0.0);
 		//else if(startPos == 0)
 		//while (true) {
 		//drt.testMotor(1.0); }
-		//autonomousCommand = new AutoSW(swNear, startPos);
+		System.out.println("testing");
+		autonomousCommand = new AutoSW1(swNear, startPos);
 		/*
 		 * m_autonomousCommand = m_chooser.getSelected();
 		 * 
@@ -120,6 +122,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		System.out.println("testing");
 		Scheduler.getInstance().run();
 	}
 

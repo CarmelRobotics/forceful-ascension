@@ -13,9 +13,9 @@ import org.usfirst.frc.team2035.robot.AutoValues;
 
 
 /**
- * Autonomous for placing cube on switch and crossing line - modified from branch "Tyer's_Branch"
+ * Autonomous for placing cube on switch and crossing line - modified from branch "Tyler's_Branch"
  */
-public class AutoSW extends Command {
+public class AutoSW1 extends Command {
 
 	public static OI oi;
 	public Timer sTimer;
@@ -35,12 +35,14 @@ public class AutoSW extends Command {
 	private double t5;
 	private double cubeReleaseTime;
 	Command releaseTheCube;
+	Command autoSwitch2;
 	
-    public AutoSW(char whichSwitch, int startS_POS) {
+    public AutoSW1(char whichSwitch, int startPos) {
         sw = whichSwitch;
-        start = startS_POS;
+        start = startPos;
         releaseTheCube = new CubeOut();
         cubeReleaseTime = 0.0;
+        autoSwitch2 = new AutoSW2(sw, start);
     }
 
     // Called just before this Command runs the first time
@@ -88,7 +90,7 @@ public class AutoSW extends Command {
     	while(sTimer.get() <= (cubeReleaseTime)) {
     		releaseTheCube.start();
     	}
-    	
+    	autoSwitch2.start();
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -167,11 +169,11 @@ public class AutoSW extends Command {
         		spd3 = AutoValues.S_POS2_SWR_SPD3;
         		rot1 = AutoValues.S_POS2_SWR_ROT1;
         		rot2 = AutoValues.S_POS2_SWR_ROT2;
-        		t1 = AutoValues.S_POS1_SWR_T1;
-        		t2 = AutoValues.S_POS1_SWR_T2;
-        		t3 = AutoValues.S_POS1_SWR_T3;
-        		t4 = AutoValues.S_POS1_SWR_T4;
-        		t5 = AutoValues.S_POS1_SWR_T5;
+        		t1 = AutoValues.S_POS2_SWR_T1;
+        		t2 = AutoValues.S_POS2_SWR_T2;
+        		t3 = AutoValues.S_POS2_SWR_T3;
+        		t4 = AutoValues.S_POS2_SWR_T4;
+        		t5 = AutoValues.S_POS2_SWR_T5;
         	}
         	if (start == 3) {
         		spd1 = AutoValues.S_POS3_SWR_SPD1;
@@ -179,11 +181,11 @@ public class AutoSW extends Command {
         		spd3 = AutoValues.S_POS3_SWR_SPD3;
         		rot1 = AutoValues.S_POS3_SWR_ROT1;
         		rot2 = AutoValues.S_POS3_SWR_ROT2;
-        		t1 = AutoValues.S_POS1_SWR_T1;
-        		t2 = AutoValues.S_POS1_SWR_T2;
-        		t3 = AutoValues.S_POS1_SWR_T3;
-        		t4 = AutoValues.S_POS1_SWR_T4;
-        		t5 = AutoValues.S_POS1_SWR_T5;
+        		t1 = AutoValues.S_POS3_SWR_T1;
+        		t2 = AutoValues.S_POS3_SWR_T2;
+        		t3 = AutoValues.S_POS3_SWR_T3;
+        		t4 = AutoValues.S_POS3_SWR_T4;
+        		t5 = AutoValues.S_POS3_SWR_T5;
         	}
         }
     } 
