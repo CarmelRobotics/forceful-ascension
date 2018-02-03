@@ -43,6 +43,21 @@ public class EncoderTest extends Subsystem {
 		System.out.println("New equation" + (angler.getSelectedSensorPosition(0)/(4096/360)));
 		
 	}
+	
+	public void backTest() {
+		//System.out.println("hi");
+		//if (angler.getSelectedSensorPosition(0) < 10000) {
+			angler.set(ControlMode.PercentOutput, -0.2);
+		//}
+		//else {
+		//	angler.set(ControlMode.PercentOutput, 0.0);
+		//}
+		
+		//angler.set(ControlMode.Position, 5000);
+		//System.out.println("Old equation" + angler.getSelectedSensorPosition(0)/4096);
+		System.out.println("New equation" + (angler.getSelectedSensorPosition(0)/(4096/360)));
+		
+	}
 	public void endTest() {
 		
 		angler.set(ControlMode.PercentOutput, 0.0);

@@ -8,6 +8,7 @@
 package org.usfirst.frc.team2035.robot;
 
 import org.usfirst.frc.team2035.robot.commands.EncoderTestOutput;
+import org.usfirst.frc.team2035.robot.commands.EncoderTestOutputForward;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
@@ -45,15 +46,18 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	 
 	public static Button b1;
+	public static Button b2;
 	
 	public static void initialize() {
 		
 		b1 = RobotMap.TEST_ENCODER;
+		b2 = RobotMap.TEST_ENCODER_2;
 		 
 		
 		
 		
 		b1.whileHeld(new EncoderTestOutput());
+		b2.whileHeld(new EncoderTestOutputForward());
 		
 	}
 	

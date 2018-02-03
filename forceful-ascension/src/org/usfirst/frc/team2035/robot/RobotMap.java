@@ -31,5 +31,6 @@ public class RobotMap {
     public static final Joystick DRIVER_JOYSTICK_A = new Joystick(JOYSTICK_A_USB_NUMBER);
     
     public static final JoystickButton TEST_ENCODER = new JoystickButton(DRIVER_JOYSTICK_A,3);
+    public static final JoystickButton TEST_ENCODER_2 = new JoystickButton(DRIVER_JOYSTICK_A,4);
     //change later
 }
