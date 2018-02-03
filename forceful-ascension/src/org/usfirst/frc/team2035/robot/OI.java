@@ -65,12 +65,12 @@ public class OI {
 	
 	
 	
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_0));
-	changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
-	changeArmAngleTo2.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_2));
-	changeArmAngleTo3.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_3));
-	changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
-	resetArmAngle.whenPressed(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
+	changeArmAngleTo0.whileHeld(new ArmChangePosition(RobotMap.ARM_POSITION_0));
+	changeArmAngleTo1.whileHeld(new ArmChangePosition(RobotMap.ARM_POSITION_1));
+	changeArmAngleTo2.whileHeld(new ArmChangePosition(RobotMap.ARM_POSITION_2));
+	changeArmAngleTo3.whileHeld(new ArmChangePosition(RobotMap.ARM_POSITION_3));
+	changeArmAngleTo4.whileHeld(new ArmChangePosition(RobotMap.ARM_POSITION_4));
+	resetArmAngle.whileHeld(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
 	
 	
 	

@@ -103,13 +103,13 @@ public class Arm extends Subsystem{
 	public void armRaiseAngle() {
 		//leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, 0.1);
+		angler.set(ControlMode.PercentOutput, 0.4);
 	}
 	
 	public void armLowerAngle() {
 		//leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, -0.1);
+		angler.set(ControlMode.PercentOutput, -0.4);
 	}
 	
 	public void armAnglerStop() {
