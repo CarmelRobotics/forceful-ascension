@@ -51,6 +51,10 @@ public class AutoSW1 extends Command {
     	oi = new OI();
     	sTimer = new Timer();
     	decideMovement();
+    	
+    	//This was originally in execute but I don't think it would work that way -----Theo 
+    	sTimer.start();
+    	
     }
     
     //Set speed and rotation variables based upon which position we are in.
@@ -60,7 +64,7 @@ public class AutoSW1 extends Command {
     protected void execute() {
     
     	// First Movement (Forward)
-    	sTimer.start();
+    
     	while(sTimer.get() <= (t1)) {
     		driver.drive(spd1, 0.0);
     	}
