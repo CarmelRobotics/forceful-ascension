@@ -63,7 +63,7 @@ public class AutoSW1 extends Command {
     @Override
     protected void execute() {
     
-    	// First Movement (Forward)
+    	// First Movement (Forsdward)
     
     	while(sTimer.get() <= (t1)) {
     		driver.drive(spd1, 0.0);
