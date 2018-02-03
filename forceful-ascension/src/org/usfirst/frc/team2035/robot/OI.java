@@ -53,7 +53,7 @@ public class OI {
 		
 		
 		
-		b1.whenPressed(new EncoderTestOutput());
+		b1.whileHeld(new EncoderTestOutput());
 		
 	}
 	

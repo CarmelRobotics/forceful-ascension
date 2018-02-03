@@ -17,6 +17,8 @@ import org.usfirst.frc.team2035.robot.subsystems.EncoderTest;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
 
 import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,10 +31,11 @@ public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static OI m_oi;
-
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	private static EncoderTest test;
+	private static WPI_TalonSRX angler;
 	
 
 	/**
@@ -47,6 +50,8 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		test = new EncoderTest();
+		angler = new WPI_TalonSRX(4); 
+		angler.setSelectedSensorPosition(0, 0, 0);
 		OI.initialize(); 
 	}
 
@@ -98,7 +103,11 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		
+		//angler.set(ControlMode.PercentOutput, .5);
+		
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -127,7 +136,13 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 	}
 	
-	public static EncoderTest getEncoder() {
+	public static WPI_TalonSRX getEncoder() {
+		
+		return angler;
+		
+	}
+	
+public static EncoderTest getEncoderTest() {
 		
 		return test;
 		
