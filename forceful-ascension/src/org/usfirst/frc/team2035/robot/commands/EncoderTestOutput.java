@@ -29,7 +29,7 @@ public class EncoderTestOutput extends Command {
 		System.out.println("hi from command");
 		test.test();
 		
-	}
+	} 
 
 	
 	// Make this return true when this Command no longer needs to run execute()

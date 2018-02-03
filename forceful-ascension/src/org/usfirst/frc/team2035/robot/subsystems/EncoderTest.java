@@ -23,7 +23,7 @@ public class EncoderTest extends Subsystem {
 		angler = new WPI_TalonSRX(4);
 		angler.setSelectedSensorPosition(0, 0, 0);
 		
-	}
+	} 
 	
 	
 	public void test() {
