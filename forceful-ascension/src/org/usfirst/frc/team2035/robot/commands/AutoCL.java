@@ -63,31 +63,31 @@ public class AutoCL extends Command {
     	}
     	
     	// Second Movement (Turn)
-    	while(sTimer.get() <= (t2)) {
-    		driver.drive(0.0, rot1);
-    	}
-    	
-    	// Third Movement (Forward)
-    	while(sTimer.get() <= (t3)) {
-    		driver.drive(spd2, 0.0);
-    	}
-    	
-    	// Fourth Movement (Turn)
-    	while(sTimer.get() <= (t4))
-    	{
-    		driver.drive(0.0, rot2);
-    	}
-    	
-    	// Fifth Movement (Forward)
-    	while(sTimer.get() <= (t5)) {
-    		driver.drive(spd3, 0.0);
-    	}
-    	
-    	//Cube Release
-    	while(sTimer.get() <= (cubeReleaseTime)) {
-    		releaseTheCube.start();
-    	}
-    	autoSwitch2.start();
+//    	while(sTimer.get() <= (t2)) {
+//    		driver.drive(0.0, rot1);
+ //   	}
+//    
+//    	// Third Movement (Forward)
+//    	while(sTimer.get() <= (t3)) {
+//    		driver.drive(spd2, 0.0);
+ //   	}
+ //   	
+ //   	// Fourth Movement (Turn)
+//    	while(sTimer.get() <= (t4))
+ //   	{
+//    		driver.drive(0.0, rot2);
+ //   	}
+  // 	
+ //   	// Fifth Movement (Forward)
+//    	while(sTimer.get() <= (t5)) {
+//    		driver.drive(spd3, 0.0);
+//    	}
+ //   	
+ //   	//Cube Release
+ //   	while(sTimer.get() <= (cubeReleaseTime)) {
+//    		releaseTheCube.start();
+ //   	}
+//    	autoSwitch2.start();
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

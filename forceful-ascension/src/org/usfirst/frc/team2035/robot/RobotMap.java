@@ -25,8 +25,8 @@ public class RobotMap {
 	public static final int RF_DRIVETRAIN_MOTOR_PWM = 3;
 	public static final int RM_DRIVETRAIN_MOTOR_PWM = 4;
 	public static final int RB_DRIVETRAIN_MOTOR_PWM = 5;
-	public static final int R_CUBEMECH_MOTOR_PWM = 2;
-	public static final int L_CUBEMECH_MOTOR_PWM = 1;
+	public static final int R_CUBEMECH_MOTOR_PWM = 6;
+	public static final int L_CUBEMECH_MOTOR_PWM = 7;
 	
 	/* DIO */
 	public static final int LIMITSWITCH_L = 0;
