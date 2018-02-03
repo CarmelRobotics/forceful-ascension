@@ -14,7 +14,7 @@ public class EncoderTestOutput extends Command {
 		// Use requires() here to declare subsystem dependencies
 		
 		test = Robot.getEncoderTest();
-		requires(test);
+		requires(test); 
 	}
 
 	// Called just before this Command runs the first time
