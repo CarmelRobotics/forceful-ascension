@@ -33,6 +33,7 @@ public class AutoSW1 extends Command {
 	private double t3;
 	private double t4;
 	private double t5;
+	private double tCurrent;
 	private double cubeReleaseTime;
 	Command releaseTheCube;
 	Command autoSwitch2;
@@ -40,6 +41,8 @@ public class AutoSW1 extends Command {
     public AutoSW1(char whichSwitch, int startPos) {
         sw = whichSwitch;
         start = startPos;
+        driver = Robot.getDrivetrain();
+        tCurrent = 0.0;
         releaseTheCube = new CubeOut();
         cubeReleaseTime = 0.0;
         autoSwitch2 = new AutoSW2(sw, start);
@@ -62,36 +65,41 @@ public class AutoSW1 extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    
     	// First Movement (Forsdward)
-    
+    	System.out.println(sTimer.get());
     	while(sTimer.get() <= (t1)) {
     		driver.drive(spd1, 0.0);
     	}
     	
+    	tCurrent = sTimer.get();
     	// Second Movement (Turn)
-    	while(sTimer.get() <= (t2)) {
+    	while(sTimer.get() <= (tCurrent + t2)) {
     		driver.drive(0.0, rot1);
     	}
-    	
+    	System.out.println(sTimer.get());
+    	tCurrent = sTimer.get();
     	// Third Movement (Forward)
-    	while(sTimer.get() <= (t3)) {
+    	while(sTimer.get() <= (tCurrent + t3)) {
     		driver.drive(spd2, 0.0);
     	}
-    	
+    	System.out.println(sTimer.get());
+    	tCurrent = sTimer.get();
     	// Fourth Movement (Turn)
-    	while(sTimer.get() <= (t4))
+    	while(sTimer.get() <= (tCurrent + t4))
     	{
     		driver.drive(0.0, rot2);
     	}
-    	
+    	System.out.println(sTimer.get());
+    	//System.out.println("todokete setsuna sa ni wa");
+    	tCurrent = sTimer.get();
     	// Fifth Movement (Forward)
-    	while(sTimer.get() <= (t5)) {
+    	while(sTimer.get() <= (tCurrent + t5)) {
     		driver.drive(spd3, 0.0);
     	}
     	
+    	tCurrent = sTimer.get();
     	//Cube Release
-    	while(sTimer.get() <= (cubeReleaseTime)) {
+    	while(sTimer.get() <= (tCurrent + cubeReleaseTime)) {
     		releaseTheCube.start();
     	}
     	autoSwitch2.start();
@@ -193,6 +201,7 @@ public class AutoSW1 extends Command {
         	}
         }
     } 
+    
    // private void ARMSOnTheNintendoSwitch() { //currently referencing code in branch "FangTaoTheRealOne"
     //	arm.armChangeAngle()
 //    }

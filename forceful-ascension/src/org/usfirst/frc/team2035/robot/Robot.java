@@ -59,6 +59,7 @@ public class Robot extends TimedRobot {
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
 		wingSetup.start();
+		System.out.println("ghostbusters");
 		OI.initialize();
 	}
 
@@ -138,7 +139,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
-		
+		drive = new TeleopDrive();
 
 	}
 
