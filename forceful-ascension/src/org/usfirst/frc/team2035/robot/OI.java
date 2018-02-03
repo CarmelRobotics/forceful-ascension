@@ -49,6 +49,7 @@ public class OI {
 	public static Button changeArmAngleTo2;
 	public static Button changeArmAngleTo3;
 	public static Button changeArmAngleTo4;
+	public static Button resetArmAngle;
 	
 	
 	
@@ -60,14 +61,16 @@ public class OI {
 	changeArmAngleTo2 = RobotMap.CHANGE_ARM_ANGLE_2;
 	changeArmAngleTo3 = RobotMap.CHANGE_ARM_ANGLE_3;
 	changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_4;
+	resetArmAngle = RobotMap.RESET_ARM_ANGLE;
 	
 	
 	
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(0));
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(1));
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(2));
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(3));
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(4));
+	changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_0));
+	changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
+	changeArmAngleTo2.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_2));
+	changeArmAngleTo3.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_3));
+	changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
+	resetArmAngle.whenPressed(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
 	
 	
 	

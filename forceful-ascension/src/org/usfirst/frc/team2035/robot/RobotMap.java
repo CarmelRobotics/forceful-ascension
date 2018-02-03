@@ -30,14 +30,14 @@ public class RobotMap {
 	//Arm
 	public static final int ARM_ANGLE_SPEED = 1;
 	public static final int ARM_EXTEND_SPEED = 1;
-	public static final double ARM_STARTING_POSITION = 2;
+	public static final double ARM_STARTING_POSITION = 30; //temp
 	
 		//switch to angle measurements later
 	public static final double ARM_POSITION_0 = 0; 
-	public static final double ARM_POSITION_1 = 1;
-	public static final double ARM_POSITION_2 = 2;
-	public static final double ARM_POSITION_3 = 3;
-	public static final double ARM_POSITION_4 = 4;
+	public static final double ARM_POSITION_1 = 15;
+	public static final double ARM_POSITION_2 = 30;
+	public static final double ARM_POSITION_3 = 60; //temp
+	public static final double ARM_POSITION_4 = 90;
 	
 	//PWMS
 	public static final int LEFT_ARM_ANGLE = 4;
@@ -51,7 +51,7 @@ public class RobotMap {
 	
 	//Encoder channel
 	
-	public static final int ANGLER_ID = 0;
+	public static final int ANGLER_ID = 4;
 	
 	
 	//Joysticks
@@ -64,6 +64,7 @@ public class RobotMap {
     public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(DRIVER_JOYSTICK_A,3);//change later
     public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(DRIVER_JOYSTICK_A,4);//change later
     public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(DRIVER_JOYSTICK_A,5);//change later
+    public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(DRIVER_JOYSTICK_A,6);//change later
 	
 	
 	

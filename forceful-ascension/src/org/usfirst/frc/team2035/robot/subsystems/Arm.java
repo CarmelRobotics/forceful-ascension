@@ -5,10 +5,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team2035.robot.RobotMap;
 import edu.wpi.first.wpilibj.Solenoid;
-//import edu.wpi.first.wpilibj.CANTalon;
-import com.ctre.CANTalon;
-import com.ctre.CANTalon.FeedbackDevice;
-import com.ctre.CANTalon.TalonControlMode;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
 public class Arm extends Subsystem{
@@ -18,8 +18,9 @@ public class Arm extends Subsystem{
 	private Victor armExtender2;
 	private Victor armExtender3;
 	private Solenoid armSolenoid;
-	private CANTalon angler;
+	private WPI_TalonSRX angler;
 	private double startingPos;
+	private double currentPos;
 	
 	
 	public Arm() {
@@ -31,13 +32,12 @@ public class Arm extends Subsystem{
 		armExtender2 = new Victor(RobotMap.ARM_EXTEND_2);
 		armExtender3 = new Victor(RobotMap.ARM_EXTEND_3);
 		armSolenoid = new Solenoid(RobotMap.ARM_SOLENOID);
-		angler = new CANTalon(RobotMap.ANGLER_ID);
+		angler = new WPI_TalonSRX(RobotMap.ANGLER_ID);
 		startingPos = RobotMap.ARM_STARTING_POSITION;
 		
 		
-	
-		
-		angler.setPosition(startingPos);
+		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		angler.setSelectedSensorPosition(0, 0, 0);
 		
 		
 		
@@ -61,7 +61,7 @@ public class Arm extends Subsystem{
 	
 	public void resetAngle() {
 		
-		double currentPos = (angler.getEncPosition()/4096);
+		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		if ((currentPos - startingPos) > 0) {
 			armLowerAngle();
 			
@@ -81,15 +81,16 @@ public class Arm extends Subsystem{
 	}
 	
 	public void armChangeAngle(double desiredPos) {
-		double currentPos = (angler.getEncPosition()/4096);
+		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		if ((currentPos - desiredPos) > 0) {
 			armLowerAngle();
+			System.out.println(currentPos);
 			
 		}
 		
 		else if ((currentPos - desiredPos) < 0) {
 			armRaiseAngle();
-			
+			System.out.println(currentPos);
 		}
 		else {
 			armAnglerStop();
@@ -100,21 +101,21 @@ public class Arm extends Subsystem{
 	
 	
 	public void armRaiseAngle() {
-		leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		
+		//leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
+		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
+		angler.set(ControlMode.PercentOutput, 0.1);
 	}
 	
 	public void armLowerAngle() {
-		leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		
+		//leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
+		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
+		angler.set(ControlMode.PercentOutput, -0.1);
 	}
 	
 	public void armAnglerStop() {
-		leftArmAngler.set(0);
-		rightArmAngler.set(0);
-		
+		//leftArmAngler.set(0);
+		//rightArmAngler.set(0);
+		angler.set(ControlMode.PercentOutput, 0.0);
 	}
 	
 	
