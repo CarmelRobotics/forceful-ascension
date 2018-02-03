@@ -101,10 +101,12 @@ public class AutoSW2 extends Command {
     protected void interrupted() {
     }
     
+    
+    //added else ifs to insure that only 1 start would run. -Theo
     private void decideMovement() {
     	if (sw == 'L') // If switch is on the left
         {
-        	if (start == 1)
+    	 if (start == 1)
         	{
         		spd4 = AutoValues.S_POS1_SWL_SPD4;
         		spd5 = AutoValues.S_POS1_SWL_SPD5;
@@ -119,7 +121,7 @@ public class AutoSW2 extends Command {
         		t10 = AutoValues.S_POS1_SWL_T10;
         		t11 = AutoValues.S_POS1_SWL_T10;
         	}
-        	if (start == 2)
+    	 else if (start == 2)
         	{
         		spd4 = AutoValues.S_POS2_SWL_SPD4;
         		spd5 = AutoValues.S_POS2_SWL_SPD5;
@@ -134,7 +136,7 @@ public class AutoSW2 extends Command {
         		t10 = AutoValues.S_POS2_SWL_T10;
         		t11 = AutoValues.S_POS2_SWL_T11;
         	}
-        	if (start == 3) {
+    	 else if (start == 3) {
         		spd4 = AutoValues.S_POS3_SWL_SPD4;
         		spd5 = AutoValues.S_POS3_SWL_SPD5;
         		spd6 = AutoValues.S_POS3_SWL_SPD6;
@@ -166,7 +168,7 @@ public class AutoSW2 extends Command {
         		t10 = AutoValues.S_POS1_SWR_T10;
         		t11 = AutoValues.S_POS1_SWR_T11;
         	}
-        	if (start == 2)
+        	else if (start == 2)
         	{
         		spd4 = AutoValues.S_POS2_SWR_SPD4;
         		spd5 = AutoValues.S_POS2_SWR_SPD5;
@@ -181,7 +183,7 @@ public class AutoSW2 extends Command {
         		t10 = AutoValues.S_POS2_SWR_T10;
         		t11 = AutoValues.S_POS2_SWR_T11;
         	}
-        	if (start == 3) {
+        	else if (start == 3) {
         		spd4 = AutoValues.S_POS3_SWR_SPD4;
         		spd5 = AutoValues.S_POS3_SWR_SPD5;
         		spd6 = AutoValues.S_POS3_SWR_SPD6;

@@ -41,8 +41,9 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 	Command wingSetup;
 	Command drive;
-
-	Command autonomousCommand;
+	
+	 Command autonomousCommand;
+	
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
@@ -94,7 +95,7 @@ public class Robot extends TimedRobot {
 		int startPos;
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = 'L';//swPos.charAt(0);
-		startPos = 2;//pls.getRobotStart();
+		startPos = 1;//pls.getRobotStart();
 		//if(startPos == 1)
 		//	drt.testMotor(0.0);
 		//else if(startPos == 0)
@@ -102,6 +103,8 @@ public class Robot extends TimedRobot {
 		//drt.testMotor(1.0); }
 		System.out.println("testing");
 		autonomousCommand = new AutoSW1(swNear, startPos);
+		
+		
 		/*
 		 * m_autonomousCommand = m_chooser.getSelected();
 		 * 
