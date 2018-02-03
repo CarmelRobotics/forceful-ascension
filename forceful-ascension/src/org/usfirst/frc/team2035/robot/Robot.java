@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2035.robot.commands.AutoRAMP;
 import org.usfirst.frc.team2035.robot.commands.AutoSW1;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
@@ -103,7 +104,7 @@ public class Robot extends TimedRobot {
 		//while (true) {
 		//drt.testMotor(1.0); }
 		System.out.println("hitorigoto me too thanks");
-		autonomousCommand = new AutoSW1(swNear, startPos);
+		autonomousCommand = new AutoRAMP(swNear, startPos);
 		
 		
 		/*

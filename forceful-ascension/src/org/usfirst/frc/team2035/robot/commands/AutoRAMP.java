@@ -15,7 +15,7 @@ import org.usfirst.frc.team2035.robot.AutoValues;
 /**
  * Autonomous for placing cube on switch and crossing line - modified from branch "Tyler's_Branch"
  */
-public class AutoSW1 extends Command {
+public class AutoRAMP extends Command {
 
 	public static OI oi;
 	public Timer sTimer;
@@ -38,7 +38,7 @@ public class AutoSW1 extends Command {
 	Command releaseTheCube;
 	Command autoSwitch2;
 	
-    public AutoSW1(char whichSwitch, int startPos) {
+    public AutoRAMP(char whichSwitch, int startPos) {
         sw = whichSwitch;
         start = startPos;
         driver = Robot.getDrivetrain();
@@ -67,14 +67,14 @@ public class AutoSW1 extends Command {
     protected void execute() {
     	// First Movement (Forsdward)
 
-    	while(sTimer.get() <= (t1)) {
-    		driver.drive(-spd1, 0.0);
-    	}
+    	//while(sTimer.get() <= (t1)) {
+    		//driver.drive(-spd1, 0.0);
+    	//}
     	
     	tCurrent = sTimer.get();
-    	// Second Movement (Turn)
+    	//Second Movement (Turn)
     	while(sTimer.get() <= (tCurrent + t2)) {
-    		driver.drive(0.0, 0.5);//rot1);
+    		driver.drive(0.0, rot1);//rot1);
     	}
 
     	tCurrent = sTimer.get();

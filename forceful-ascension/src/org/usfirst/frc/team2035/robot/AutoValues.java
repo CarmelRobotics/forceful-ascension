@@ -20,9 +20,9 @@ public class AutoValues {
 	
 	/*AutoSW Speeds, Rotations, Times (Part One: Going to the Switch)*/
 		/* Autonomous Speeds...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = speed 1*/
-		public static final double S_POS1_SWL_SPD1 = 0.25;
-		public static final double S_POS1_SWL_SPD2 = 0.15;
-		public static final double S_POS1_SWL_SPD3 = 0.17;
+		public static final double S_POS1_SWL_SPD1 = 0.0;
+		public static final double S_POS1_SWL_SPD2 = 0.0;
+		public static final double S_POS1_SWL_SPD3 = 0.0;
 		public static final double S_POS2_SWL_SPD1 = 0.0;
 		public static final double S_POS2_SWL_SPD2 = 0.0;
 		public static final double S_POS2_SWL_SPD3 = 0.0;
@@ -41,8 +41,8 @@ public class AutoValues {
 		public static final double S_POS3_SWR_SPD3 = 0.0;
 		
 		/* Autonomous Rotations...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = rotation 1*/
-		public static final double S_POS1_SWL_ROT1 = 0.1;
-		public static final double S_POS1_SWL_ROT2 = 0.16;
+		public static final double S_POS1_SWL_ROT1 = 0.6;
+		public static final double S_POS1_SWL_ROT2 = 0.0;
 		public static final double S_POS2_SWL_ROT1 = 0.0;
 		public static final double S_POS2_SWL_ROT2 = 0.0;
 		public static final double S_POS3_SWL_ROT1 = 0.0;
@@ -56,11 +56,11 @@ public class AutoValues {
 		public static final double S_POS3_SWR_ROT2 = 0.0;
 		
 		/* Autonomous Times...S = switch routing, POS1 = position 1, SWL = switch left, T1 = time length 1*/
-		public static final double S_POS1_SWL_T1 = 5.0;
-		public static final double S_POS1_SWL_T2 = 3.0;
-		public static final double S_POS1_SWL_T3 = 6.0;
-		public static final double S_POS1_SWL_T4 = 3.0;
-		public static final double S_POS1_SWL_T5 = 2.0;
+		public static final double S_POS1_SWL_T1 = 0.0;
+		public static final double S_POS1_SWL_T2 = 0.9;
+		public static final double S_POS1_SWL_T3 = 0.0;
+		public static final double S_POS1_SWL_T4 = 0.0;
+		public static final double S_POS1_SWL_T5 = 0.0;
 		public static final double S_POS2_SWL_T1 = 0.0;
 		public static final double S_POS2_SWL_T2 = 0.0;
 		public static final double S_POS2_SWL_T3 = 0.0;
