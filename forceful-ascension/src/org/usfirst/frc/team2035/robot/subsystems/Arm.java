@@ -19,8 +19,9 @@ public class Arm extends Subsystem{
 	private Victor armExtender3;
 	private Solenoid armSolenoid;
 	private WPI_TalonSRX angler;
-	private double startingPos;
+	private int startingPos;
 	private double currentPos;
+
 	
 	
 	public Arm() {
@@ -35,10 +36,10 @@ public class Arm extends Subsystem{
 		angler = new WPI_TalonSRX(RobotMap.ANGLER_ID);
 		startingPos = RobotMap.ARM_STARTING_POSITION;
 		
-		
+		currentPos = startingPos;
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		angler.setSelectedSensorPosition(0, 0, 0);
-		
+		angler.setSelectedSensorPosition(startingPos, 0, 0);
+		System.out.println(angler.getSelectedSensorPosition(0)/(4096/360));
 		
 		
 	}
@@ -82,20 +83,29 @@ public class Arm extends Subsystem{
 	
 	public void armChangeAngle(double desiredPos) {
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
-		if ((currentPos - desiredPos) > 0) {
-			armLowerAngle();
+		
+		
+		if ((currentPos - desiredPos) < 0) {
+			armRaiseAngle();
 			System.out.println(currentPos);
 			
 		}
 		
+		
+		/*
 		else if ((currentPos - desiredPos) < 0) {
 			armRaiseAngle();
 			System.out.println(currentPos);
+			
 		}
+		
+		*/
+		
 		else {
 			armAnglerStop();
 			
 		}
+		
 		
 	}
 	
@@ -103,13 +113,13 @@ public class Arm extends Subsystem{
 	public void armRaiseAngle() {
 		//leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, 0.4);
+		angler.set(ControlMode.PercentOutput, 0.6);
 	}
 	
 	public void armLowerAngle() {
 		//leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, -0.4);
+		angler.set(ControlMode.PercentOutput, -0.6);
 	}
 	
 	public void armAnglerStop() {
