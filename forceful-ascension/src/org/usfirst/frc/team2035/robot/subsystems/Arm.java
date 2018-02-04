@@ -85,23 +85,24 @@ public class Arm extends Subsystem{
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
 		
-		if ((currentPos - desiredPos) < 0) {
-			armRaiseAngle();
+		if (currentPos < desiredPos) {
+			//armRaiseAngle();
 			System.out.println(currentPos);
 			
 		}
-		
 		
 		/*
-		else if ((currentPos - desiredPos) < 0) {
-			armRaiseAngle();
+		
+		else if ((currentPos > desiredPos)) {
+			armLowerAngle();
 			System.out.println(currentPos);
 			
 		}
-		
 		*/
 		
+		
 		else {
+			System.out.println(currentPos);
 			armAnglerStop();
 			
 		}
@@ -113,13 +114,13 @@ public class Arm extends Subsystem{
 	public void armRaiseAngle() {
 		//leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, 0.6);
+		angler.set(ControlMode.PercentOutput, 0.2);
 	}
 	
 	public void armLowerAngle() {
 		//leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, -0.6);
+		angler.set(ControlMode.PercentOutput, -0.2);
 	}
 	
 	public void armAnglerStop() {
