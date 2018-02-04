@@ -54,8 +54,6 @@ public class AutoSW1 extends Command {
     	oi = new OI();
     	sTimer = new Timer();
     	decideMovement();
-    	
-    	//This was originally in execute but I don't think it would work that way -----Theo 
     	sTimer.start();
     	
     }
@@ -65,8 +63,7 @@ public class AutoSW1 extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	// First Movement (Forsdward)
-
+    	// First Movement (Forward)
     	while(sTimer.get() <= (t1)) {
     		driver.drive(-spd1, 0.0);
     	}
@@ -121,82 +118,82 @@ public class AutoSW1 extends Command {
         {
         	if (start == 1)
         	{
-        		spd1 = AutoValues.S_POS1_SWL_SPD1;
-        		spd2 = AutoValues.S_POS1_SWL_SPD2;
-        		spd3 = AutoValues.S_POS1_SWL_SPD3;
-        		rot1 = AutoValues.S_POS1_SWL_ROT1;
-        		rot2 = AutoValues.S_POS1_SWL_ROT2;
-        		t1 = AutoValues.S_POS1_SWL_T1;
-        		t2 = AutoValues.S_POS1_SWL_T2;
-        		t3 = AutoValues.S_POS1_SWL_T3;
-        		t4 = AutoValues.S_POS1_SWL_T4;
-        		t5 = AutoValues.S_POS1_SWL_T5;
+        		spd1 = AutoValues.S1_POS1_SWL_SPD1;
+        		spd2 = AutoValues.S1_POS1_SWL_SPD2;
+        		spd3 = AutoValues.S1_POS1_SWL_SPD3;
+        		rot1 = AutoValues.S1_POS1_SWL_ROT1;
+        		rot2 = AutoValues.S1_POS1_SWL_ROT2;
+        		t1 = AutoValues.S1_POS1_SWL_T1;
+        		t2 = AutoValues.S1_POS1_SWL_T2;
+        		t3 = AutoValues.S1_POS1_SWL_T3;
+        		t4 = AutoValues.S1_POS1_SWL_T4;
+        		t5 = AutoValues.S1_POS1_SWL_T5;
         	}
-        	if (start == 2)
+        	else if (start == 2)
         	{
-        		spd1 = AutoValues.S_POS2_SWL_SPD1;
-        		spd2 = AutoValues.S_POS2_SWL_SPD2;
-        		spd3 = AutoValues.S_POS2_SWL_SPD3;
-        		rot1 = AutoValues.S_POS2_SWL_ROT1;
-        		rot2 = AutoValues.S_POS2_SWL_ROT2;
-        		t1 = AutoValues.S_POS2_SWL_T1;
-        		t2 = AutoValues.S_POS2_SWL_T2;
-        		t3 = AutoValues.S_POS2_SWL_T3;
-        		t4 = AutoValues.S_POS2_SWL_T4;
-        		t5 = AutoValues.S_POS2_SWL_T5;
+        		spd1 = AutoValues.S1_POS2_SWL_SPD1;
+        		spd2 = AutoValues.S1_POS2_SWL_SPD2;
+        		spd3 = AutoValues.S1_POS2_SWL_SPD3;
+        		rot1 = AutoValues.S1_POS2_SWL_ROT1;
+        		rot2 = AutoValues.S1_POS2_SWL_ROT2;
+        		t1 = AutoValues.S1_POS2_SWL_T1;
+        		t2 = AutoValues.S1_POS2_SWL_T2;
+        		t3 = AutoValues.S1_POS2_SWL_T3;
+        		t4 = AutoValues.S1_POS2_SWL_T4;
+        		t5 = AutoValues.S1_POS2_SWL_T5;
         	}
-        	if (start == 3) {
-        		spd1 = AutoValues.S_POS3_SWL_SPD1;
-        		spd2 = AutoValues.S_POS3_SWL_SPD2;
-        		spd3 = AutoValues.S_POS3_SWL_SPD3;
-        		rot1 = AutoValues.S_POS3_SWL_ROT1;
-        		rot2 = AutoValues.S_POS3_SWL_ROT2;
-        		t1 = AutoValues.S_POS3_SWL_T1;
-        		t2 = AutoValues.S_POS3_SWL_T2;
-        		t3 = AutoValues.S_POS3_SWL_T3;
-        		t4 = AutoValues.S_POS3_SWL_T4;
-        		t5 = AutoValues.S_POS3_SWL_T5;
+        	else if (start == 3) {
+        		spd1 = AutoValues.S1_POS3_SWL_SPD1;
+        		spd2 = AutoValues.S1_POS3_SWL_SPD2;
+        		spd3 = AutoValues.S1_POS3_SWL_SPD3;
+        		rot1 = AutoValues.S1_POS3_SWL_ROT1;
+        		rot2 = AutoValues.S1_POS3_SWL_ROT2;
+        		t1 = AutoValues.S1_POS3_SWL_T1;
+        		t2 = AutoValues.S1_POS3_SWL_T2;
+        		t3 = AutoValues.S1_POS3_SWL_T3;
+        		t4 = AutoValues.S1_POS3_SWL_T4;
+        		t5 = AutoValues.S1_POS3_SWL_T5;
         	}
         }
         else if (sw == 'R') // If Switch is on the right
         {
         	if (start == 1)
         	{
-        		spd1 = AutoValues.S_POS1_SWR_SPD1;
-        		spd2 = AutoValues.S_POS1_SWR_SPD2;
-        		spd3 = AutoValues.S_POS1_SWR_SPD3;
-        		rot1 = AutoValues.S_POS1_SWR_ROT1;
-        		rot2 = AutoValues.S_POS1_SWR_ROT2;
-        		t1 = AutoValues.S_POS1_SWR_T1;
-        		t2 = AutoValues.S_POS1_SWR_T2;
-        		t3 = AutoValues.S_POS1_SWR_T3;
-        		t4 = AutoValues.S_POS1_SWR_T4;
-        		t5 = AutoValues.S_POS1_SWR_T5;
+        		spd1 = AutoValues.S1_POS1_SWR_SPD1;
+        		spd2 = AutoValues.S1_POS1_SWR_SPD2;
+        		spd3 = AutoValues.S1_POS1_SWR_SPD3;
+        		rot1 = AutoValues.S1_POS1_SWR_ROT1;
+        		rot2 = AutoValues.S1_POS1_SWR_ROT2;
+        		t1 = AutoValues.S1_POS1_SWR_T1;
+        		t2 = AutoValues.S1_POS1_SWR_T2;
+        		t3 = AutoValues.S1_POS1_SWR_T3;
+        		t4 = AutoValues.S1_POS1_SWR_T4;
+        		t5 = AutoValues.S1_POS1_SWR_T5;
         	}
-        	if (start == 2)
+        	else if (start == 2)
         	{
-        		spd1 = AutoValues.S_POS2_SWR_SPD1;
-        		spd2 = AutoValues.S_POS2_SWR_SPD2;
-        		spd3 = AutoValues.S_POS2_SWR_SPD3;
-        		rot1 = AutoValues.S_POS2_SWR_ROT1;
-        		rot2 = AutoValues.S_POS2_SWR_ROT2;
-        		t1 = AutoValues.S_POS2_SWR_T1;
-        		t2 = AutoValues.S_POS2_SWR_T2;
-        		t3 = AutoValues.S_POS2_SWR_T3;
-        		t4 = AutoValues.S_POS2_SWR_T4;
-        		t5 = AutoValues.S_POS2_SWR_T5;
+        		spd1 = AutoValues.S1_POS2_SWR_SPD1;
+        		spd2 = AutoValues.S1_POS2_SWR_SPD2;
+        		spd3 = AutoValues.S1_POS2_SWR_SPD3;
+        		rot1 = AutoValues.S1_POS2_SWR_ROT1;
+        		rot2 = AutoValues.S1_POS2_SWR_ROT2;
+        		t1 = AutoValues.S1_POS2_SWR_T1;
+        		t2 = AutoValues.S1_POS2_SWR_T2;
+        		t3 = AutoValues.S1_POS2_SWR_T3;
+        		t4 = AutoValues.S1_POS2_SWR_T4;
+        		t5 = AutoValues.S1_POS2_SWR_T5;
         	}
-        	if (start == 3) {
-        		spd1 = AutoValues.S_POS3_SWR_SPD1;
-        		spd2 = AutoValues.S_POS3_SWR_SPD2;
-        		spd3 = AutoValues.S_POS3_SWR_SPD3;
-        		rot1 = AutoValues.S_POS3_SWR_ROT1;
-        		rot2 = AutoValues.S_POS3_SWR_ROT2;
-        		t1 = AutoValues.S_POS3_SWR_T1;
-        		t2 = AutoValues.S_POS3_SWR_T2;
-        		t3 = AutoValues.S_POS3_SWR_T3;
-        		t4 = AutoValues.S_POS3_SWR_T4;
-        		t5 = AutoValues.S_POS3_SWR_T5;
+        	else if (start == 3) {
+        		spd1 = AutoValues.S1_POS3_SWR_SPD1;
+        		spd2 = AutoValues.S1_POS3_SWR_SPD2;
+        		spd3 = AutoValues.S1_POS3_SWR_SPD3;
+        		rot1 = AutoValues.S1_POS3_SWR_ROT1;
+        		rot2 = AutoValues.S1_POS3_SWR_ROT2;
+        		t1 = AutoValues.S1_POS3_SWR_T1;
+        		t2 = AutoValues.S1_POS3_SWR_T2;
+        		t3 = AutoValues.S1_POS3_SWR_T3;
+        		t4 = AutoValues.S1_POS3_SWR_T4;
+        		t5 = AutoValues.S1_POS3_SWR_T5;
         	}
         }
     } 

@@ -13,7 +13,7 @@ import org.usfirst.frc.team2035.robot.AutoValues;
 
 
 /**
- * Autonomous for placing cube on switch and crossing line - modified from branch "Tyler's_Branch"
+ * to ramp and beyond - modified from branch "Tyler's_Branch"
  */
 public class AutoRAMP extends Command {
 
@@ -54,8 +54,6 @@ public class AutoRAMP extends Command {
     	oi = new OI();
     	sTimer = new Timer();
     	decideMovement();
-    	
-    	//This was originally in execute but I don't think it would work that way -----Theo 
     	sTimer.start();
     	
     }

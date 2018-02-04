@@ -21,23 +21,21 @@ public class AutoSW2 extends Command {
 	public Timer sTimer;
 	private Drivetrain driver;
 	private char sw;
-	private int start;
-	private double spd4;
-	private double spd5;
-	private double spd6;
-	private double rot3;
-	private double rot4;
-	private double rot5;
-	private double t6;
-	private double t7;
-	private double t8;
-	private double t9;
-	private double t10;
-	private double t11;
+	private char sd;
+	private double spd1;
+	private double spd2;
+	private double spd3;
+	private double rot1;
+	private double rot2;
+	private double t1;
+	private double t2;
+	private double t3;
+	private double t4;
+	private double t5;
 	
-    public AutoSW2(char whichSwitch, int startPos) {
+    public AutoSW2(char whichSwitch, char whichSide) {
         sw = whichSwitch;
-        start = startPos;
+        sd = whichSide;
     }
 
     // Called just before this Command runs the first time
@@ -46,6 +44,7 @@ public class AutoSW2 extends Command {
     	oi = new OI();
     	sTimer = new Timer();
     	decideMovement();
+    	sTimer.start();
     }
     
     //Set speed and rotation variables based upon which position we are in.
@@ -53,38 +52,31 @@ public class AutoSW2 extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-
-    	// Sixth Movement (Turn)
-    	while(sTimer.get() <= (t6))
+    	
+    	// Sixth Movement (Backward)
+    	while(sTimer.get() <= (t1)) {
+    		driver.drive(spd1, 0.0);
+    	}
+    	
+    	// Seventh Movement (Turn)
+    	while(sTimer.get() <= (t2)) {
+    		driver.drive(0.0, rot1);
+    	}
+    	
+    	// Eighth Movement (Forward)
+    	while(sTimer.get() <= (t3)) {
+    		driver.drive(spd2, 0.0);
+    	}
+    	
+    	// Ninth Movement (Turn)
+    	while(sTimer.get() <= (t4))
     	{
-    		driver.drive(0.0, rot3);
+    		driver.drive(0.0, rot2);
     	}
     	
-    	// Seventh Movement (Forward)
-    	sTimer.start();
-    	while(sTimer.get() <= (t7)) {
-    		driver.drive(spd4, 0.0);
-    	}
-    	
-    	// Eighth Movement (Turn)
-    	while(sTimer.get() <= (t8)) {
-    		driver.drive(0.0, rot4);
-    	}
-    	
-    	// Ninth Movement (Forward)
-    	while(sTimer.get() <= (t9)) {
-    		driver.drive(spd5, 0.0);
-    	}
-    	
-    	// Tenth Movement (Turn)
-    	while(sTimer.get() <= (t10))
-    	{
-    		driver.drive(0.0, rot5);
-    	}
-    	
-    	// Eleventh Movement (Forward)
-    	while(sTimer.get() <= (t11)) {
-    		driver.drive(spd6, 0.0);
+    	// Tenth Movement (Forward)
+    	while(sTimer.get() <= (t5)) {
+    		driver.drive(spd3, 0.0);
     	}
     	
     }
@@ -102,100 +94,63 @@ public class AutoSW2 extends Command {
     }
     
     
-    //added else ifs to insure that only 1 start would run. -Theo
     private void decideMovement() {
     	if (sw == 'L') // If switch is on the left
         {
-    	 if (start == 1)
+    	 if (sd == 'L')
         	{
-        		spd4 = AutoValues.S_POS1_SWL_SPD4;
-        		spd5 = AutoValues.S_POS1_SWL_SPD5;
-        		spd6 = AutoValues.S_POS1_SWL_SPD6;
-        		rot3 = AutoValues.S_POS1_SWL_ROT3;
-        		rot4 = AutoValues.S_POS1_SWL_ROT4;
-        		rot5 = AutoValues.S_POS1_SWL_ROT5;
-        		t6 = AutoValues.S_POS1_SWL_T6;
-        		t7 = AutoValues.S_POS1_SWL_T7;
-        		t8 = AutoValues.S_POS1_SWL_T8;
-        		t9 = AutoValues.S_POS1_SWL_T9;
-        		t10 = AutoValues.S_POS1_SWL_T10;
-        		t11 = AutoValues.S_POS1_SWL_T10;
+        		spd1 = AutoValues.S2_SWL_SDL_SPD1;
+        		spd2 = AutoValues.S2_SWL_SDL_SPD2;
+        		spd3 = AutoValues.S2_SWL_SDL_SPD3;
+        		rot1 = AutoValues.S2_SWL_SDL_ROT1;
+        		rot2 = AutoValues.S2_SWL_SDL_ROT2;
+        		t1 = AutoValues.S2_SWL_SDL_T1;
+        		t2 = AutoValues.S2_SWL_SDL_T2;
+        		t3 = AutoValues.S2_SWL_SDL_T3;
+        		t4 = AutoValues.S2_SWL_SDL_T4;
+        		t5 = AutoValues.S2_SWL_SDL_T5;
         	}
-    	 else if (start == 2)
+    	 else if (sd == 'R')
         	{
-        		spd4 = AutoValues.S_POS2_SWL_SPD4;
-        		spd5 = AutoValues.S_POS2_SWL_SPD5;
-        		spd6 = AutoValues.S_POS2_SWL_SPD6;
-        		rot3 = AutoValues.S_POS2_SWL_ROT3;
-        		rot4 = AutoValues.S_POS2_SWL_ROT4;
-        		rot5 = AutoValues.S_POS2_SWL_ROT5;
-        		t6 = AutoValues.S_POS2_SWL_T6;
-        		t7 = AutoValues.S_POS2_SWL_T7;
-        		t8 = AutoValues.S_POS2_SWL_T8;
-        		t9 = AutoValues.S_POS2_SWL_T9;
-        		t10 = AutoValues.S_POS2_SWL_T10;
-        		t11 = AutoValues.S_POS2_SWL_T11;
-        	}
-    	 else if (start == 3) {
-        		spd4 = AutoValues.S_POS3_SWL_SPD4;
-        		spd5 = AutoValues.S_POS3_SWL_SPD5;
-        		spd6 = AutoValues.S_POS3_SWL_SPD6;
-        		rot3 = AutoValues.S_POS3_SWL_ROT3;
-        		rot4 = AutoValues.S_POS3_SWL_ROT4;
-        		rot5 = AutoValues.S_POS3_SWL_ROT5;
-        		t6 = AutoValues.S_POS3_SWL_T6;
-        		t7 = AutoValues.S_POS3_SWL_T7;
-        		t8 = AutoValues.S_POS3_SWL_T8;
-        		t9 = AutoValues.S_POS3_SWL_T9;
-        		t10 = AutoValues.S_POS3_SWL_T10;
-        		t11 = AutoValues.S_POS3_SWL_T11;
+        		spd1 = AutoValues.S2_SWL_SDR_SPD1;
+        		spd2 = AutoValues.S2_SWL_SDR_SPD2;
+        		spd3 = AutoValues.S2_SWL_SDR_SPD3;
+        		rot1 = AutoValues.S2_SWL_SDR_ROT1;
+        		rot2 = AutoValues.S2_SWL_SDR_ROT2;
+        		t1 = AutoValues.S2_SWL_SDR_T1;
+        		t2 = AutoValues.S2_SWL_SDR_T2;
+        		t3 = AutoValues.S2_SWL_SDR_T3;
+        		t4 = AutoValues.S2_SWL_SDR_T4;
+        		t5 = AutoValues.S2_SWL_SDR_T5;
         	}
         }
         else if (sw == 'R') // If Switch is on the right
         {
-        	if (start == 1)
+        	if (sd == 'L')
         	{
-        		spd4 = AutoValues.S_POS1_SWR_SPD4;
-        		spd5 = AutoValues.S_POS1_SWR_SPD5;
-        		spd6 = AutoValues.S_POS1_SWR_SPD6;
-        		rot3 = AutoValues.S_POS1_SWR_ROT4;
-        		rot4 = AutoValues.S_POS1_SWR_ROT4;
-        		rot5 = AutoValues.S_POS1_SWR_ROT5;
-        		t6 = AutoValues.S_POS1_SWR_T6;
-        		t7 = AutoValues.S_POS1_SWR_T7;
-        		t8 = AutoValues.S_POS1_SWR_T8;
-        		t9 = AutoValues.S_POS1_SWR_T9;
-        		t10 = AutoValues.S_POS1_SWR_T10;
-        		t11 = AutoValues.S_POS1_SWR_T11;
+        		spd1 = AutoValues.S2_SWR_SDL_SPD1;
+        		spd2 = AutoValues.S2_SWR_SDL_SPD2;
+        		spd3 = AutoValues.S2_SWR_SDL_SPD3;
+        		rot1 = AutoValues.S2_SWR_SDL_ROT1;
+        		rot2 = AutoValues.S2_SWR_SDL_ROT2;
+        		t1 = AutoValues.S2_SWR_SDL_T1;
+        		t2 = AutoValues.S2_SWR_SDL_T2;
+        		t3 = AutoValues.S2_SWR_SDL_T3;
+        		t4 = AutoValues.S2_SWR_SDL_T4;
+        		t5 = AutoValues.S2_SWR_SDL_T5;
         	}
-        	else if (start == 2)
+        	else if (sd == 'R')
         	{
-        		spd4 = AutoValues.S_POS2_SWR_SPD4;
-        		spd5 = AutoValues.S_POS2_SWR_SPD5;
-        		spd6 = AutoValues.S_POS2_SWR_SPD6;
-        		rot3 = AutoValues.S_POS2_SWR_ROT3;
-        		rot4 = AutoValues.S_POS2_SWR_ROT4;
-        		rot5 = AutoValues.S_POS2_SWR_ROT5;
-        		t6 = AutoValues.S_POS2_SWR_T6;
-        		t7 = AutoValues.S_POS2_SWR_T7;
-        		t8 = AutoValues.S_POS2_SWR_T8;
-        		t9 = AutoValues.S_POS2_SWR_T9;
-        		t10 = AutoValues.S_POS2_SWR_T10;
-        		t11 = AutoValues.S_POS2_SWR_T11;
-        	}
-        	else if (start == 3) {
-        		spd4 = AutoValues.S_POS3_SWR_SPD4;
-        		spd5 = AutoValues.S_POS3_SWR_SPD5;
-        		spd6 = AutoValues.S_POS3_SWR_SPD6;
-        		rot3 = AutoValues.S_POS3_SWR_ROT3;
-        		rot4 = AutoValues.S_POS3_SWR_ROT4;
-        		rot5 = AutoValues.S_POS3_SWR_ROT5;
-        		t6 = AutoValues.S_POS3_SWR_T6;
-        		t7 = AutoValues.S_POS3_SWR_T7;
-        		t8 = AutoValues.S_POS3_SWR_T8;
-        		t9 = AutoValues.S_POS3_SWR_T9;
-        		t10 = AutoValues.S_POS3_SWR_T10;
-        		t11 = AutoValues.S_POS3_SWR_T11;
+        		spd1 = AutoValues.S2_SWR_SDR_SPD1;
+        		spd2 = AutoValues.S2_SWR_SDR_SPD2;
+        		spd3 = AutoValues.S2_SWR_SDR_SPD3;
+        		rot1 = AutoValues.S2_SWR_SDR_ROT1;
+        		rot2 = AutoValues.S2_SWR_SDR_ROT2;
+        		t1 = AutoValues.S2_SWR_SDR_T1;
+        		t2 = AutoValues.S2_SWR_SDR_T2;
+        		t3 = AutoValues.S2_SWR_SDR_T3;
+        		t4 = AutoValues.S2_SWR_SDR_T4;
+        		t5 = AutoValues.S2_SWR_SDR_T5;
         	}
         }
     } 
