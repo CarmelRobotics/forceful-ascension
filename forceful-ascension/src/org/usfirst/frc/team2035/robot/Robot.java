@@ -96,38 +96,36 @@ public class Robot extends TimedRobot {
 		char swNear;
 		int startPos;
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
-		swNear = 'L';//swPos.charAt(0);
-		startPos = 1;//pls.getRobotStart();
-		//if(startPos == 1)
-		//	drt.testMotor(0.0);
-		//else if(startPos == 0)
-		//while (true) {
-		//drt.testMotor(1.0); }
-		System.out.println("hitorigoto me too thanks");
+		swNear = swPos.charAt(0);
+		startPos = pls.getRobotStart();
+		System.out.println("bad reference, abhorrent show");
 		autonomousCommand = new AutoRAMP(swNear, startPos);
-		
-		
-		/*
-		 * m_autonomousCommand = m_chooser.getSelected();
-		 * 
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
 		if (autonomousCommand != null) {
 			autonomousCommand.start(); }
-		//}
 	}
-
+	
+	//Limit Switch Tester:
+	//if(startPos == 1)
+			//	drt.testMotor(0.0);
+			//else if(startPos == 0)
+			//while (true) {
+			//drt.testMotor(1.0); }
+	
+	/*
+	 * m_autonomousCommand = m_chooser.getSelected();
+	 * 
+	 * String autoSelected = SmartDashboard.getString("Auto Selector",
+	 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+	 * = new MyAutoCommand(); break; case "Default Auto": default:
+	 * autonomousCommand = new ExampleCommand(); break; }
+	 */
+	
 	/**
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		System.out.println("hitorigoto me too thanks");
+		System.out.println("bad reference, abhorrent show");
 		Scheduler.getInstance().run();
 	}
 

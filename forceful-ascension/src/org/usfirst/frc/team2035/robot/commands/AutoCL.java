@@ -48,6 +48,7 @@ public class AutoCL extends Command {
     	oi = new OI();
     	sTimer = new Timer();
     	decideMovement();
+    	sTimer.start();
     }
     
     //Set speed and rotation variables based upon which position we are in.
@@ -57,7 +58,6 @@ public class AutoCL extends Command {
     protected void execute() {
     
     	// First Movement (Forward)
-    	sTimer.start();
     	while(sTimer.get() <= (t1)) {
     		driver.drive(spd1, 0.0);
     	}
