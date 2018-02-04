@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2035.robot.commands.AutoCL;
 import org.usfirst.frc.team2035.robot.commands.AutoRAMP;
 import org.usfirst.frc.team2035.robot.commands.AutoSW1;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
@@ -94,15 +95,25 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		String swPos;
 		char swNear;
+		char swMid;
 		int startPos;
+		char sidePass;
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
+		swMid = swPos.charAt(1);
 		startPos = pls.getRobotStart();
-		System.out.println("bad reference, abhorrent show");
-		autonomousCommand = new AutoRAMP(swNear, startPos);
-		if (autonomousCommand != null) {
-			autonomousCommand.start(); }
+		sidePass = RobotMap.SIDE;
+		if (RobotMap.ROUTING == 0) //
+			autonomousCommand = new AutoSW1(swNear, startPos, sidePass);
+		else if (RobotMap.ROUTING == 1)
+			autonomousCommand = new AutoCL(sidePass, sidePass, 'N');
+		else if (RobotMap.ROUTING == 2)
+			autonomousCommand = new AutoCL(sidePass, startPos, swMid);
+		
+		if (autonomousCommand != null)
+			autonomousCommand.start(); 
 	}
+
 	
 	//Limit Switch Tester:
 	//if(startPos == 1)
@@ -125,7 +136,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		System.out.println("bad reference, abhorrent show");
 		Scheduler.getInstance().run();
 	}
 

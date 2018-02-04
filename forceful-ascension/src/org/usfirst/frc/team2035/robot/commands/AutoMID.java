@@ -13,9 +13,9 @@ import org.usfirst.frc.team2035.robot.AutoValues;
 
 
 /**
- * Autonomous for placing cube on switch and crossing line - modified from branch "Tyler's_Branch"
+ * Autonomous for placing cube on middle switch after crossing line - modified from branch "Tyler's_Branch"
  */
-public class AutoSW2 extends Command {
+public class AutoMID extends Command {
 
 	public static OI oi;
 	public Timer sTimer;
@@ -34,8 +34,7 @@ public class AutoSW2 extends Command {
 	private double t5;
 	private double tCurrent;
 	
-    public AutoSW2(char whichSwitch, char whichSide) {
-        sw = whichSwitch;
+    public AutoMID(char whichSide) {
         sd = whichSide;
     }
 

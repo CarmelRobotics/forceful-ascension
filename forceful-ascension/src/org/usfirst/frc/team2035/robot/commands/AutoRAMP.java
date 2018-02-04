@@ -20,7 +20,6 @@ public class AutoRAMP extends Command {
 	public static OI oi;
 	public Timer sTimer;
 	private Drivetrain driver;
-	//private Arm arm;
 	private char sw;
 	private int start;
 	private double spd1;
@@ -34,18 +33,12 @@ public class AutoRAMP extends Command {
 	private double t4;
 	private double t5;
 	private double tCurrent;
-	private double cubeReleaseTime;
-	Command releaseTheCube;
-	Command autoSwitch2;
 	
     public AutoRAMP(char whichSwitch, int startPos) {
         sw = whichSwitch;
         start = startPos;
         driver = Robot.getDrivetrain();
         tCurrent = 0.0;
-        releaseTheCube = new CubeOut();
-        cubeReleaseTime = 0.0;
-        autoSwitch2 = new AutoSW2(sw, start);
     }
 
     // Called just before this Command runs the first time
@@ -63,7 +56,7 @@ public class AutoRAMP extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	// First Movement (Forsdward)
+    	// First Movement (Forward)
 
     	//while(sTimer.get() <= (t1)) {
     		//driver.drive(-spd1, 0.0);
