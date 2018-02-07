@@ -9,11 +9,20 @@ package org.usfirst.frc.team2035.robot;
 
 /**
  * AutoValues stores speeds, rotations, and time lengths used in the autonomous commands of the robot.
+ * 
+ * THE SYSTEM®:
+ * 
+ * Typically, the format of the variables in this class are as follows:
+ * 		"routingGroup_startPositionOfRoute_endPositionOfRoute_specificValueStored"
+ * For example, S1_POS1_SWL_SP1 stores a value for AutoSW1 for a routing that goes from starting position 1 to the left
+ * switch; the variable is the first speed value used in that routing. A glossary for this class is below:
+ * 
+ * AutoSW1 (represented by S1): first part of autonomous routing group that directs bot to place box on nearest switch; this part pilots bot from starting
+ * 		position to a switch and places a cube on one (6 TOTAL ROUTES)
+ * 
+ * 
  */
 public class AutoValues { 
-/* Autonomous Speeds...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = speed 1*/
-/* Autonomous Rotations...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = rotation 1*/
-/* Autonomous Times...S = switch routing, POS1 = position 1, SWL = switch left, T1 = time length 1*/
 	
 	/*AutoSW1 Speeds, Rotations, Times*/
 		/*Position 1 to Left Switch*/
@@ -91,10 +100,6 @@ public class AutoValues {
 			public static final double S1_POS3_SWR_T5 = 0.0;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-			
-/* Autonomous Speeds...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = speed 1*/
-/* Autonomous Rotations...S = switch routing, POS1 = position 1, SWL = switch left, SP1 = rotation 1*/
-/* Autonomous Times...S = switch routing, POS1 = position 1, SWL = switch left, T1 = time length 1*/		
 			
 	/*AutoSW2 Speeds, Rotations, Times*/
 		/*Left Switch to Left Side*/
