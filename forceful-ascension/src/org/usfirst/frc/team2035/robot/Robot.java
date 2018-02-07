@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team2035.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2035.robot.commands.AutoCL;
-import org.usfirst.frc.team2035.robot.commands.AutoRAMP;
 import org.usfirst.frc.team2035.robot.commands.AutoSW1;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
@@ -40,13 +40,14 @@ public class Robot extends TimedRobot {
 	public static Wings wing;
 	public static Drivetrain drt;
 	public static PositionLSwitch pls;
+	public static CameraServer cms;
 	public static OI oi;
 	Command wingSetup;
 	Command drive;
 	
 	 Command autonomousCommand;
 	
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -61,6 +62,10 @@ public class Robot extends TimedRobot {
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
 		wingSetup.start();
+		
+		cms = CameraServer.getInstance();
+		cms.startAutomaticCapture();
+		
 		System.out.println("ghostbusters");
 		OI.initialize();
 	}
@@ -91,6 +96,7 @@ public class Robot extends TimedRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
+	@SuppressWarnings("unused")
 	@Override
 	public void autonomousInit() {
 		String swPos;

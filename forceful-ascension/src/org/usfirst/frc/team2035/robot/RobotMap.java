@@ -50,6 +50,8 @@ public class RobotMap {
 	/* Joystick */
 	public static final int JOY_DRIVE_USB = 0;
 	public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
+	public static final int JOY_ARM_USB = 1;
+	public static final Joystick JOY_ARM = new Joystick(JOY_ARM_USB);
 	
 	/* Buttons */
 	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 6);
