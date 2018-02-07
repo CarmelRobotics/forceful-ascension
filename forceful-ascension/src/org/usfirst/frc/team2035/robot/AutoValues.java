@@ -225,20 +225,20 @@ public class AutoValues {
 			public static final double C_POS3_SDR_T5 = 0.0;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-	/*AutoSW2 Speeds, Rotations, Times*/
+	/*AutoMID Speeds, Rotations, Times*/
 		/*Left Middle Switch*/
-			public static final double M_MDL_SPD1 = 0.0;
-			public static final double M_MDL_SPD2 = 0.0;
-			public static final double M_MDL_ROT1 = 0.0;
-			public static final double M_MDL_T1 = 0.0;
-			public static final double M_MDL_T2 = 0.0;
-			public static final double M_MDL_T3 = 0.0;
+			public static final double M_SDL_SPD1 = 0.0;
+			public static final double M_SDL_SPD2 = 0.0;
+			public static final double M_SDL_ROT1 = 0.0;
+			public static final double M_SDL_T1 = 0.0;
+			public static final double M_SDL_T2 = 0.0;
+			public static final double M_SDL_T3 = 0.0;
 		
 			/*Right Middle Switch*/
-			public static final double M_MDR_SPD1 = 0.0;
-			public static final double M_MDR_SPD2 = 0.0;
-			public static final double M_MDR_ROT1 = 0.0;
-			public static final double M_MDR_T1 = 0.0;
-			public static final double M_MDR_T2 = 0.0;
-			public static final double M_MDR_T3 = 0.0;	
+			public static final double M_SDR_SPD1 = 0.0;
+			public static final double M_SDR_SPD2 = 0.0;
+			public static final double M_SDR_ROT1 = 0.0;
+			public static final double M_SDR_T1 = 0.0;
+			public static final double M_SDR_T2 = 0.0;
+			public static final double M_SDR_T3 = 0.0;	
 }

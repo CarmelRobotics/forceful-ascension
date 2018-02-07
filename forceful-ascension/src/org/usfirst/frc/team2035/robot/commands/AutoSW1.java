@@ -65,41 +65,36 @@ public class AutoSW1 extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	// First Movement (Forward)
-    	while(sTimer.get() <= (t1)) {
-    		driver.drive(-spd1, 0.0);
-    	}
     	
+    	// First Movement (Forward)
+    	while(sTimer.get() <= (t1))
+    		driver.drive(-spd1, 0.0);
     	tCurrent = sTimer.get();
+    	
     	// Second Movement (Turn)
-    	while(sTimer.get() <= (tCurrent + t2)) {
+    	while(sTimer.get() <= (tCurrent + t2))
     		driver.drive(0.0, rot1);
-    	}
-
     	tCurrent = sTimer.get();
+    	
     	// Third Movement (Forward)
     	while(sTimer.get() <= (tCurrent + t3)) {
     		driver.drive(-spd2, 0.0);
     	}
-
     	tCurrent = sTimer.get();
+    	
     	// Fourth Movement (Turn)
     	while(sTimer.get() <= (tCurrent + t4))
-    	{
     		driver.drive(0.0, rot2);
-    	}
-
     	tCurrent = sTimer.get();
+    	
     	// Fifth Movement (Forward)
-    	while(sTimer.get() <= (tCurrent + t5)) {
+    	while(sTimer.get() <= (tCurrent + t5))
     		driver.drive(-spd3, 0.0);
-    	}
-   
     	tCurrent = sTimer.get();
+    	
     	//Cube Release
-    	while(sTimer.get() <= (tCurrent + cubeReleaseTime)) {
+    	while(sTimer.get() <= (tCurrent + cubeReleaseTime))
     		releaseTheCube.start();
-    	}
     	autoSwitch2.start();
     }
     // Make this return true when this Command no longer needs to run execute()

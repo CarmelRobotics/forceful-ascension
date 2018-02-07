@@ -20,18 +20,13 @@ public class AutoMID extends Command {
 	public static OI oi;
 	public Timer sTimer;
 	private Drivetrain driver;
-	private char sw;
 	private char sd;
 	private double spd1;
 	private double spd2;
-	private double spd3;
 	private double rot1;
-	private double rot2;
 	private double t1;
 	private double t2;
 	private double t3;
-	private double t4;
-	private double t5;
 	private double tCurrent;
 	
     public AutoMID(char whichSide) {
@@ -54,36 +49,19 @@ public class AutoMID extends Command {
     @Override
     protected void execute() {
     	
-    	// First Movement (Backward)
-    	while(sTimer.get() <= (t1)) {
+    	// First Movement (Forward)
+    	while(sTimer.get() <= (t1))
     		driver.drive(-spd1, 0.0);
-    	}
-    	
     	tCurrent = sTimer.get();
+    	
     	// Second Movement (Turn)
-    	while(sTimer.get() <= (tCurrent + t2)) {
+    	while(sTimer.get() <= (tCurrent + t2))
     		driver.drive(0.0, rot1);
-    	}
-
     	tCurrent = sTimer.get();
-    	// Third Movement (Forward)
-    	while(sTimer.get() <= (tCurrent + t3)) {
-    		driver.drive(-spd2, 0.0);
-    	}
-
-    	tCurrent = sTimer.get();
-    	// Fourth Movement (Turn)
-    	while(sTimer.get() <= (tCurrent + t4))
-    	{
-    		driver.drive(0.0, rot2);
-    	}
-
-    	tCurrent = sTimer.get();
-    	// Fifth Movement (Forward)
-    	while(sTimer.get() <= (tCurrent + t5)) {
-    		driver.drive(-spd3, 0.0);
-    	}
     	
+    	// Third Movement (Forward)
+    	while(sTimer.get() <= (tCurrent + t3))
+    		driver.drive(-spd2, 0.0);
     	
     }
     // Make this return true when this Command no longer needs to run execute()
@@ -101,63 +79,22 @@ public class AutoMID extends Command {
     
     
     private void decideMovement() {
-    	if (sw == 'L') // If switch is on the left
-        {
-    	 if (sd == 'L')
-        	{
-        		spd1 = AutoValues.S2_SWL_SDL_SPD1;
-        		spd2 = AutoValues.S2_SWL_SDL_SPD2;
-        		spd3 = AutoValues.S2_SWL_SDL_SPD3;
-        		rot1 = AutoValues.S2_SWL_SDL_ROT1;
-        		rot2 = AutoValues.S2_SWL_SDL_ROT2;
-        		t1 = AutoValues.S2_SWL_SDL_T1;
-        		t2 = AutoValues.S2_SWL_SDL_T2;
-        		t3 = AutoValues.S2_SWL_SDL_T3;
-        		t4 = AutoValues.S2_SWL_SDL_T4;
-        		t5 = AutoValues.S2_SWL_SDL_T5;
+    	if (sd == 'L')
+    		{
+        		spd1 = AutoValues.M_SDL_SPD1;
+        		spd2 = AutoValues.M_SDL_SPD2;
+        		rot1 = AutoValues.M_SDL_ROT1;
+        		t1 = AutoValues.M_SDL_T1;
+        		t2 = AutoValues.M_SDL_T2;
+        		t3 = AutoValues.M_SDL_T3;
         	}
     	 else if (sd == 'R')
         	{
-        		spd1 = AutoValues.S2_SWL_SDR_SPD1;
-        		spd2 = AutoValues.S2_SWL_SDR_SPD2;
-        		spd3 = AutoValues.S2_SWL_SDR_SPD3;
-        		rot1 = AutoValues.S2_SWL_SDR_ROT1;
-        		rot2 = AutoValues.S2_SWL_SDR_ROT2;
-        		t1 = AutoValues.S2_SWL_SDR_T1;
-        		t2 = AutoValues.S2_SWL_SDR_T2;
-        		t3 = AutoValues.S2_SWL_SDR_T3;
-        		t4 = AutoValues.S2_SWL_SDR_T4;
-        		t5 = AutoValues.S2_SWL_SDR_T5;
+        		spd1 = AutoValues.M_SDR_SPD1;
+        		spd2 = AutoValues.M_SDR_SPD2;
+        		rot1 = AutoValues.M_SDR_ROT1;
+        		t2 = AutoValues.M_SDR_T2;
+        		t3 = AutoValues.M_SDR_T3;
         	}
-        }
-        else if (sw == 'R') // If Switch is on the right
-        {
-        	if (sd == 'L')
-        	{
-        		spd1 = AutoValues.S2_SWR_SDL_SPD1;
-        		spd2 = AutoValues.S2_SWR_SDL_SPD2;
-        		spd3 = AutoValues.S2_SWR_SDL_SPD3;
-        		rot1 = AutoValues.S2_SWR_SDL_ROT1;
-        		rot2 = AutoValues.S2_SWR_SDL_ROT2;
-        		t1 = AutoValues.S2_SWR_SDL_T1;
-        		t2 = AutoValues.S2_SWR_SDL_T2;
-        		t3 = AutoValues.S2_SWR_SDL_T3;
-        		t4 = AutoValues.S2_SWR_SDL_T4;
-        		t5 = AutoValues.S2_SWR_SDL_T5;
-        	}
-        	else if (sd == 'R')
-        	{
-        		spd1 = AutoValues.S2_SWR_SDR_SPD1;
-        		spd2 = AutoValues.S2_SWR_SDR_SPD2;
-        		spd3 = AutoValues.S2_SWR_SDR_SPD3;
-        		rot1 = AutoValues.S2_SWR_SDR_ROT1;
-        		rot2 = AutoValues.S2_SWR_SDR_ROT2;
-        		t1 = AutoValues.S2_SWR_SDR_T1;
-        		t2 = AutoValues.S2_SWR_SDR_T2;
-        		t3 = AutoValues.S2_SWR_SDR_T3;
-        		t4 = AutoValues.S2_SWR_SDR_T4;
-        		t5 = AutoValues.S2_SWR_SDR_T5;
-        	}
-        }
     } 
 }
