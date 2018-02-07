@@ -27,7 +27,7 @@ public class ArmLower extends Command {
 	@Override
 	protected void execute() {
 		
-		arm.armRaiseAngle();
+		//arm.armRaiseAngle();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

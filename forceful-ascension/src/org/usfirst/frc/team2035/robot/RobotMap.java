@@ -33,11 +33,11 @@ public class RobotMap {
 	public static final int ARM_STARTING_POSITION = 30; //temp
 	
 		//switch to angle measurements later
-	public static final double ARM_POSITION_0 = 0; 
-	public static final double ARM_POSITION_1 = 15;
-	public static final double ARM_POSITION_2 = 30;
-	public static final double ARM_POSITION_3 = 60; //temp
-	public static final double ARM_POSITION_4 = 90;
+	public static final double ARM_POSITION_1 = 0; 
+	public static final double ARM_POSITION_2 = 15;
+	public static final double ARM_POSITION_3 = 30;
+	public static final double ARM_POSITION_4 = 60; //temp
+	public static final double ARM_POSITION_5 = 90;
 	
 	//PWMS
 	public static final int LEFT_ARM_ANGLE = 4;
@@ -59,11 +59,11 @@ public class RobotMap {
 	public static final int JOYSTICK_A_USB_NUMBER = 0;
     public static final Joystick DRIVER_JOYSTICK_A = new Joystick(JOYSTICK_A_USB_NUMBER);
     
-    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(DRIVER_JOYSTICK_A,1); //change later
-    public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(DRIVER_JOYSTICK_A,2);//change later
-    public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(DRIVER_JOYSTICK_A,3);//change later
-    public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(DRIVER_JOYSTICK_A,4);//change later
-    public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(DRIVER_JOYSTICK_A,5);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(DRIVER_JOYSTICK_A,1); //change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(DRIVER_JOYSTICK_A,2);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(DRIVER_JOYSTICK_A,3);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(DRIVER_JOYSTICK_A,4);//change later
+    public static final JoystickButton CHANGE_ARM_ANGLE_5 = new JoystickButton(DRIVER_JOYSTICK_A,5);//change later
     public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(DRIVER_JOYSTICK_A,6);//change later
 	
 	

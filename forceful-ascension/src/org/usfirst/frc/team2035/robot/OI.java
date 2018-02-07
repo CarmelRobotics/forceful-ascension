@@ -56,20 +56,20 @@ public class OI {
 	
 	public static void initialize() {
 	
-	changeArmAngleTo0 = RobotMap.CHANGE_ARM_ANGLE_0;
-	changeArmAngleTo1 = RobotMap.CHANGE_ARM_ANGLE_1;
-	changeArmAngleTo2 = RobotMap.CHANGE_ARM_ANGLE_2;
-	changeArmAngleTo3 = RobotMap.CHANGE_ARM_ANGLE_3;
-	changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_4;
+	changeArmAngleTo0 = RobotMap.CHANGE_ARM_ANGLE_1;
+	changeArmAngleTo1 = RobotMap.CHANGE_ARM_ANGLE_2;
+	changeArmAngleTo2 = RobotMap.CHANGE_ARM_ANGLE_3;
+	changeArmAngleTo3 = RobotMap.CHANGE_ARM_ANGLE_4;
+	changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_5;
 	resetArmAngle = RobotMap.RESET_ARM_ANGLE;
 	
 	
 	
-	changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_0));
-	changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
-	changeArmAngleTo2.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_2));
-	changeArmAngleTo3.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_3));
-	changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
+	changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
+	changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_2));
+	changeArmAngleTo2.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_3));
+	changeArmAngleTo3.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
+	changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_5));
 	resetArmAngle.whenPressed(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
 	
 	

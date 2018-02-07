@@ -9,6 +9,7 @@ public class ArmChangePosition extends Command {
 	
 	private Arm arm;
 	private double desiredPos;
+	private boolean adjustmentFinished;
 	
 	
 	public ArmChangePosition(double desiredPos) {
@@ -16,6 +17,8 @@ public class ArmChangePosition extends Command {
 		super("ArmChangePosition");
 		
 		arm = Robot.getArm();
+		adjustmentFinished = false;
+		
 		this.desiredPos = desiredPos;
 		requires(Robot.getArm());
 	}
@@ -28,8 +31,13 @@ public class ArmChangePosition extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		//System.out.println(arm.armChangeAngle(desiredPos));
+		if(adjustmentFinished || arm.armChangeAngle(desiredPos)) //if we have decided the adjustment is finished
+		{
+				System.out.println("Somehow, AF is about to become true");
+				adjustmentFinished = true;
+		}
 		
-		arm.armChangeAngle(desiredPos);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -42,6 +50,7 @@ public class ArmChangePosition extends Command {
 	@Override
 	protected void end() {
 		arm.armAnglerStop();
+		adjustmentFinished = false;
 	}
 
 	// Called when another command which requires one or more of the same
@@ -49,5 +58,7 @@ public class ArmChangePosition extends Command {
 	@Override
 	protected void interrupted() {
 		arm.armAnglerStop();
+		adjustmentFinished = false;
 	}
+
 }
