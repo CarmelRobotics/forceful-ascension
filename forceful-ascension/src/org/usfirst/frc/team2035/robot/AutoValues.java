@@ -152,6 +152,75 @@ public class AutoValues {
 			public static final double S2_SWR_SDR_T4 = 0.0;
 			public static final double S2_SWR_SDR_T5 = 0.0;	
 
+	/*--------------------------------------------------------------------------------------------------------------------*/
+			
+	/*AutoBOXSW Speeds, Rotations, Times*/
+		/*Left Switch to Left Side*/
+			public static final double BXS_SWL_SDL_SPD1 = 0.0;
+			public static final double BXS_SWL_SDL_SPD2 = 0.0;
+			public static final double BXS_SWL_SDL_SPD3 = 0.0;
+			public static final double BXS_SWL_SDL_SPD4 = 0.0;
+			public static final double BXS_SWL_SDL_ROT1 = 0.0;
+			public static final double BXS_SWL_SDL_ROT2 = 0.0;
+			public static final double BXS_SWL_SDL_ROT3 = 0.0;
+			public static final double BXS_SWL_SDL_T1 = 0.0;
+			public static final double BXS_SWL_SDL_T2 = 0.0;
+			public static final double BXS_SWL_SDL_T3 = 0.0;
+			public static final double BXS_SWL_SDL_T4 = 0.0;
+			public static final double BXS_SWL_SDL_T5 = 0.0;
+			public static final double BXS_SWL_SDL_T6 = 0.0;
+			public static final double BXS_SWL_SDL_T7 = 0.0;
+				
+	/*Left Switch to Right Side*/
+			public static final double BXS_SWL_SDR_SPD1 = 0.0;
+			public static final double BXS_SWL_SDR_SPD2 = 0.0;
+			public static final double BXS_SWL_SDR_SPD3 = 0.0;
+			public static final double BXS_SWL_SDR_SPD4 = 0.0;
+			public static final double BXS_SWL_SDR_ROT1 = 0.0;
+			public static final double BXS_SWL_SDR_ROT2 = 0.0;
+			public static final double BXS_SWL_SDR_ROT3 = 0.0;
+			public static final double BXS_SWL_SDR_T1 = 0.0;
+			public static final double BXS_SWL_SDR_T2 = 0.0;
+			public static final double BXS_SWL_SDR_T3 = 0.0;
+			public static final double BXS_SWL_SDR_T4 = 0.0;
+			public static final double BXS_SWL_SDR_T5 = 0.0;
+			public static final double BXS_SWL_SDR_T6 = 0.0;
+			public static final double BXS_SWL_SDR_T7 = 0.0;
+					
+					
+					
+		/*Right Switch to Left Side*/
+			public static final double BXS_SWR_SDL_SPD1 = 0.0;
+			public static final double BXS_SWR_SDL_SPD2 = 0.0;
+			public static final double BXS_SWR_SDL_SPD3 = 0.0;
+			public static final double BXS_SWR_SDL_SPD4 = 0.0;
+			public static final double BXS_SWR_SDL_ROT1 = 0.0;
+			public static final double BXS_SWR_SDL_ROT2 = 0.0;
+			public static final double BXS_SWR_SDL_ROT3 = 0.0;
+			public static final double BXS_SWR_SDL_T1 = 0.0;
+			public static final double BXS_SWR_SDL_T2 = 0.0;
+			public static final double BXS_SWR_SDL_T3 = 0.0;
+			public static final double BXS_SWR_SDL_T4 = 0.0;
+			public static final double BXS_SWR_SDL_T5 = 0.0;
+			public static final double BXS_SWR_SDL_T6 = 0.0;
+			public static final double BXS_SWR_SDL_T7 = 0.0;
+					
+		/*Right Switch to Right Side*/
+			public static final double BXS_SWR_SDR_SPD1 = 0.0;
+			public static final double BXS_SWR_SDR_SPD2 = 0.0;
+			public static final double BXS_SWR_SDR_SPD3 = 0.0;
+			public static final double BXS_SWR_SDR_SPD4 = 0.0;
+			public static final double BXS_SWR_SDR_ROT1 = 0.0;
+			public static final double BXS_SWR_SDR_ROT2 = 0.0;
+			public static final double BXS_SWR_SDR_ROT3 = 0.0;
+			public static final double BXS_SWR_SDR_T1 = 0.0;
+			public static final double BXS_SWR_SDR_T2 = 0.0;
+			public static final double BXS_SWR_SDR_T3 = 0.0;
+			public static final double BXS_SWR_SDR_T4 = 0.0;
+			public static final double BXS_SWR_SDR_T5 = 0.0;
+			public static final double BXS_SWR_SDR_T6 = 0.0;
+			public static final double BXS_SWR_SDR_T7 = 0.0;			
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 	
 	/*AutoCL Speeds and Rotations*/

@@ -31,6 +31,17 @@ public class UltrasonicSensor extends SensorBase {
     	return cm;
     	
     }
+    
+    public double getRangeIN() {
+    	double range;
+    	range = chl.getVoltage();
+    	if (range < 0.0)
+    		return -1.0;
+    	double mv = chl.getVoltage()*1000;
+    	double in = (5*mv)/(48.8*2.54);
+    	return in;
+    	
+    }
 
 	@Override
 	public void initSendable(SendableBuilder builder) {

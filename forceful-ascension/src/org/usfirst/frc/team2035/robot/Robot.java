@@ -104,17 +104,21 @@ public class Robot extends TimedRobot {
 		char swMid;
 		int startPos;
 		char sidePass;
+		boolean secondBox;
+		
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
 		swMid = swPos.charAt(1);
 		startPos = pls.getRobotStart();
 		sidePass = RobotMap.SIDE;
-		if (RobotMap.ROUTING == 0) //
-			autonomousCommand = new AutoSW1(swNear, startPos, sidePass);
-		else if (RobotMap.ROUTING == 1)
+		secondBox = RobotMap.SECOND_BOX;
+		
+		if (RobotMap.ROUTING == 0) //put box on team switch
+			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
+		else if (RobotMap.ROUTING == 1)  //only cross line
 			autonomousCommand = new AutoCL(sidePass, sidePass, 'N');
-		else if (RobotMap.ROUTING == 2)
-			autonomousCommand = new AutoCL(sidePass, startPos, swMid);
+		else if (RobotMap.ROUTING == 2) //put box on middle switch
+			autonomousCommand = new AutoCL(sidePass, startPos, swMid, secondBox);
 		
 		if (autonomousCommand != null)
 			autonomousCommand.start(); 

@@ -15,14 +15,14 @@ import org.usfirst.frc.team2035.robot.AutoValues;
 /**
  * Autonomous for placing cube on switch and crossing line - modified from branch "Tyler's_Branch"
  */
-public class AutoSW2 extends Command {
+public class AutoBOXMID extends Command {
 
 	public static OI oi;
 	public Timer sTimer;
 	private Drivetrain driver;
 	private char sw;
 	private char sd;
-	private boolean box;
+	private boolean box2;
 	private double spd1;
 	private double spd2;
 	private double spd3;
@@ -34,12 +34,11 @@ public class AutoSW2 extends Command {
 	private double t4;
 	private double t5;
 	private double tCurrent;
-	Command autoBoxSwitch;
 	
-    public AutoSW2(char whichSwitch, char whichSide, boolean secondBox) {
+    public AutoBOXMID(char whichSwitch, char whichSide, boolean secondBox) {
         sw = whichSwitch;
         sd = whichSide;
-        box = secondBox;
+        box2 = secondBox;
     }
 
     // Called just before this Command runs the first time
@@ -50,7 +49,6 @@ public class AutoSW2 extends Command {
     	decideMovement();
     	tCurrent = 0.0;
     	sTimer.start();
-    	autoBoxSwitch = new AutoBOXSW(sw, sd);
     }
     
     //Set speed and rotation variables based upon which position we are in.
@@ -64,19 +62,16 @@ public class AutoSW2 extends Command {
     		driver.drive(-spd1, 0.0);
     	tCurrent = sTimer.get();
     	
-    	if(box) {
-    		sTimer.stop();
-    		autoBoxSwitch.start();
-    		sTimer.start();
-    	}
+    	if(box2)
+    		
     	
     	// Second Movement (Turn)
-    	while(sTimer.get() <= (tCurrent + t2) && box == false)
+    	while(sTimer.get() <= (tCurrent + t2))
     		driver.drive(0.0, rot1);
     	tCurrent = sTimer.get();
     	
     	// Third Movement (Forward)
-    	while(sTimer.get() <= (tCurrent + t3) && box == false)
+    	while(sTimer.get() <= (tCurrent + t3))
     		driver.drive(-spd2, 0.0);
     	tCurrent = sTimer.get();
     	
