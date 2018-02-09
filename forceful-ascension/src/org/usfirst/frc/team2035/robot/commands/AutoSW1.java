@@ -24,6 +24,7 @@ public class AutoSW1 extends Command {
 	private char sw;
 	private int start;
 	private char sd;
+	private boolean box;
 	private double spd1;
 	private double spd2;
 	private double spd3;
@@ -39,15 +40,16 @@ public class AutoSW1 extends Command {
 	Command releaseTheCube;
 	Command autoSwitch2;
 	
-    public AutoSW1(char whichSwitch, int startPos, char sidePass) {
+    public AutoSW1(char whichSwitch, int startPos, char sidePass, boolean secondBox) {
         sw = whichSwitch;
         start = startPos;
         sd = sidePass;
+        box = secondBox;
         driver = Robot.getDrivetrain();
         tCurrent = 0.0;
         releaseTheCube = new CubeOut();
         cubeReleaseTime = 0.0;
-        autoSwitch2 = new AutoSW2(sw, sd);
+        autoSwitch2 = new AutoSW2(sw, sd, box);
     }
 
     // Called just before this Command runs the first time
@@ -77,9 +79,8 @@ public class AutoSW1 extends Command {
     	tCurrent = sTimer.get();
     	
     	// Third Movement (Forward)
-    	while(sTimer.get() <= (tCurrent + t3)) {
+    	while(sTimer.get() <= (tCurrent + t3))
     		driver.drive(-spd2, 0.0);
-    	}
     	tCurrent = sTimer.get();
     	
     	// Fourth Movement (Turn)
@@ -95,7 +96,8 @@ public class AutoSW1 extends Command {
     	//Cube Release
     	while(sTimer.get() <= (tCurrent + cubeReleaseTime))
     		releaseTheCube.start();
-    	autoSwitch2.start();
+    	
+    		autoSwitch2.start();
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

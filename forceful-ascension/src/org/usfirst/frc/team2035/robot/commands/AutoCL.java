@@ -23,6 +23,7 @@ public class AutoCL extends Command {
 	private char side;
 	private int start;
 	private char mid;
+	private boolean box;
 	private double spd1;
 	private double spd2;
 	private double spd3;
@@ -36,10 +37,11 @@ public class AutoCL extends Command {
 	private double tCurrent;
 	Command autoMid;
 	
-    public AutoCL(char whichSide, int startPos, char goMid) { //goMid: 'L' & 'R' causes AutoMID to be called after AutoCL is done, 'N' or any other letter prevents this, making robot stop after crossing line
+    public AutoCL(char whichSide, int startPos, char goMid, boolean secondBox) { //goMid: 'L' & 'R' causes AutoMID to be called after AutoCL is done, 'N' or any other letter prevents this, making robot stop after crossing line
         side = whichSide;
         start = startPos;
         mid = goMid;
+        box = secondBox;
     }
 
     // Called just before this Command runs the first time

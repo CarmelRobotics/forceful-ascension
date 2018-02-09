@@ -40,7 +40,7 @@ public class AutoMID extends Command {
     	sTimer = new Timer();
     	decideMovement();
     	tCurrent = 0.0;
-    	sTimer.start();
+    	sTimer.start();-----------
     }
     
     //Set speed and rotation variables based upon which position we are in.
