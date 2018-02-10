@@ -26,7 +26,7 @@ public class RobotMap {
 	//Arm (Tyler and Fang's Code)
 		public static final int ARM_ANGLE_SPEED = 1;
 		public static final int ARM_EXTEND_SPEED = 1;
-		public static final double ARM_STARTING_POSITION = 30; //temp
+		public static final int ARM_STARTING_POSITION = 30; //temp
 		
 	/* PWM (Ari's Code)*/
 	public static final int LF_DRIVETRAIN_MOTOR_PWM = 0;
@@ -81,20 +81,20 @@ public class RobotMap {
 	public static final int ANGLER_ID = 4;
 	
 	/* Buttons (Ari's)*/ 
-	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 6);
-	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 2);
-	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 3);
-	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 2);
-	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 5);
-	public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 2);
-	/* Buttons (Tyler's/Fang's) 
-    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(DRIVER_JOYSTICK_A,1); //change later
-	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(DRIVER_JOYSTICK_A,2);//change later
-	public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(DRIVER_JOYSTICK_A,3);//change later
-	public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(DRIVER_JOYSTICK_A,4);//change later
-	public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(DRIVER_JOYSTICK_A,5);//change later
-	public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(DRIVER_JOYSTICK_A,6);//change later 
-	*/    
+	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 12);
+	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 11);
+	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 10);
+	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 9);
+	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 8);
+	public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 7);
+	/* Buttons (Tyler's/Fang's) */
+    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(JOY_DRIVE,1); //change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(JOY_DRIVE,2);//change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(JOY_DRIVE,3);//change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(JOY_DRIVE,4);//change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(JOY_DRIVE,5);//change later
+	public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(JOY_DRIVE,6);//change later 
+	  
 	
 	//CAN (Tyler and Fang's Code
 		public static final int ARM_SOLENOID = 0;

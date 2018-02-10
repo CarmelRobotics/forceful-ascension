@@ -145,7 +145,7 @@ public class Arm extends Subsystem{
 			angler.set(ControlMode.PercentOutput, -0.1);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
-		.
+		
 		System.out.println("lowering, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos <= desiredPos) {
 			hasNotMoved = false;
