@@ -25,7 +25,7 @@ public class OI {
 	public static JoystickButton gearshiftHigh;
 	public static JoystickButton gearshiftLow;
 	public static JoystickButton cubeIn;
-	public static JoystickButton cubeOut;
+	public static JoystickButton cubeOut; 
 	public static JoystickButton wingsOut;
 	
 	public static void initialize() {

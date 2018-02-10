@@ -67,7 +67,7 @@ public class AutoSW1 extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	
+
     	// First Movement (Forward)
     	while(sTimer.get() <= (t1))
     		driver.drive(-spd1, 0.0);
@@ -94,10 +94,10 @@ public class AutoSW1 extends Command {
     	tCurrent = sTimer.get();
     	
     	//Cube Release
-    	while(sTimer.get() <= (tCurrent + cubeReleaseTime))
-    		releaseTheCube.start();
+    	//while(sTimer.get() <= (tCurrent + cubeReleaseTime))
+    		//releaseTheCube.start();
     	
-    		autoSwitch2.start();
+    		//autoSwitch2.start();
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -115,7 +115,7 @@ public class AutoSW1 extends Command {
     private void decideMovement() {
     	if (sw == 'L') // If switch is on the left
         {
-        	if (start == 1)
+        	if (start == 0)
         	{
         		spd1 = AutoValues.S1_POS1_SWL_SPD1;
         		spd2 = AutoValues.S1_POS1_SWL_SPD2;
@@ -127,8 +127,9 @@ public class AutoSW1 extends Command {
         		t3 = AutoValues.S1_POS1_SWL_T3;
         		t4 = AutoValues.S1_POS1_SWL_T4;
         		t5 = AutoValues.S1_POS1_SWL_T5;
+        		System.out.println("POSITION A");
         	}
-        	else if (start == 2)
+        	else if (start == 1)
         	{
         		spd1 = AutoValues.S1_POS2_SWL_SPD1;
         		spd2 = AutoValues.S1_POS2_SWL_SPD2;
@@ -140,8 +141,9 @@ public class AutoSW1 extends Command {
         		t3 = AutoValues.S1_POS2_SWL_T3;
         		t4 = AutoValues.S1_POS2_SWL_T4;
         		t5 = AutoValues.S1_POS2_SWL_T5;
+        		System.out.println("POSITION B");
         	}
-        	else if (start == 3) {
+        	else if (start == 2) {
         		spd1 = AutoValues.S1_POS3_SWL_SPD1;
         		spd2 = AutoValues.S1_POS3_SWL_SPD2;
         		spd3 = AutoValues.S1_POS3_SWL_SPD3;
@@ -152,11 +154,12 @@ public class AutoSW1 extends Command {
         		t3 = AutoValues.S1_POS3_SWL_T3;
         		t4 = AutoValues.S1_POS3_SWL_T4;
         		t5 = AutoValues.S1_POS3_SWL_T5;
+        		System.out.println("POSITION C");
         	}
         }
         else if (sw == 'R') // If Switch is on the right
         {
-        	if (start == 1)
+        	if (start == 0)
         	{
         		spd1 = AutoValues.S1_POS1_SWR_SPD1;
         		spd2 = AutoValues.S1_POS1_SWR_SPD2;
@@ -169,7 +172,7 @@ public class AutoSW1 extends Command {
         		t4 = AutoValues.S1_POS1_SWR_T4;
         		t5 = AutoValues.S1_POS1_SWR_T5;
         	}
-        	else if (start == 2)
+        	else if (start == 1)
         	{
         		spd1 = AutoValues.S1_POS2_SWR_SPD1;
         		spd2 = AutoValues.S1_POS2_SWR_SPD2;
@@ -182,7 +185,7 @@ public class AutoSW1 extends Command {
         		t4 = AutoValues.S1_POS2_SWR_T4;
         		t5 = AutoValues.S1_POS2_SWR_T5;
         	}
-        	else if (start == 3) {
+        	else if (start == 2) {
         		spd1 = AutoValues.S1_POS3_SWR_SPD1;
         		spd2 = AutoValues.S1_POS3_SWR_SPD2;
         		spd3 = AutoValues.S1_POS3_SWR_SPD3;

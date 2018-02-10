@@ -10,6 +10,7 @@ package org.usfirst.frc.team2035.robot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -116,21 +117,24 @@ public class Robot extends TimedRobot {
 		if (RobotMap.ROUTING == 0) //put box on team switch
 			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
 		else if (RobotMap.ROUTING == 1)  //only cross line
-			autonomousCommand = new AutoCL(sidePass, sidePass, 'N');
+			autonomousCommand = new AutoCL(sidePass, sidePass, 'N', secondBox);
 		else if (RobotMap.ROUTING == 2) //put box on middle switch
 			autonomousCommand = new AutoCL(sidePass, startPos, swMid, secondBox);
 		
 		if (autonomousCommand != null)
 			autonomousCommand.start(); 
 	}
-
 	
-	//Limit Switch Tester:
-	//if(startPos == 1)
-			//	drt.testMotor(0.0);
-			//else if(startPos == 0)
-			//while (true) {
-			//drt.testMotor(1.0); }
+	/*
+	 * Limit Switch Tester
+	 * 	int startPos = pls.getRobotStart();
+		if(startPos == 1) 
+			System.out.println("Position B");
+		else if(startPos == 0)
+			System.out.println("Position A");
+		else if(startPos == 2) 
+			System.out.println("Position C");
+	 */
 	
 	/*
 	 * m_autonomousCommand = m_chooser.getSelected();
