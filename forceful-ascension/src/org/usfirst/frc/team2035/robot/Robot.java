@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team2035.robot;
-
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -27,6 +26,7 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2035.robot.subsystems.PositionLSwitch;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
+import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,6 +37,8 @@ import org.usfirst.frc.team2035.robot.subsystems.Wings;
  */
 public class Robot extends TimedRobot {
 	
+	private static Arm arm;
+	private String gameData;
 	public static CubeMech cbm;
 	public static Wings wing;
 	public static Drivetrain drt;
@@ -47,6 +49,7 @@ public class Robot extends TimedRobot {
 	Command drive;
 	
 	 Command autonomousCommand;
+	 
 	
 	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -63,6 +66,7 @@ public class Robot extends TimedRobot {
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
 		wingSetup.start();
+		arm = new Arm();
 		
 		cms = CameraServer.getInstance();
 		cms.startAutomaticCapture();
@@ -70,7 +74,7 @@ public class Robot extends TimedRobot {
 		System.out.println("ghostbusters");
 		OI.initialize();
 	}
-
+	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -182,6 +186,10 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 	}
 	
+	public static Arm getArm() {
+		return Robot.arm;
+	}
+	
 	public static CubeMech getCubeMech(){
 		return cbm;
 	}
@@ -193,5 +201,4 @@ public class Robot extends TimedRobot {
 	public static Drivetrain getDrivetrain(){
 		return drt;
 	}
-	
 }
