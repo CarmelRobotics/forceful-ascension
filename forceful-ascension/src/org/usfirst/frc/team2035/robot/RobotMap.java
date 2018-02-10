@@ -23,7 +23,12 @@ public class RobotMap {
 	public static final char SIDE = 'L'; //choose which side to use to cross line or get to middle switch ('L' or 'R')
 	public static final boolean SECOND_BOX = false; //choose whether to obtain another box after placing first box
 	
-	/* PWM */
+	//Arm (Tyler and Fang's Code)
+		public static final int ARM_ANGLE_SPEED = 1;
+		public static final int ARM_EXTEND_SPEED = 1;
+		public static final double ARM_STARTING_POSITION = 30; //temp
+		
+	/* PWM (Ari's Code)*/
 	public static final int LF_DRIVETRAIN_MOTOR_PWM = 0;
 	public static final int LM_DRIVETRAIN_MOTOR_PWM = 1;
 	public static final int LB_DRIVETRAIN_MOTOR_PWM = 2;
@@ -32,6 +37,20 @@ public class RobotMap {
 	public static final int RB_DRIVETRAIN_MOTOR_PWM = 5;
 	public static final int R_CUBEMECH_MOTOR_PWM = 6;
 	public static final int L_CUBEMECH_MOTOR_PWM = 7;
+	
+	//switch to angle measurements later (Tyler/Fang's Code)
+	public static final double ARM_POSITION_0 = 0; 
+	public static final double ARM_POSITION_1 = 15;
+	public static final double ARM_POSITION_2 = 30;
+	public static final double ARM_POSITION_3 = 60; //temp
+	public static final double ARM_POSITION_4 = 90;
+	
+	// PWM (Tyler/Fang's Code)
+	public static final int LEFT_ARM_ANGLE = 4;
+	public static final int RIGHT_ARM_ANGLE = 5; 
+	public static final int ARM_EXTEND_1 = 6; 
+	public static final int ARM_EXTEND_2 = 7; 
+	public static final int ARM_EXTEND_3 = 8; 
 	
 	/* DIO */
 	public static final int LIMITSWITCH_L = 0;
@@ -53,12 +72,30 @@ public class RobotMap {
 	public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
 	public static final int JOY_ARM_USB = 1;
 	public static final Joystick JOY_ARM = new Joystick(JOY_ARM_USB);
+	/* Joystick (Fang/Tyler's) */
+	//public static final int JOYSTICK_A_USB_NUMBER = 0;
+    //public static final Joystick DRIVER_JOYSTICK_A = new Joystick(JOYSTICK_A_USB_NUMBER);
+    
+
+	//Encoder channel
+	public static final int ANGLER_ID = 4;
 	
-	/* Buttons */
+	/* Buttons (Ari's)*/ 
 	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 6);
 	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 2);
 	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 3);
 	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 2);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 5);
 	public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 2);
+	/* Buttons (Tyler's/Fang's) 
+    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(DRIVER_JOYSTICK_A,1); //change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(DRIVER_JOYSTICK_A,2);//change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(DRIVER_JOYSTICK_A,3);//change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(DRIVER_JOYSTICK_A,4);//change later
+	public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(DRIVER_JOYSTICK_A,5);//change later
+	public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(DRIVER_JOYSTICK_A,6);//change later 
+	*/    
+	
+	//CAN (Tyler and Fang's Code
+		public static final int ARM_SOLENOID = 0;
 }

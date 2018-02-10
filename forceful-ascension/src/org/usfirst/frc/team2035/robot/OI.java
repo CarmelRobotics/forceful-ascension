@@ -12,7 +12,7 @@ import org.usfirst.frc.team2035.robot.commands.CubeOut;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
-
+import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -27,11 +27,33 @@ public class OI {
 	public static JoystickButton cubeIn;
 	public static JoystickButton cubeOut; 
 	public static JoystickButton wingsOut;
+
+	public static Button changeArmAngleTo0;
+	public static Button changeArmAngleTo1;
+	public static Button changeArmAngleTo2;
+	public static Button changeArmAngleTo3;
+	public static Button changeArmAngleTo4;
+	public static Button resetArmAngle;
+	
 	
 	public static void initialize() {
 		/**
 		 * Sets software buttons to hardware buttons
 		 */
+		changeArmAngleTo0 = RobotMap.CHANGE_ARM_ANGLE_0;
+		changeArmAngleTo1 = RobotMap.CHANGE_ARM_ANGLE_1;
+		changeArmAngleTo2 = RobotMap.CHANGE_ARM_ANGLE_2;
+		changeArmAngleTo3 = RobotMap.CHANGE_ARM_ANGLE_3;
+		changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_4;
+		resetArmAngle = RobotMap.RESET_ARM_ANGLE;
+		
+		changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_0));
+		changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
+		changeArmAngleTo2.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_2));
+		changeArmAngleTo3.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_3));
+		changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
+		resetArmAngle.whenPressed(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
+		
 		gearshiftHigh = RobotMap.GEARSHIFT_HIGH;
 		gearshiftLow = RobotMap.GEARSHIFT_LOW;
 		cubeIn = RobotMap.CUBE_IN;
