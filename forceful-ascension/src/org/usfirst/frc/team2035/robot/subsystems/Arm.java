@@ -85,17 +85,17 @@ public class Arm extends Subsystem{
 	
 	
 	
-	public boolean armChangeAngle(double desiredPos) {
+	public boolean armChangeAngle(double desiredPos) { //This method serves to change the arm's angle to any given angle
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		if (currentPos < desiredPos && hasNotMoved) {  //If we need to move the arm up
-			armRaiseAngle(currentPos, desiredPos);
+			armRaiseAngle(currentPos, desiredPos); //calls the method defined below
 			return false; //movement not finished
 		}
 		
 		
 		
 		else if (currentPos > desiredPos && hasNotMoved) { //If we need to move the arm down
-			armLowerAngle(currentPos, desiredPos);
+			armLowerAngle(currentPos, desiredPos); //calls the other method defined below
 			return false; //movement not finished
 		}
 		
@@ -103,8 +103,7 @@ public class Arm extends Subsystem{
 		
 		else { //if We have reached the desired position
 			System.out.println(currentPos);
-			//STOP EXECUTING IN ArmChangePosition	
-			armAnglerStop();
+			armAnglerStop(); //Stop changing the arm angle
 			System.out.println("Ok, We are there! Sweet!");
 			return true; //movement is finished
 		}
@@ -113,22 +112,40 @@ public class Arm extends Subsystem{
 	}
 	
 	
-	public void armRaiseAngle(double currentPos, double desiredPos) {
+	public void armRaiseAngle(double currentPos, double desiredPos) 
+	{ //Code to raise the arm
 		//leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, 0.2);
+		if(desiredPos - currentPos >= 10) //If we are far away from our destination angle
+		{
+			angler.set(ControlMode.PercentOutput, 0.2); 
+		}
+		else //If we are close to destination angle (serves to prevent overshooting the angle)
+		{
+			angler.set(ControlMode.PercentOutput, 0.1);
+		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
+		
 		System.out.println("raising, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos >= desiredPos) {
 			hasNotMoved = false;
 		}
 	}
 	
-	public void armLowerAngle(double currentPos, double desiredPos) {
+	public void armLowerAngle(double currentPos, double desiredPos) 
+	{ //Code to lower the arm
 		//leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		angler.set(ControlMode.PercentOutput, -0.2);
+		if(desiredPos - currentPos >= 10)//If we are far away from our destination angle
+		{
+			angler.set(ControlMode.PercentOutput, -0.2);
+		}
+		else//If we are close to destination angle (serves to prevent overshooting the angle)
+		{
+			angler.set(ControlMode.PercentOutput, -0.1);
+		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
+		.
 		System.out.println("lowering, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos <= desiredPos) {
 			hasNotMoved = false;
@@ -138,7 +155,7 @@ public class Arm extends Subsystem{
 	
 	
 	
-	public void armAnglerStop() {
+	public void armAnglerStop() {  
 		//leftArmAngler.set(0);
 		//rightArmAngler.set(0);
 		angler.set(ControlMode.PercentOutput, 0.0);

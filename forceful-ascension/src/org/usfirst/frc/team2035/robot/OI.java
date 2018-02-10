@@ -55,7 +55,6 @@ public class OI {
 	
 	
 	public static void initialize() {
-	
 	changeArmAngleTo0 = RobotMap.CHANGE_ARM_ANGLE_1;
 	changeArmAngleTo1 = RobotMap.CHANGE_ARM_ANGLE_2;
 	changeArmAngleTo2 = RobotMap.CHANGE_ARM_ANGLE_3;

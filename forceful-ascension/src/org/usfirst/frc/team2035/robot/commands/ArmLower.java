@@ -12,8 +12,7 @@ public class ArmLower extends Command {
 	public ArmLower() {
 		// Use requires() here to declare subsystem dependencies
 		super("ArmLower");
-		
-		arm = Robot.getArm();
+		.klj'jiljh' = Robot.getArm();
 		
 		requires(Robot.getArm());
 	}

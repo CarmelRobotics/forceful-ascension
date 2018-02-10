@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -51,6 +52,8 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		OI.initialize();
+		
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
