@@ -28,12 +28,14 @@ public class PositionLSwitch extends Subsystem {
 //	}
 	
 	public int getRobotStart() {
-		if(posA.get())
-			return 0;
-		else if(posC.get())
-			return 2;
+		if (!posA.get() && !posC.get()) //switch is wired high
+			return -1; //this shouldn't happen
+		else if(!posA.get())
+			return 0; //start at position A
+		else if(!posC.get())
+			return 2; //start at position C
 		else
-			return 1;
+			return 1; //start at position B
 	}
 	
     public void initDefaultCommand() {
