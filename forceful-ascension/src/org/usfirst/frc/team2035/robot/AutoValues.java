@@ -67,7 +67,7 @@ public class AutoValues {
 			public static final double S1_POS1_SWR_SPD1 = 0.0;
 			public static final double S1_POS1_SWR_SPD2 = 0.0;
 			public static final double S1_POS1_SWR_SPD3 = 0.0;
-			public static final double S1_POS1_SWR_ROT1 = 0.0;
+			public static final double S1_POS1_SWR_ROT1 = 0.0; 
 			public static final double S1_POS1_SWR_ROT2 = 0.0;
 			public static final double S1_POS1_SWR_T1 = 0.0;
 			public static final double S1_POS1_SWR_T2 = 0.0;
