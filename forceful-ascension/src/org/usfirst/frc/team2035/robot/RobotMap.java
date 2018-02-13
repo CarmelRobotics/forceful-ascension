@@ -30,11 +30,11 @@ public class RobotMap {
 		
 	/* PWM (Ari's Code)*/
 	public static final int LF_DRIVETRAIN_MOTOR_PWM = 0;
-	public static final int LM_DRIVETRAIN_MOTOR_PWM = 1;
-	public static final int LB_DRIVETRAIN_MOTOR_PWM = 2;
+	//public static final int LM_DRIVETRAIN_MOTOR_PWM = 1;
+	public static final int LB_DRIVETRAIN_MOTOR_PWM = 1;
 	public static final int RF_DRIVETRAIN_MOTOR_PWM = 3;
-	public static final int RM_DRIVETRAIN_MOTOR_PWM = 4;
-	public static final int RB_DRIVETRAIN_MOTOR_PWM = 5;
+	//public static final int RM_DRIVETRAIN_MOTOR_PWM = 4;
+	public static final int RB_DRIVETRAIN_MOTOR_PWM = 6;
 	public static final int R_CUBEMECH_MOTOR_PWM = 6;
 	public static final int L_CUBEMECH_MOTOR_PWM = 7;
 	

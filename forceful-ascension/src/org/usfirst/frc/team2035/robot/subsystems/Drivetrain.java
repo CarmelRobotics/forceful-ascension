@@ -25,13 +25,13 @@ public class Drivetrain extends Subsystem {
 	public Drivetrain() {
     	super("Drivetrain");
     	leftFront = new VictorSP(RobotMap.LF_DRIVETRAIN_MOTOR_PWM);
-    	leftMiddle = new VictorSP(RobotMap.LM_DRIVETRAIN_MOTOR_PWM);
+    //	leftMiddle = new VictorSP(RobotMap.LM_DRIVETRAIN_MOTOR_PWM);
     	leftBack = new VictorSP(RobotMap.LB_DRIVETRAIN_MOTOR_PWM);
     	rightFront = new VictorSP(RobotMap.RF_DRIVETRAIN_MOTOR_PWM);
-    	rightMiddle = new VictorSP(RobotMap.RM_DRIVETRAIN_MOTOR_PWM);
+    	//rightMiddle = new VictorSP(RobotMap.RM_DRIVETRAIN_MOTOR_PWM);
     	rightBack = new VictorSP(RobotMap.RB_DRIVETRAIN_MOTOR_PWM);
-    	leftGroup = new SpeedControllerGroup(leftFront, leftMiddle, leftBack);
-    	rightGroup = new SpeedControllerGroup(rightFront, rightMiddle, rightBack);
+    	leftGroup = new SpeedControllerGroup(leftFront, leftBack);
+    	rightGroup = new SpeedControllerGroup(rightFront, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
     	gearshift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_ID, RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
 	}
