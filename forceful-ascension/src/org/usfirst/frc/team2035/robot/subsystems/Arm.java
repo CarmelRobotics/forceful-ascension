@@ -122,7 +122,7 @@ public class Arm extends Subsystem{
 		}
 		else //If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, 0.1);
+			angler.set(ControlMode.PercentOutput, 0.2);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
@@ -142,7 +142,7 @@ public class Arm extends Subsystem{
 		}
 		else//If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, -0.1);
+			angler.set(ControlMode.PercentOutput, -0.2);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
