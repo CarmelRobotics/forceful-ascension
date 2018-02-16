@@ -105,7 +105,7 @@ public class Robot extends TimedRobot {
 
 		// schedule the autonomous command (example)
 		
-		if(gameData.charAt(0) == 'L')
+		if(gameData.charAt(0) == 'L') 
 		{
 			//Put left auto code here
 		} else {

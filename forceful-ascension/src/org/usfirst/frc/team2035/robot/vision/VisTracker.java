@@ -245,7 +245,7 @@ public class VisTracker {
 			MatOfPoint mopHull = new MatOfPoint();
 			mopHull.create((int) hull.size().height, 1, CvType.CV_32SC2);
 			for (int j = 0; j < hull.size().height; j++) {
-				int index = (int)hull.get(j, 0)[0];
+				int index = (int)hull.get(j, 0)[0]; 
 				double[] point = new double[] { contour.get(index, 0)[0], contour.get(index, 0)[1]};
 				mopHull.put(j, 0, point);
 			}

@@ -55,7 +55,7 @@ public class Processing {
 			camera.setResolution(640, 480);
 			tracker = new VisTracker();
 			videoCapture = new VideoCapture();
-			videoCapture.open(camera.getVideo());
+			//videoCapture.open(camera.getVideo());
 			while(!videoCapture.isOpened()) {
 				System.out.println("Video capture failed, retrying...");
 			}
