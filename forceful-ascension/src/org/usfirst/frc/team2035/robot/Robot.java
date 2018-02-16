@@ -13,9 +13,13 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team2035.robot.vision.Processing;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
+
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
 /**
@@ -52,10 +56,9 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		OI.initialize();
+		CameraServer.getInstance().startAutomaticCapture();        
 		
-		CameraServer.getInstance().startAutomaticCapture();
 	}
-
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -89,6 +92,9 @@ public class Robot extends TimedRobot {
 		
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
+		Processing imageCap = new Processing();
+		
+		imageCap.startProcessing();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -118,6 +124,8 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		
+		Processing camProcess = new Processing();
+		System.out.println("yes");
 		
 
 	}
