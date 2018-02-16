@@ -57,10 +57,13 @@ public class RobotMap {
 	public static final int LIMITSWITCH_R = 1;
 	
 	/* Motor Speeds */
-	public static final double CUBEMECH_IN_SPEED= 0.6;
-	public static final double CUBEMECH_OUT_SPEED= -0.6;
+	public static final double CUBEMECH_IN_SPEED = 0.6;
+	public static final double CUBEMECH_OUT_SPEED = -0.6;
 
 	/* Solenoids */
+	
+	public static final int COMPRESSOR_PCM_ID = 0;
+	
 	public static final int L_WINGS = 0;
 	public static final int R_WINGS = 1;
 	public static final int SOLE_GEARSHIFT_ID = 2;

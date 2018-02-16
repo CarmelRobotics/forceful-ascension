@@ -26,6 +26,7 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2035.robot.subsystems.PositionLSwitch;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
+import org.usfirst.frc.team2035.robot.subsystems.ACompressor;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 /**
@@ -44,6 +45,7 @@ public class Robot extends TimedRobot {
 	public static Drivetrain drt;
 	public static PositionLSwitch pls;
 	public static CameraServer cms;
+	public static ACompressor compressor;
 	public static OI oi;
 	Command wingSetup;
 	Command drive;
@@ -67,6 +69,7 @@ public class Robot extends TimedRobot {
 		wingSetup = new WingsOut();
 		wingSetup.start();
 		arm = new Arm();
+		compressor = new ACompressor();
 		
 		cms = CameraServer.getInstance();
 		cms.startAutomaticCapture();
@@ -166,6 +169,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		compressor.start();
 		drive = new TeleopDrive();
 
 	}

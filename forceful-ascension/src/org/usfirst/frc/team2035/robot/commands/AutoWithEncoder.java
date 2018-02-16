@@ -63,7 +63,7 @@ public class AutoWithEncoder extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-
+    	/*
     	// First Movement (Forward)
     	while()
     		driver.drive(-spd1, 0.0);
@@ -87,7 +87,7 @@ public class AutoWithEncoder extends Command {
     	// Fifth Movement (Forward)
     	while()
     		driver.drive(-spd3, 0.0);
-    	
+    	*/
     	//Cube Release
     	//while(sTimer.get() <= (tCurrent + cubeReleaseTime))
     		//releaseTheCube.start();
