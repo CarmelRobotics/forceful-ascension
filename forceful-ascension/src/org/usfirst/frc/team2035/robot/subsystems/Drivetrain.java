@@ -36,7 +36,7 @@ public class Drivetrain extends Subsystem {
     	gearShift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
     	
 	}
-	
+	 
 	//takes joystick position as speed and direction, drives using those values
 	public void drive(double speed, double rotation) {
 		train.arcadeDrive(speed, rotation);
