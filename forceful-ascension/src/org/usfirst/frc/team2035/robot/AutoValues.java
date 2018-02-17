@@ -24,18 +24,20 @@ package org.usfirst.frc.team2035.robot;
  */
 public class AutoValues { 
 	
+public static final double CURVE_ERROR_COUNTERACT = 0.3;
+	
 	/*AutoSW1 Speeds, Rotations, Times*/
 		/*Position 1 to Left Switch*/
-			public static final double S1_POS1_SWL_SPD1 = 0.5;
-			public static final double S1_POS1_SWL_SPD2 = 0.6;
-			public static final double S1_POS1_SWL_SPD3 = 0.5;
-			public static final double S1_POS1_SWL_ROT1 = 0.6;
-			public static final double S1_POS1_SWL_ROT2 = 0.4;
-			public static final double S1_POS1_SWL_T1 = 1.0;
-			public static final double S1_POS1_SWL_T2 = 2.9;
-			public static final double S1_POS1_SWL_T3 = 3.5;
-			public static final double S1_POS1_SWL_T4 = 1.2;
-			public static final double S1_POS1_SWL_T5 = 2.5;
+			public static final double S1_POS1_SWL_SPD1 = 0.7;
+			public static final double S1_POS1_SWL_SPD2 = 0.0;
+			public static final double S1_POS1_SWL_SPD3 = 0.0;
+			public static final double S1_POS1_SWL_ROT1 = 0.0;
+			public static final double S1_POS1_SWL_ROT2 = 0.0;
+			public static final double S1_POS1_SWL_T1 = 2.0;
+			public static final double S1_POS1_SWL_T2 = 0.0;
+			public static final double S1_POS1_SWL_T3 = 0.0;
+			public static final double S1_POS1_SWL_T4 = 0.0;
+			public static final double S1_POS1_SWL_T5 = 0.0;
 			
 		/*Position 2 to Left Switch*/
 			public static final double S1_POS2_SWL_SPD1 = 0.1;
