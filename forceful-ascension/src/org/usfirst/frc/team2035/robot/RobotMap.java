@@ -46,11 +46,11 @@ public class RobotMap {
 	public static final double ARM_POSITION_4 = 90;
 	
 	// PWM (Tyler/Fang's Code)
-	public static final int LEFT_ARM_ANGLE = 4;
-	public static final int RIGHT_ARM_ANGLE = 5; 
-	public static final int ARM_EXTEND_1 = 6; 
-	public static final int ARM_EXTEND_2 = 7; 
-	public static final int ARM_EXTEND_3 = 8; 
+	public static final int LEFT_ARM_ANGLE = 10;
+	public static final int RIGHT_ARM_ANGLE = 9; 
+	public static final int ARM_EXTEND_1 = 8; 
+	public static final int ARM_EXTEND_2 = 11; 
+	public static final int ARM_EXTEND_3 = 7; 
 	
 	/* DIO */
 	public static final int LIMITSWITCH_L = 0;
@@ -64,7 +64,7 @@ public class RobotMap {
 	
 	public static final int COMPRESSOR_PCM_ID = 0;
 	
-	public static final int L_WINGS = 0;
+	public static final int L_WINGS = 5;
 	public static final int R_WINGS = 1;
 	public static final int SOLE_GEARSHIFT_ID = 2;
 	public static final int SOLE_GEARSHIFT_HIGH = 3;
