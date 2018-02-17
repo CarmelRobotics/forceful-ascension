@@ -58,7 +58,7 @@ public class AutoSW1 extends Command {
     protected void initialize() {
     	oi = new OI();
     	sTimer = new Timer();
-    	decideMovement();
+    	oldDecideMovement();
     	sTimer.start();
     	
     }
@@ -71,7 +71,7 @@ public class AutoSW1 extends Command {
 
     	// First Movement (Forward)
     	while(sTimer.get() <= (t1))
-    		driver.drive(-spd1, 0.0);
+    		driver.drive(-spd1, AutoValues.CURVE_ERROR_COUNTERACT);
     	tCurrent = sTimer.get();
     	
     	// Second Movement (Turn)
@@ -81,7 +81,7 @@ public class AutoSW1 extends Command {
     	
     	// Third Movement (Forward)
     	while(sTimer.get() <= (tCurrent + t3))
-    		driver.drive(-spd2, 0.0);
+    		driver.drive(-spd2, AutoValues.CURVE_ERROR_COUNTERACT);
     	tCurrent = sTimer.get();
     	
     	// Fourth Movement (Turn)
@@ -193,7 +193,93 @@ public class AutoSW1 extends Command {
         	}
         }
     } 
-    
+    private void oldDecideMovement() {
+    	if (sw == 'L') // If switch is on the left
+        {
+        	if (start == 0)
+        	{
+        		spd1 = AutoValues.S1_POS1_SWL_SPD1;
+        		spd2 = AutoValues.S1_POS1_SWL_SPD2;
+        		spd3 = AutoValues.S1_POS1_SWL_SPD3;
+        		rot1 = AutoValues.S1_POS1_SWL_ROT1;
+        		rot2 = AutoValues.S1_POS1_SWL_ROT2;
+        		t1 = AutoValues.S1_POS1_SWL_T1;
+        		t2 = AutoValues.S1_POS1_SWL_T2;
+        		t3 = AutoValues.S1_POS1_SWL_T3;
+        		t4 = AutoValues.S1_POS1_SWL_T4;
+        		t5 = AutoValues.S1_POS1_SWL_T5;
+        		System.out.println("POSITION A");
+        	}
+        	else if (start == 1)
+        	{
+        		spd1 = AutoValues.S1_POS2_SWL_SPD1;
+        		spd2 = AutoValues.S1_POS2_SWL_SPD2;
+        		spd3 = AutoValues.S1_POS2_SWL_SPD3;
+        		rot1 = AutoValues.S1_POS2_SWL_ROT1;
+        		rot2 = AutoValues.S1_POS2_SWL_ROT2;
+        		t1 = AutoValues.S1_POS2_SWL_T1;
+        		t2 = AutoValues.S1_POS2_SWL_T2;
+        		t3 = AutoValues.S1_POS2_SWL_T3;
+        		t4 = AutoValues.S1_POS2_SWL_T4;
+        		t5 = AutoValues.S1_POS2_SWL_T5;
+        		System.out.println("POSITION B");
+        	}
+        	else if (start == 2) {
+        		spd1 = AutoValues.S1_POS3_SWL_SPD1;
+        		spd2 = AutoValues.S1_POS3_SWL_SPD2;
+        		spd3 = AutoValues.S1_POS3_SWL_SPD3;
+        		rot1 = AutoValues.S1_POS3_SWL_ROT1;
+        		rot2 = AutoValues.S1_POS3_SWL_ROT2;
+        		t1 = AutoValues.S1_POS3_SWL_T1;
+        		t2 = AutoValues.S1_POS3_SWL_T2;
+        		t3 = AutoValues.S1_POS3_SWL_T3;
+        		t4 = AutoValues.S1_POS3_SWL_T4;
+        		t5 = AutoValues.S1_POS3_SWL_T5;
+        		System.out.println("POSITION C");
+        	}
+        }
+        else if (sw == 'R') // If Switch is on the right
+        {
+        	if (start == 0)
+        	{
+        		spd1 = AutoValues.S1_POS1_SWR_SPD1;
+        		spd2 = AutoValues.S1_POS1_SWR_SPD2;
+        		spd3 = AutoValues.S1_POS1_SWR_SPD3;
+        		rot1 = AutoValues.S1_POS1_SWR_ROT1;
+        		rot2 = AutoValues.S1_POS1_SWR_ROT2;
+        		t1 = AutoValues.S1_POS1_SWR_T1;
+        		t2 = AutoValues.S1_POS1_SWR_T2;
+        		t3 = AutoValues.S1_POS1_SWR_T3;
+        		t4 = AutoValues.S1_POS1_SWR_T4;
+        		t5 = AutoValues.S1_POS1_SWR_T5;
+        	}
+        	else if (start == 1)
+        	{
+        		spd1 = AutoValues.S1_POS2_SWR_SPD1;
+        		spd2 = AutoValues.S1_POS2_SWR_SPD2;
+        		spd3 = AutoValues.S1_POS2_SWR_SPD3;
+        		rot1 = AutoValues.S1_POS2_SWR_ROT1;
+        		rot2 = AutoValues.S1_POS2_SWR_ROT2;
+        		t1 = AutoValues.S1_POS2_SWR_T1;
+        		t2 = AutoValues.S1_POS2_SWR_T2;
+        		t3 = AutoValues.S1_POS2_SWR_T3;
+        		t4 = AutoValues.S1_POS2_SWR_T4;
+        		t5 = AutoValues.S1_POS2_SWR_T5;
+        	}
+        	else if (start == 2) {
+        		spd1 = AutoValues.S1_POS3_SWR_SPD1;
+        		spd2 = AutoValues.S1_POS3_SWR_SPD2;
+        		spd3 = AutoValues.S1_POS3_SWR_SPD3;
+        		rot1 = AutoValues.S1_POS3_SWR_ROT1;
+        		rot2 = AutoValues.S1_POS3_SWR_ROT2;
+        		t1 = AutoValues.S1_POS3_SWR_T1;
+        		t2 = AutoValues.S1_POS3_SWR_T2;
+        		t3 = AutoValues.S1_POS3_SWR_T3;
+        		t4 = AutoValues.S1_POS3_SWR_T4;
+        		t5 = AutoValues.S1_POS3_SWR_T5;
+        	}
+        }
+    } 
    // private void ARMSOnTheNintendoSwitch() { //currently referencing code in branch "FangTaoTheRealOne"
     //	arm.armChangeAngle()
 //    }
