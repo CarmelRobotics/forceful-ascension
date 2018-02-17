@@ -1,5 +1,8 @@
 package org.usfirst.frc.team2035.robot.subsystems;
 import org.usfirst.frc.team2035.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -11,29 +14,27 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  *
  */
 public class Drivetrain extends Subsystem {
-	private SpeedController leftFront;
-	private SpeedController leftMiddle;
+	private SpeedController leftTop;
 	private SpeedController leftBack;
-	private SpeedController rightFront;
-	private SpeedController rightMiddle;
+	private SpeedController rightTop;
 	private SpeedController rightBack;
 	private SpeedControllerGroup leftGroup;
 	private SpeedControllerGroup rightGroup;
 	private DifferentialDrive train;
 	private DoubleSolenoid gearshift;
 	
+	
 	public Drivetrain() {
     	super("Drivetrain");
-    	leftFront = new VictorSP(RobotMap.LF_DRIVETRAIN_MOTOR_PWM);
-    //	leftMiddle = new VictorSP(RobotMap.LM_DRIVETRAIN_MOTOR_PWM);
+    	leftTop = new WPI_TalonSRX(RobotMap.LT_DRIVETRAIN_MOTOR);
     	leftBack = new VictorSP(RobotMap.LB_DRIVETRAIN_MOTOR_PWM);
-    	rightFront = new VictorSP(RobotMap.RF_DRIVETRAIN_MOTOR_PWM);
-    	//rightMiddle = new VictorSP(RobotMap.RM_DRIVETRAIN_MOTOR_PWM);
+    	rightTop = new WPI_TalonSRX(RobotMap.RT_DRIVETRAIN_MOTOR);
     	rightBack = new VictorSP(RobotMap.RB_DRIVETRAIN_MOTOR_PWM);
-    	leftGroup = new SpeedControllerGroup(leftFront, leftBack);
-    	rightGroup = new SpeedControllerGroup(rightFront, rightBack);
+    	leftGroup = new SpeedControllerGroup(leftTop, leftBack);
+    	rightGroup = new SpeedControllerGroup(rightTop, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
-    	gearshift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_ID, RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
+    	gearshift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
+    	
 	}
 	
 	//takes joystick position as speed and direction, drives using those values
@@ -54,9 +55,6 @@ public class Drivetrain extends Subsystem {
 		gearshift.set(DoubleSolenoid.Value.kReverse);
 	}
 	
-	public void testMotor(double heyEveryoneThisIsAVariableWow) {
-		leftFront.set(heyEveryoneThisIsAVariableWow);
-	}
 	
 	
 	public void initDefaultCommand() {
