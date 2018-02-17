@@ -46,11 +46,11 @@ public class RobotMap {
 	public static final double ARM_POSITION_4 = 90;
 	
 	// PWM (Tyler/Fang's Code)
-	public static final int LEFT_ARM_ANGLE = 10;
-	public static final int RIGHT_ARM_ANGLE = 9; 
-	public static final int ARM_EXTEND_1 = 8; 
-	public static final int ARM_EXTEND_2 = 11; 
-	public static final int ARM_EXTEND_3 = 7; 
+	public static final int LEFT_ARM_ANGLE = 14;
+	public static final int RIGHT_ARM_ANGLE = 15; 
+	public static final int ARM_EXTEND_1 = 16; 
+	public static final int ARM_EXTEND_2 = 17; 
+	public static final int ARM_EXTEND_3 = 18; 
 	
 	/* DIO */
 	public static final int LIMITSWITCH_L = 0;
@@ -64,11 +64,12 @@ public class RobotMap {
 	
 	public static final int COMPRESSOR_PCM_ID = 0;
 	
-	public static final int L_WINGS = 5;
-	public static final int R_WINGS = 1;
-	public static final int SOLE_GEARSHIFT_ID = 2;
-	public static final int SOLE_GEARSHIFT_HIGH = 3;
-	public static final int SOLE_GEARSHIFT_LOW = 4;
+	public static final int L_WINGS = 4;
+	public static final int R_WINGS = 3;
+	//public static final int SOLE_GEARSHIFT_ID = 2;
+	public static final int SOLE_GEARSHIFT_HIGH = 0;
+	public static final int SOLE_GEARSHIFT_LOW = 1;
+	public static final int ARM_SOLENOID = 5;
 	
 	/* Joystick */
 	public static final int JOY_DRIVE_USB = 0;
@@ -79,10 +80,11 @@ public class RobotMap {
 	//public static final int JOYSTICK_A_USB_NUMBER = 0;
     //public static final Joystick DRIVER_JOYSTICK_A = new Joystick(JOYSTICK_A_USB_NUMBER);
     
+
 	//CAN Network
-		public static final int ANGLER_ID = 4;
-		public static final int LT_DRIVETRAIN_MOTOR = 1;
-		public static final int RT_DRIVETRAIN_MOTOR = 2;
+	public static final int ANGLER_ID = 4;
+	public static final int LT_DRIVETRAIN_MOTOR = 1;
+	public static final int RT_DRIVETRAIN_MOTOR = 2;
 	
 	/* Buttons (Ari's)*/ 
 	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 5);
@@ -90,7 +92,7 @@ public class RobotMap {
 	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 10);
 	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 9);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 8);
-	public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 7);
+	//public static final JoystickButton ENC = new JoystickButton(JOY_DRIVE, 7);
 	/* Buttons (Tyler's/Fang's) */
     public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(JOY_DRIVE,1); //change later
 	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(JOY_DRIVE,2);//change later
@@ -98,8 +100,8 @@ public class RobotMap {
 	public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(JOY_DRIVE,4);//change later
 	public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(JOY_DRIVE,5);//change later
 	public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(JOY_DRIVE,6);//change later 
-	 
+	  
 	
-	//CAN (Tyler and Fang's Code
-		public static final int ARM_SOLENOID = 0;
+	
+		
 }
