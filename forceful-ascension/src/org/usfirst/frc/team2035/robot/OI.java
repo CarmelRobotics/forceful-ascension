@@ -22,11 +22,11 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	//buttons, buttons, just buttons
-	public static JoystickButton gearshiftHigh;
-	public static JoystickButton gearshiftLow;
-	public static JoystickButton cubeIn;
-	public static JoystickButton cubeOut; 
-	public static JoystickButton wingsOut;
+	public static Button gearshiftHigh;
+	public static Button gearshiftLow;
+	public static Button cubeIn;
+	public static Button cubeOut; 
+	public static Button wingsOut;
 
 	public static Button changeArmAngleTo0;
 	public static Button changeArmAngleTo1;
@@ -47,6 +47,14 @@ public class OI {
 		changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_4;
 		resetArmAngle = RobotMap.RESET_ARM_ANGLE;
 		
+		gearshiftHigh = RobotMap.GEARSHIFT_HIGH;
+		gearshiftLow = RobotMap.GEARSHIFT_LOW;
+		
+		cubeIn = RobotMap.CUBE_IN;
+		cubeOut = RobotMap.CUBE_OUT;
+		
+		wingsOut = RobotMap.WINGS_OUT;
+		
 		changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_0));
 		changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
 		changeArmAngleTo2.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_2));
@@ -54,11 +62,7 @@ public class OI {
 		changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
 		resetArmAngle.whenPressed(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
 		
-		gearshiftHigh = RobotMap.GEARSHIFT_HIGH;
-		gearshiftLow = RobotMap.GEARSHIFT_LOW;
-		cubeIn = RobotMap.CUBE_IN;
-		cubeOut = RobotMap.CUBE_OUT;
-		wingsOut = RobotMap.WINGS_OUT;
+		
 		wingsOut.whenPressed(new WingsOut());
 		
 		gearshiftHigh.whileHeld(new GearshiftHigh());

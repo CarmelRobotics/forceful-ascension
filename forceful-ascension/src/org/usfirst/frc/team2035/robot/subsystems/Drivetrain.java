@@ -21,7 +21,7 @@ public class Drivetrain extends Subsystem {
 	private SpeedControllerGroup leftGroup;
 	private SpeedControllerGroup rightGroup;
 	private DifferentialDrive train;
-	private DoubleSolenoid gearshift;
+	private DoubleSolenoid gearShift;
 	
 	
 	public Drivetrain() {
@@ -33,10 +33,10 @@ public class Drivetrain extends Subsystem {
     	leftGroup = new SpeedControllerGroup(leftTop, leftBack);
     	rightGroup = new SpeedControllerGroup(rightTop, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
-    	gearshift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
+    	gearShift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
     	
 	}
-	
+	 
 	//takes joystick position as speed and direction, drives using those values
 	public void drive(double speed, double rotation) {
 		train.arcadeDrive(speed, rotation);
@@ -48,15 +48,21 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void gearshiftHigh() {
-		gearshift.set(DoubleSolenoid.Value.kForward);
+		gearShift.set(DoubleSolenoid.Value.kForward);
+		//System.out.println("hi from GSH");
+		
 	}
 	
 	public void gearshiftLow() {
-		gearshift.set(DoubleSolenoid.Value.kReverse);
+		gearShift.set(DoubleSolenoid.Value.kReverse);
+		//System.out.println("hi from GSL");
+	}
+	/*
+	public void testMotor(double heyEveryoneThisIsAVariableWow) {
+		leftFront.set(heyEveryoneThisIsAVariableWow);
 	}
 	
-	
-	
+	*/
 	public void initDefaultCommand() {
     	
 	}
