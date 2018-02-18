@@ -47,7 +47,11 @@ public class Robot extends TimedRobot {
 	private static final int IMG_HEIGHT = 240;
 	
 	private static Arm arm;
+	
 	private String gameData;
+	private CvSource outputStream;
+	private VisTracker tracker; 
+	
 	//private char switchLocation;
 	
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
@@ -70,29 +74,28 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		OI.initialize();
-		
+	    outputStream = CameraServer.getInstance().putVideo("Processed", 32, 24);
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-	    CvSource outputStream = CameraServer.getInstance().putVideo("Processed", 32, 24);
+	    tracker = new VisTracker();
 
-	    visionThread = new VisionThread(camera, new VisTracker(), pipeline -> {
+	    visionThread = new VisionThread(camera, tracker, pipeline -> {
 	    	System.out.println("Vision initializing...");
-		   
-	        while (!VisionThread.interrupted()) {
-		    	System.out.println("epic leg");
+
 
 	        	if (!pipeline.filterContoursOutput().isEmpty()) {
 	        		
 	            	Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
 	            	synchronized (imgLock) {
-	                	centerX = r.x + (r.width / 2);
-	                	System.out.println("Center X Value = " + centerX);
+	                    centerX = r.x + (r.width / 2);
+		                System.out.println("Center X Value = " + centerX);
 	            	}
+	            	
 		        	//outputStream.putFrame(Imgproc.boundingRect(pipeline.filterContoursOutput().get(0)));
 
 	        	}
 	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
-	        }
+	        
 	    });
 	    visionThread.start();
 	}
@@ -160,6 +163,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		double centerX;
+	    synchronized (imgLock) {
+	        centerX = this.centerX;
+	    }
+	    outputStream.putFrame(tracker.hsvThresholdOutput());
+	    
+	    double turn = centerX - (IMG_WIDTH / 2);
+	    //drive.arcadeDrive(-0.6, turn * 0.005);
 		
 		//Processing camProcess = new Processing();
 		//System.out.println("yes");

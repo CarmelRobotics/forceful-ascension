@@ -115,18 +115,18 @@ public class Processing {
 
 	public static double findCenterX() {
 		double[] defaultValue = new double[0];
-		if(!tracker.filterContoursOutput.isEmpty() && tracker.filterContoursOutput.size() >= 2){
-			Rect r = Imgproc.boundingRect(tracker.filterContoursOutput.get(1));
-			Rect r1 = Imgproc.boundingRect(tracker.filterContoursOutput.get(0)); 
+		if(!tracker.filterContoursOutput().isEmpty() && tracker.filterContoursOutput().size() >= 2){
+			Rect r = Imgproc.boundingRect(tracker.filterContoursOutput().get(1));
+			Rect r1 = Imgproc.boundingRect(tracker.filterContoursOutput().get(0)); 
 			centerX = new double[]{r1.x + (r1.width / 2), r.x + (r.width / 2)};
-			if(tracker.filterContoursOutput.size() == 2){
+			if(tracker.filterContoursOutput().size() == 2){
 				// subtracts one another to get length in pixels
 				lengthBetweenContours = Math.abs(centerX[0] - centerX[1]);
 				System.out.println("I see: " + centerX.length);
 			}else {
-				Rect[] rectangleArray = new Rect[tracker.filterContoursOutput.size()];
+				Rect[] rectangleArray = new Rect[tracker.filterContoursOutput().size()];
 				System.out.println("I see: " + rectangleArray.length);
-				for(int i = 0 ; i < tracker.filterContoursOutput.size(); i++){
+				for(int i = 0 ; i < tracker.filterContoursOutput().size(); i++){
 					rectangleArray[i] = Imgproc.boundingRect(tracker.filterContoursOutput().get(i)); 
 					System.out.println("Object" + i + " X " + rectangleArray[i].x + " Y "+rectangleArray[i].y + "Width = " + rectangleArray[i].width);
 				}
@@ -186,7 +186,7 @@ public class Processing {
 		double constant = WIDTH_BETWEEN_TARGET / lengthBetweenContours;
 		angleToTarget = 0;
 			//Looking for the 2 blocks to actually start trig
-		if(!tracker.filterContoursOutput.isEmpty() && tracker.filterContoursOutput.size() >= 2){
+		if(!tracker.filterContoursOutput().isEmpty() && tracker.filterContoursOutput().size() >= 2){
 
 			if(centerX.length == 2){
 				// this calculates the distance from the center of goal to center of webcam 
@@ -203,5 +203,4 @@ public class Processing {
 	}
 
 }
-
 
