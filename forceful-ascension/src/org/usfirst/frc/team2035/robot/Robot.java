@@ -39,6 +39,8 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
  */
 public class Robot extends TimedRobot {
 	
+	private int counter;
+	
 	private static Arm arm;
 	private String gameData;
 	public static CubeMech cbm;
@@ -48,6 +50,7 @@ public class Robot extends TimedRobot {
 	public static CameraServer cms;
 	public static ACompressor compressor;
 	public static OI oi;
+	
 	Command wingSetup;
 	Command drive;
 	Command putInGear;
@@ -74,7 +77,7 @@ public class Robot extends TimedRobot {
 		putInGear.start();
 		arm = new Arm();
 		compressor = new ACompressor();
-		
+		counter = 0; 
 		cms = CameraServer.getInstance();
 		cms.startAutomaticCapture();
 		
@@ -161,9 +164,13 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		drt.drive(0.8, 0.0);
-		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
 		Scheduler.getInstance().run();
+		drt.drive(0.8, 0.0);
+		if (counter%10 == 0) {
+		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
+		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
+		}
+		counter++;
 	}
 
 	@Override
