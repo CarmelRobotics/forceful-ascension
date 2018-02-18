@@ -14,9 +14,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  *
  */
 public class Drivetrain extends Subsystem {
-	private SpeedController leftTop;
+	private WPI_TalonSRX leftTop;
 	private SpeedController leftBack;
-	private SpeedController rightTop;
+	private WPI_TalonSRX rightTop;
 	private SpeedController rightBack;
 	private SpeedControllerGroup leftGroup;
 	private SpeedControllerGroup rightGroup;
@@ -57,6 +57,15 @@ public class Drivetrain extends Subsystem {
 		gearShift.set(DoubleSolenoid.Value.kReverse);
 		//System.out.println("hi from GSL");
 	}
+	
+	public double currentDegreesLeft() {
+    	return (leftTop.getSelectedSensorPosition(0)/(4096/360));
+    }
+    
+    public double currentDegreesRight() {
+    	return (rightTop.getSelectedSensorPosition(0)/(4096/360));
+    }
+	
 	/*
 	public void testMotor(double heyEveryoneThisIsAVariableWow) {
 		leftFront.set(heyEveryoneThisIsAVariableWow);
