@@ -70,19 +70,25 @@ public class AutoSW1 extends Command {
     protected void execute() {
 
     	// First Movement (Forward)
-    	while(sTimer.get() <= (t1))
+    	while(sTimer.get() <= (t1)) {
     		driver.drive(-spd1, AutoValues.CURVE_ERROR_COUNTERACT);
-    	tCurrent = sTimer.get();
+    		System.out.println("Left Encoder: "+ driver.currentDegreesLeft() + "     Right Encoder: "+ driver.currentDegreesRight());
+    	}
+    		tCurrent = sTimer.get();
     	
     	// Second Movement (Turn)
-    	while(sTimer.get() <= (tCurrent + t2))
+    	while(sTimer.get() <= (tCurrent + t2)) {
     		driver.drive(0.0, rot1);
-    	tCurrent = sTimer.get();
+    		System.out.println("Left Encoder: "+ driver.currentDegreesLeft() + "     Right Encoder: "+ driver.currentDegreesRight());
+    	}
+    		tCurrent = sTimer.get();
     	
     	// Third Movement (Forward)
-    	while(sTimer.get() <= (tCurrent + t3))
+    	while(sTimer.get() <= (tCurrent + t3)) {
     		driver.drive(-spd2, AutoValues.CURVE_ERROR_COUNTERACT);
-    	tCurrent = sTimer.get();
+    		System.out.println("Left Encoder: "+ driver.currentDegreesLeft() + "     Right Encoder: "+ driver.currentDegreesRight());
+    	}
+    		tCurrent = sTimer.get();
     	
     	// Fourth Movement (Turn)
     	while(sTimer.get() <= (tCurrent + t4))

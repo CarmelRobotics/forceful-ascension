@@ -34,7 +34,7 @@ public class RobotMap {
 	public static final int LB_DRIVETRAIN_MOTOR_PWM = 4; // LB - left bottom
 	//public static final int RT_DRIVETRAIN_MOTOR_PWM = 7;
 	
-	public static final int RB_DRIVETRAIN_MOTOR_PWM = 1;
+	public static final int RB_DRIVETRAIN_MOTOR_PWM = 0;
 	public static final int R_CUBEMECH_MOTOR_PWM = 6;
 	public static final int L_CUBEMECH_MOTOR_PWM = 9;
 	
@@ -82,7 +82,7 @@ public class RobotMap {
     
 
 	//CAN Network
-	public static final int ANGLER_ID = 4;
+	public static final int ANGLER_ID = 3;
 	public static final int LT_DRIVETRAIN_MOTOR = 1;
 	public static final int RT_DRIVETRAIN_MOTOR = 2;
 	
