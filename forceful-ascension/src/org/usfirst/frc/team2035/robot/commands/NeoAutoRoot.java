@@ -11,18 +11,24 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoRoot extends Command {
+public class NeoAutoRoot extends Command {
 	
-	private char sd;
+	private int autoRootStatus; //0 = start of auto
+	private boolean endAuto; //when 1, end this autonomous process
+	private char sw;
+	private int pos;
 	public OI oi;
 	public Timer sTimer;
 	private Drivetrain driver;
 	private double tCurrent;
+	Command bridge;
+	Command side;
 	
-    public AutoRoot(char whichSide) {
+    public NeoAutoRoot(int startPos, char whichSwitch) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	sd = whichSide;
+    	sw = whichSwitch;
+    	pos = startPos;
     }
 
     // Called just before this Command runs the first time
@@ -31,14 +37,24 @@ public class AutoRoot extends Command {
     	sTimer = new Timer();
     	driver = Robot.getDrivetrain();
     	tCurrent = 0.0;
+    	endAuto = false;
     	sTimer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	while(sTimer.get() <= (AutoValuesBetter.START_BRIDGE_TIME))
-    		driver.drive(-1*AutoValuesBetter.START_BRIDGE_SPD, 0.0);
-    	tCurrent = sTimer.get();
+    	while (!endAuto) {
+    		if (autoRootStatus == 1) {
+    			while(sTimer.get() <= (AutoValuesBetter.START_BRIDGE_TIME))
+    				driver.drive(-1*AutoValuesBetter.START_BRIDGE_SPD, 0.0);
+    			tCurrent = sTimer.get();
+    			//if (pos == 1 && sw == 'L')
+    				
+    			//else if (pos == 1 && sw == 'L')
+    				
+    			//if ((pos == 1 && sw == 'L'
+    		}	
+    	}
     	
     }
 
