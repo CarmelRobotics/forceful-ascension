@@ -59,6 +59,12 @@ public class Arm extends Subsystem{
 		
 		
 	}
+	
+	public void extendStop() {
+		armExtender1.set(0.0);
+		armExtender2.set(0.0);
+		armExtender3.set(0.0);
+	}
 	/*
 	public void resetAngle() {
 		
@@ -118,11 +124,11 @@ public class Arm extends Subsystem{
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		if(desiredPos - currentPos >= 10) //If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, 0.2); 
+			angler.set(ControlMode.PercentOutput, 0.4); 
 		}
 		else //If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, 0.1);
+			angler.set(ControlMode.PercentOutput, 0.2);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
@@ -138,11 +144,11 @@ public class Arm extends Subsystem{
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		if(desiredPos - currentPos >= 10)//If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, -0.2);
+			angler.set(ControlMode.PercentOutput, -0.4);
 		}
 		else//If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, -0.1);
+			angler.set(ControlMode.PercentOutput, -0.2);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
