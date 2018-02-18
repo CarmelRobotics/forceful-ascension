@@ -161,6 +161,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		drt.drive(0.8, 0.0);
+		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
 		Scheduler.getInstance().run();
 	}
 

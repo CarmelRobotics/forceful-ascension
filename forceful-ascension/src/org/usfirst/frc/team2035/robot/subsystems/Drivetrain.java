@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2035.robot.subsystems;
 import org.usfirst.frc.team2035.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -26,7 +27,7 @@ public class Drivetrain extends Subsystem {
 	
 	public Drivetrain() {
     	super("Drivetrain");
-    	leftTop = new WPI_TalonSRX(RobotMap.LT_DRIVETRAIN_MOTOR);
+    	leftTop = new WPI_TalonSRX(4);//RobotMap.LT_DRIVETRAIN_MOTOR);
     	leftBack = new VictorSP(RobotMap.LB_DRIVETRAIN_MOTOR_PWM);
     	rightTop = new WPI_TalonSRX(RobotMap.RT_DRIVETRAIN_MOTOR);
     	rightBack = new VictorSP(RobotMap.RB_DRIVETRAIN_MOTOR_PWM);
@@ -34,7 +35,10 @@ public class Drivetrain extends Subsystem {
     	rightGroup = new SpeedControllerGroup(rightTop, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
     	gearShift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
-    	
+    	leftTop.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		leftTop.setSelectedSensorPosition(startingPos, 0, 0);
+		rightTop.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
+		rightTop.setSelectedSensorPosition(startingPos, 0, 0);
 	}
 	 
 	//takes joystick position as speed and direction, drives using those values
@@ -59,11 +63,13 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public double currentDegreesLeft() {
-    	return (leftTop.getSelectedSensorPosition(0)/(4096/360));
+    	return (leftTop.getSelectedSensorPosition(0));
+    	//return (leftTop.getSelectedSensorPosition(0)/(4096/360));
     }
     
     public double currentDegreesRight() {
-    	return (rightTop.getSelectedSensorPosition(0)/(4096/360));
+    	return (rightTop.getSelectedSensorPosition(0));
+    	//return (rightTop.getSelectedSensorPosition(0)/(4096/360));
     }
 	
 	/*
