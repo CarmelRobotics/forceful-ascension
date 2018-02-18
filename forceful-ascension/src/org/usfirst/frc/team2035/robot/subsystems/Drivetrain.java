@@ -27,7 +27,7 @@ public class Drivetrain extends Subsystem {
 	
 	public Drivetrain() {
     	super("Drivetrain");
-    	leftTop = new WPI_TalonSRX(4);//RobotMap.LT_DRIVETRAIN_MOTOR);
+    	leftTop = new WPI_TalonSRX(RobotMap.LT_DRIVETRAIN_MOTOR);//RobotMap.LT_DRIVETRAIN_MOTOR);
     	leftBack = new VictorSP(RobotMap.LB_DRIVETRAIN_MOTOR_PWM);
     	rightTop = new WPI_TalonSRX(RobotMap.RT_DRIVETRAIN_MOTOR);
     	rightBack = new VictorSP(RobotMap.RB_DRIVETRAIN_MOTOR_PWM);
@@ -37,9 +37,9 @@ public class Drivetrain extends Subsystem {
     	gearShift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
     	startingPos = RobotMap.ARM_STARTING_POSITION;
     	leftTop.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		leftTop.setSelectedSensorPosition(startingPos, 0, 0);
+		leftTop.setSelectedSensorPosition(0, 0, 0);
 		rightTop.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		rightTop.setSelectedSensorPosition(startingPos, 0, 0);
+		rightTop.setSelectedSensorPosition(0, 0, 0);
 	}
 	 
 	//takes joystick position as speed and direction, drives using those values

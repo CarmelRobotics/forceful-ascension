@@ -10,24 +10,20 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Wings extends Subsystem {
 	
-	private Solenoid wingR; //right side solenoid keeping wings up
-	private Solenoid wingL; //left side solenoid keeping wings up
+	private Solenoid wings; //solenoid keeping wings up
 	
 	public Wings() {
-		wingR = new Solenoid(RobotMap.R_WINGS);
-		wingL = new Solenoid(RobotMap.L_WINGS);
+		wings = new Solenoid(RobotMap.WINGS);
 	}
 
 	//turns wing solenoids on, keeping the wings up
 	public void wingsSolenoidsOn() {
-		wingR.set(true);
-		wingL.set(true);
+		wings.set(true);
     }
     
   //turns wing solenoids off, dropping the wings
 	public void wingsSolenoidsOff() {
-		wingR.set(false);
-		wingL.set(false);
+		wings.set(false);
     }
     
 	public void initDefaultCommand() {

@@ -71,15 +71,13 @@ public class Robot extends TimedRobot {
 		wing = new Wings();
 		drt = new Drivetrain();
 		pls = new PositionLSwitch();
-		wingSetup = new WingsOut();
-		wingSetup.start();
 		putInGear = new GearshiftHigh();
 		putInGear.start();
 		arm = new Arm();
 		compressor = new ACompressor();
 		counter = 0; 
-		cms = CameraServer.getInstance();
-		cms.startAutomaticCapture();
+		//cms = CameraServer.getInstance();
+		//cms.startAutomaticCapture();
 		
 		System.out.println("ghostbusters");
 		OI.initialize();
@@ -127,14 +125,14 @@ public class Robot extends TimedRobot {
 		startPos = pls.getRobotStart();
 		sidePass = RobotMap.SIDE;
 		secondBox = RobotMap.SECOND_BOX;
-		
+		/*
 		if (RobotMap.ROUTING == 0) //put box on team switch
 			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
 		else if (RobotMap.ROUTING == 1)  //only cross line
 			autonomousCommand = new AutoCL(sidePass, sidePass, 'N', secondBox);
 		else if (RobotMap.ROUTING == 2) //put box on middle switch
 			autonomousCommand = new AutoCL(sidePass, startPos, swMid, secondBox);
-		
+		*/
 		if (autonomousCommand != null)
 			autonomousCommand.start(); 
 	}
