@@ -75,6 +75,7 @@ public class AutoSW1 extends Command {
     		System.out.println("Left Encoder: "+ driver.currentDegreesLeft() + "     Right Encoder: "+ driver.currentDegreesRight());
     	}
     		tCurrent = sTimer.get();
+    		//test
     	
     	// Second Movement (Turn)
     	while(sTimer.get() <= (tCurrent + t2)) {
