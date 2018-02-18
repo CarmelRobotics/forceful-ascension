@@ -15,6 +15,8 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.*;
 import org.opencv.objdetect.*;
 
+import edu.wpi.first.wpilibj.vision.VisionPipeline;
+
 /**
 * Vis class.
 *
@@ -22,7 +24,7 @@ import org.opencv.objdetect.*;
 *
 * @author GRIP
 */
-public class VisTracker {
+public class VisTracker implements VisionPipeline {
 
 	//Outputs
 	private Mat blurOutput = new Mat();

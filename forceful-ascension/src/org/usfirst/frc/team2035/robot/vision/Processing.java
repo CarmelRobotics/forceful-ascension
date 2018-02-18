@@ -4,11 +4,17 @@ import java.util.ArrayList;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Point;
 import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.MjpegServer;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class Processing {
@@ -25,13 +31,14 @@ public class Processing {
 	static double angleToTarget;
 	static double[] centerX;
 	static double WIDTH_CLOSENESS = .15;
-
+	static CvSink cvSink;
+	
 	public static final double OFFSET_TO_FRONT = 0;
 	public static final double DISTANCE_CONSTANT= 5738;
 	public static final double CAMERA_WIDTH = 320;
 	public static final double ANGLE_OFFSET =  0;
 	public static final double WIDTH_BETWEEN_TARGET = 8.5;
-
+	
 	
 	public static void startProcessing(){
 		System.out.println("       _\r\n" + 
@@ -50,43 +57,62 @@ public class Processing {
 				"  |  \\_____)\r\n" + 
 				"  |_____ |\r\n" + 
 				" |_____/\\/\\");
-		while(true) {
-			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-			camera.setResolution(640, 480);
-			tracker = new VisTracker();
-			videoCapture = new VideoCapture();
-			//videoCapture.open(camera.getVideo());
-			while(!videoCapture.isOpened()) {
-				System.out.println("Video capture failed, retrying...");
-			}
-			
-			System.out.println("*hacker voice* we're in");
-			
-			while(videoCapture.isOpened()){
-				processImage();
-			} 
-		}
-	}
-	public static void processImage() {
-		System.out.println("processing...");	
-		matOriginal = new Mat();
+		Thread cameraThread = new Thread(() ->
+		{
 		
-		while(true) {
-			matOutput = new Mat();
-			Core.flip(matOriginal, matOutput , 0);
-			videoCapture.read(matOriginal);
-			tracker.process(matOriginal);
-			findCenterX();
-			System.out.println(centerX);
-			findDistanceFromTarget();
-			System.out.println(distanceFromTarget);
-			findAngleToTarget();
-			System.out.println(angleToTarget);
+	        // Get the USB Camera from the camera server
+	        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+	        camera.setResolution(640, 480);
+
+	        // Get a CvSink. This will capture Mats from the Camera
+	        CvSink cvSink = CameraServer.getInstance().getVideo();
+	        // Setup a CvSource. This will send images back to the dashboard
+	        CvSource outputStream = CameraServer.getInstance().putVideo("Processed", 640, 480);
+	        matOriginal = new Mat();
+	        
+			System.out.println("processing...");	
+
 			
-			videoCapture.read(matOriginal);
-		}
+			while(!Thread.interrupted()) {
+	        	matOutput = new Mat();
+	        	cvSink.grabFrame(matOriginal);
+	        	//VisTracker.cvtcolor();
+			}
+	        while (!Thread.interrupted())
+	        {
+	            outputStream.putFrame(matOriginal);
+
+	        	matOutput = new Mat();
+	            // Tell the CvSink to grab a frame from the camera and put it
+	            // in the source mat.  If there is an error notify the output.
+	            if (cvSink.grabFrame(matOriginal) == 0) {
+	                // Send the output the error. 
+	            	System.out.println("Nothing in matOriginal!");
+	                outputStream.notifyError(cvSink.getError());
+	                // skip the rest of the current iteration
+	                continue;
+	            }
+	            
+	            tracker.process(matOriginal);
+				Core.flip(matOriginal, matOutput , 0);
+				
+				
+				findCenterX();
+				System.out.println("CenterX = " + centerX);
+				
+				//findDistanceFromTarget();
+				System.out.println("Distance = " + distanceFromTarget);
+				//findAngleToTarget();
+				System.out.println("Angle = " + angleToTarget);
+	            // Give the output stream a new image to display
+				matOutput = tracker.hsvThresholdOutput();
+	            outputStream.putFrame(matOutput);
+	        }
+	    });
+		cameraThread.setDaemon(true);
+	    cameraThread.start();
 	}
-	
+
 	public static double findCenterX() {
 		double[] defaultValue = new double[0];
 		if(!tracker.filterContoursOutput.isEmpty() && tracker.filterContoursOutput.size() >= 2){

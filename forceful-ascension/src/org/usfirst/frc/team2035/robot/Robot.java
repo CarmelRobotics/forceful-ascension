@@ -9,16 +9,24 @@ package org.usfirst.frc.team2035.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.usfirst.frc.team2035.robot.vision.Processing;
+import org.usfirst.frc.team2035.robot.vision.VisTracker;
+import org.opencv.core.Mat;
+import org.opencv.core.Rect;
+import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
@@ -31,6 +39,12 @@ import edu.wpi.first.wpilibj.CameraServer;
  */
 public class Robot extends TimedRobot {
 	
+	private VisionThread visionThread;
+	private double centerX = 0.0;
+	private final Object imgLock = new Object();
+	
+	private static final int IMG_WIDTH = 320;
+	private static final int IMG_HEIGHT = 240;
 	
 	private static Arm arm;
 	private String gameData;
@@ -56,8 +70,31 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		OI.initialize();
-		CameraServer.getInstance().startAutomaticCapture();        
 		
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+	    CvSource outputStream = CameraServer.getInstance().putVideo("Processed", 32, 24);
+
+	    visionThread = new VisionThread(camera, new VisTracker(), pipeline -> {
+	    	System.out.println("Vision initializing...");
+		   
+	        while (!VisionThread.interrupted()) {
+		    	System.out.println("epic leg");
+
+	        	if (!pipeline.filterContoursOutput().isEmpty()) {
+	        		
+	            	Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+	            	synchronized (imgLock) {
+	                	centerX = r.x + (r.width / 2);
+	                	System.out.println("Center X Value = " + centerX);
+	            	}
+		        	//outputStream.putFrame(Imgproc.boundingRect(pipeline.filterContoursOutput().get(0)));
+
+	        	}
+	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
+	        }
+	    });
+	    visionThread.start();
 	}
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -92,9 +129,9 @@ public class Robot extends TimedRobot {
 		
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
 		
-		Processing imageCap = new Processing();
+		System.out.println("Starting camera server...");
+		//Processing.startProcessing();
 		
-		imageCap.startProcessing();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -124,8 +161,8 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		
-		Processing camProcess = new Processing();
-		System.out.println("yes");
+		//Processing camProcess = new Processing();
+		//System.out.println("yes");
 		
 
 	}
