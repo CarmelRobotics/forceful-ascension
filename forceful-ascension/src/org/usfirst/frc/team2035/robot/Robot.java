@@ -19,6 +19,7 @@ import org.usfirst.frc.team2035.robot.commands.AutoCL;
 import org.usfirst.frc.team2035.robot.commands.AutoSW1;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
+import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 	Command wingSetup;
 	Command drive;
+	Command putInGear;
 	
 	 Command autonomousCommand;
 	 
@@ -68,6 +70,8 @@ public class Robot extends TimedRobot {
 		pls = new PositionLSwitch();
 		wingSetup = new WingsOut();
 		wingSetup.start();
+		putInGear = new GearshiftHigh();
+		putInGear.start();
 		arm = new Arm();
 		compressor = new ACompressor();
 		
