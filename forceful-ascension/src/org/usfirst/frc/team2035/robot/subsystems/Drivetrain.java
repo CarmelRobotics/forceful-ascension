@@ -23,7 +23,7 @@ public class Drivetrain extends Subsystem {
 	private SpeedControllerGroup rightGroup;
 	private DifferentialDrive train;
 	private DoubleSolenoid gearShift;
-	
+	private int startingPos;
 	
 	public Drivetrain() {
     	super("Drivetrain");
@@ -35,6 +35,7 @@ public class Drivetrain extends Subsystem {
     	rightGroup = new SpeedControllerGroup(rightTop, rightBack);
     	train = new DifferentialDrive(leftGroup, rightGroup);
     	gearShift = new DoubleSolenoid(RobotMap.SOLE_GEARSHIFT_HIGH, RobotMap.SOLE_GEARSHIFT_LOW);
+    	startingPos = RobotMap.ARM_STARTING_POSITION;
     	leftTop.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		leftTop.setSelectedSensorPosition(startingPos, 0, 0);
 		rightTop.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
