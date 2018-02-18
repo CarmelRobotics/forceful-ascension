@@ -130,25 +130,25 @@ public class AutoSW1 extends Command {
         	}
         	else if (start == 1) {
         		spd1 = AutoValuesBetter.START_BRIDGE_SPD;
-        		spd2 = AutoValuesBetter.MIDBRIDGE_LEFTSHORT_SPD;
+        		spd2 = AutoValuesBetter.BRIDGEPOS2_LEFTSHORT_SPD;
         		spd3 = AutoValuesBetter.BRIDGE_SWITCHFRONT_SPD;
         		rot1 = AutoValuesBetter.TURN_LEFT_SPD;
         		rot2 = AutoValuesBetter.TURN_RIGHT_SPD;
         		t1 = AutoValuesBetter.START_BRIDGE_TIME;
         		t2 = AutoValuesBetter.TURN_LEFT_TIME;
-        		t3 = AutoValuesBetter.MIDBRIDGE_LEFTSHORT_TIME;
+        		t3 = AutoValuesBetter.BRIDGEPOS2_LEFTSHORT_TIME;
         		t4 = AutoValuesBetter.TURN_RIGHT_TIME;
         		t5 = AutoValuesBetter.BRIDGE_SWITCHFRONT_TIME;
         	}
         	else if (start == 2) {
         		spd1 = AutoValuesBetter.START_BRIDGE_SPD;
-        		spd2 = AutoValuesBetter.BRIDGE_CROSS_SPD;
+        		spd2 = AutoValuesBetter.BRIDGESIDE_CROSSSWITCH_SPD;
         		spd3 = AutoValuesBetter.BRIDGE_SWITCHFRONT_SPD;
         		rot1 = AutoValuesBetter.TURN_LEFT_SPD;
         		rot2 = AutoValuesBetter.TURN_RIGHT_SPD;
         		t1 = AutoValuesBetter.START_BRIDGE_TIME;
         		t2 = AutoValuesBetter.TURN_LEFT_TIME;
-        		t3 = AutoValuesBetter.BRIDGE_CROSS_TIME;
+        		t3 = AutoValuesBetter.BRIDGESIDE_CROSSSWITCH_TIME;
         		t4 = AutoValuesBetter.TURN_RIGHT_TIME;
         		t5 = AutoValuesBetter.BRIDGE_SWITCHFRONT_TIME;
         	}
@@ -157,25 +157,25 @@ public class AutoSW1 extends Command {
         {
         	if (start == 0) {
         		spd1 = AutoValuesBetter.START_BRIDGE_SPD;
-        		spd2 = AutoValuesBetter.BRIDGE_CROSS_SPD;
+        		spd2 = AutoValuesBetter.BRIDGESIDE_CROSSSWITCH_SPD;
         		spd3 = AutoValuesBetter.BRIDGE_SWITCHFRONT_SPD;
         		rot1 = AutoValuesBetter.TURN_RIGHT_SPD;
         		rot2 = AutoValuesBetter.TURN_LEFT_SPD;
         		t1 = AutoValuesBetter.START_BRIDGE_TIME;
         		t2 = AutoValuesBetter.TURN_RIGHT_TIME;
-        		t3 = AutoValuesBetter.BRIDGE_CROSS_TIME;
+        		t3 = AutoValuesBetter.BRIDGESIDE_CROSSSWITCH_TIME;
         		t4 = AutoValuesBetter.TURN_LEFT_TIME;
         		t5 = AutoValuesBetter.BRIDGE_SWITCHFRONT_TIME;
         	}
         	else if (start == 1) {
         		spd1 = AutoValuesBetter.START_BRIDGE_SPD;
-        		spd2 = AutoValuesBetter.MIDBRIDGE_LEFTSHORT_SPD;
+        		spd2 = AutoValuesBetter.BRIDGEPOS2_LEFTSHORT_SPD;
         		spd3 = AutoValuesBetter.BRIDGE_SWITCHFRONT_SPD;
         		rot1 = AutoValuesBetter.TURN_RIGHT_SPD;
         		rot2 = AutoValuesBetter.TURN_LEFT_SPD;
         		t1 = AutoValuesBetter.START_BRIDGE_TIME;
         		t2 = AutoValuesBetter.TURN_LEFT_TIME;
-        		t3 = AutoValuesBetter.MIDBRIDGE_LEFTSHORT_TIME;
+        		t3 = AutoValuesBetter.BRIDGEPOS2_LEFTSHORT_TIME;
         		t4 = AutoValuesBetter.TURN_RIGHT_TIME;
         		t5 = AutoValuesBetter.BRIDGE_SWITCHFRONT_TIME;
         	}

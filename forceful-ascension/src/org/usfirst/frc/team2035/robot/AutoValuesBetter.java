@@ -28,24 +28,22 @@ public class AutoValuesBetter {
 	public static final double START_SWITCHSIDE_SPD = 0.0;
 	public static final double START_SWITCHSIDE_TIME = 0.0;
 	
-	public static final double BRIDGE_SWITCHFRONT_SPD = 0.0;
-	public static final double BRIDGE_SWITCHFRONT_TIME = 0.0;
+	public static final double BRIDGE_SPD = 0.0;
 	
-	public static final double BRIDGE_CROSS_SPD = 0.0; //goes from one side of the bridge to the opposite side's switch
-	public static final double BRIDGE_CROSS_TIME = 0.0;
-	
-	public static final double MIDBRIDGE_LEFTSHORT_SPD = 0.0; //goes from middle of bridge (arrival from position 2) to front of left switch
-	public static final double MIDBRIDGE_LEFTSHORT_TIME = 0.0;
-	
-	public static final double MIDBRIDGE_RIGHTSHORT_SPD = 0.0;
-	public static final double MIDBRIDGE_RIGHTSHORT_TIME = 0.0;
+	//time it takes for robot to get from first position number to second position number on 
+	public static final double BRIDGE_0_1_TIME = 0.0;
+	public static final double BRIDGE_1_2_TIME = 0.0;
+	public static final double BRIDGE_2_3_TIME = 0.0;
+	public static final double BRIDGE_3_4_TIME = 0.0;
+	public static final double BRIDGE_4_5_TIME = 0.0;
 	
 	public static final double SWITCHSIDE_SHORTAPPROACH_SPD = 0.0;
 	public static final double SWITCHSIDE_SHORTAPPROACH_TIME = 0.0;
 	
 	//AutoSW2 Speeds, Times
 	
-	
+	public static final double BRDIGECUBE_SHORTAPPROACH_SPD = 0.0;
+	public static final double BRIDGECUBE_SHORTAPPROACH_TIME = 0.0;
 	
 	//AutoCL Speeds, Times
 	
@@ -60,5 +58,14 @@ public class AutoValuesBetter {
 	
 	public static final double BRIDGE_CROSSLINE_SPD = 0.0;
 	public static final double BRIDGE_CROSSLINE_TIME = 0.0;
+	
+	//AutoMID Speeds, Times
+	
+	public static final double SWITCHSIDE_SCALESIDE_SPD = 0.0; //goes from middle of bridge (arrival from position 2) to left side of field
+	public static final double SWITCHSIDE_SCALESIDE_TIME = 0.0;
+		
+	public static final double SCALESIDE_SHORTAPPROACH_SPD = 0.0;
+	public static final double SCALESIDE_SHORTAPPROACH_TIME = 0.0;
+		
 	
 }

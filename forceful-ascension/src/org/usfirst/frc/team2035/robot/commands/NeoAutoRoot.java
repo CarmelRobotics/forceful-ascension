@@ -18,9 +18,11 @@ public class NeoAutoRoot extends Command {
 	private char sw;
 	private int pos;
 	public OI oi;
-	public Timer sTimer;
+	public static Timer autoTimer;
 	private Drivetrain driver;
-	private double tCurrent;
+	private static double timerCurrent;
+	private int routeBeginPos;
+	private int routeEndPos;
 	Command bridge;
 	Command side;
 	
@@ -34,25 +36,39 @@ public class NeoAutoRoot extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	oi = new OI();
-    	sTimer = new Timer();
+    	autoTimer = new Timer();
     	driver = Robot.getDrivetrain();
-    	tCurrent = 0.0;
+    	setTimerCurrent(0.0);
     	endAuto = false;
-    	sTimer.start();
+    	routeBeginPos = 0;
+    	routeEndPos = 1;
+    	autoTimer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	while (!endAuto) {
+    		
     		if (autoRootStatus == 1) {
-    			while(sTimer.get() <= (AutoValuesBetter.START_BRIDGE_TIME))
+    			
+    			while(autoTimer.get() <= (getTimerCurrent() + AutoValuesBetter.START_BRIDGE_TIME))
     				driver.drive(-1*AutoValuesBetter.START_BRIDGE_SPD, 0.0);
-    			tCurrent = sTimer.get();
-    			//if (pos == 1 && sw == 'L')
+    			setTimerCurrent(autoTimer.get());
+    			
+    			if (pos == 0 && sw == 'L') {
+    				side = new NeoAutoSide(true, sw);
+    				side.start();
+    			} else if (pos == 2 && sw == 'R') {
+    				side = new NeoAutoSide(true, sw);
+    				side.start();
+    			} else {
+    				setStartPosRouteBegin(pos);
+    				setSwitchRouteEnd(pos);
+    				bridge = new NeoAutoBridge(pos, sw, true);
+    				bridge.start();
+    			}
     				
-    			//else if (pos == 1 && sw == 'L')
-    				
-    			//if ((pos == 1 && sw == 'L'
     		}	
     	}
     	
@@ -71,6 +87,54 @@ public class NeoAutoRoot extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
+    
+    private void setStartPosRouteBegin(int pos) {
+    	if (pos == 0)
+    		routeBeginPos = 0;
+    	else if (pos == 1)
+    		routeBeginPos = 3;
+    	else if (pos == 1)
+    		routeBeginPos = 5;
+    	else
+    		routeBeginPos = 0;
+    }
+    
+    private void setStartPosRouteEnd(int pos) {
+    	if (pos == 0)
+    		routeEndPos = 0;
+    	else if (pos == 1)
+    		routeEndPos = 3;
+    	else if (pos == 1)
+    		routeEndPos = 5;
+    	else
+    		routeEndPos = 0;
+    }
+    
+    private void setSwitchRouteBegin(int sw) { //if setStart is true, set switch values to the beginning of the route; else if false, set for end of route
+    	if (sw == 'L')
+    		routeBeginPos = 1;
+    	else if (sw == 'R')
+    		routeBeginPos = 4;
+    	else
+    		routeBeginPos = 0;
+    }
+    
+    private void setSwitchRouteEnd(int sw) { //if setStart is true, set switch values to the beginning of the route; else if false, set for end of route
+    	if (sw == 'L')
+    		routeEndPos = 1;
+    	else if (sw == 'R')
+    		routeEndPos = 4;
+    	else
+    		routeEndPos = 0;
+    }
+
+	public static double getTimerCurrent() {
+		return timerCurrent;
+	}
+
+	public static void setTimerCurrent(double timerCurrent) {
+		NeoAutoRoot.timerCurrent = timerCurrent;
+	}
     
     //private void routingMovements() {
     	//if ()

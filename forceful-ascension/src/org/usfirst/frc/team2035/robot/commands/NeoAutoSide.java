@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class NeoAutoSide extends Command {
 
-    public NeoAutoSide() {
+    public NeoAutoSide(boolean stopAtNearSwitch, char side) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
