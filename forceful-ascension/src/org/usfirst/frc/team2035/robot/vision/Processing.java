@@ -25,7 +25,7 @@ public class Processing {
 	static VisTracker tracker;
 	static Mat matOriginal;
 	static Mat matOutput;
-	static VideoCapture videoCapture;
+	static VideoCapture videoCapture; 
 	static double lengthBetweenContours;
 	static double distanceFromTarget;
 	static double angleToTarget;

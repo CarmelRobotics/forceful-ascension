@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		
 		arm = new Arm();
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		// chooser.addObject("My Auto", new MyAutoCommand()); 
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		OI.initialize();
