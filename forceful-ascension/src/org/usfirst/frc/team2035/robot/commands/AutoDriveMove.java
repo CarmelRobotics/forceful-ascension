@@ -27,6 +27,7 @@ public class AutoDriveMove extends Command {
 		in = inches;
 		spd = speed;
 		degrees = ((360*in)/(4.25*Math.PI));
+		System.out.println("in constrcut" + degrees);
 		counter = 0;
     }
 
@@ -38,15 +39,16 @@ public class AutoDriveMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drt.drive(-spd, 0.0);
-    	//if (counter % 30 == 0)
-    	//	System.out.println(drt.currentDegreesLeft());
-    	counter++;
+    	drt.driveCurve(-spd, 0.0, true);
+    	
+    		System.out.println("Current from Move: " + -drt.currentDegreesLeft());
+    		System.out.println("in ex" + degrees);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (drt.currentDegreesLeft() >= degrees)
+    	System.out.println("Target from Move: " + degrees);
+        if (-drt.currentDegreesLeft() >= degrees)
         	return true;
         else
         	return false;
@@ -54,10 +56,12 @@ public class AutoDriveMove extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	drt.drive(0.0, 0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	drt.drive(0.0, 0.0);
     }
 }

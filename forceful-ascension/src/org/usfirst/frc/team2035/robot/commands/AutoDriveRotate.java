@@ -39,13 +39,14 @@ public class AutoDriveRotate extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	drt.drive(0.0, spd);
-    	//if (counter % 30 == 0)
-    	//	System.out.println(drt.currentDegreesLeft());
+    	if (counter % 5 == 0)
+    		System.out.println("Current from Rotate: " + drt.currentDegreesLeft());
     	counter++;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	System.out.println("Goal from Rotate: " + degrees);
         if (drt.currentDegreesLeft() >= degrees)
         	return true;
         else
@@ -54,10 +55,12 @@ public class AutoDriveRotate extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	drt.drive(0.0, 0.0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	drt.drive(0.0, 0.0);
     }
 }

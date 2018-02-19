@@ -65,6 +65,7 @@ public class Drivetrain extends Subsystem {
 	
 	public double currentDegreesLeft() {
     	//return (leftTop.getSelectedSensorPosition(0));
+		System.out.println(leftTop.getSelectedSensorPosition(0)/(4096/360));
     	return (leftTop.getSelectedSensorPosition(0)/(4096/360));
     }
     

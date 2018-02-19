@@ -14,20 +14,20 @@ package org.usfirst.frc.team2035.robot;
  */
 public class AutoValuesBest { 
 	
-	public static final double DEFAULT_TURN_SPEED = 0.0;
-	public static final double DEFAULT_MOVE_SPEED = 0.0;
-	public static final double SLOW_MOVE_SPEED = 0.0;
+	public static final double DEFAULT_TURN_SPEED = 0.6;
+	public static final double DEFAULT_MOVE_SPEED = 0.8;
+	public static final double SLOW_MOVE_SPEED = 0.5;
 	
-	public static final double TURN90_RIGHT_INCHES = 0.0;
+	public static final double TURN90_RIGHT_INCHES = 200; //20
 	public static final double TURN90_RIGHT_SPEED = 0.0;
 	
-	public static final double TURN90_LEFT_INCHES = 0.0;
+	public static final double TURN90_LEFT_INCHES = 20;
 	public static final double TURN90_LEFT_SPEED = 0.0;
 	
 	public static final double STARTPOS_SWITCHSIDE_INCHES = 168;
 	public static final double STARTPOS_SWITCHSIDE_SPEED = 0.8;
 	
-	public static final double SWITCHSIDE_APPROACH_INCHES = 10;
+	public static final double SWITCHSIDE_APPROACH_INCHES = 150; //10
 	public static final double SWITCHSIDE_APPROACH_SPEED = 0.5;
 	
 	public static final double STARTPOS2_RIGHTSWITCHFRONT_INCHES = 71; //right-switch-front

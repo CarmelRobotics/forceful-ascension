@@ -167,12 +167,12 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		drt.drive(0.8, 0.0);
-		if (counter%10 == 0) {
-		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
-		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
-		}
-		counter++;
+		//drt.drive(0.8, 0.0);
+		//if (counter%10 == 0) {
+		//System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
+		//System.out.println("Right Encoder: "+ drt.currentDegreesRight());
+		//}
+		//counter++;
 	}
 
 	@Override
