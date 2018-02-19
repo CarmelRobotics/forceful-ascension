@@ -121,9 +121,9 @@ public class Robot extends TimedRobot {
 		boolean secondBox;
 		
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
-		swNear = swPos.charAt(0);
+		swNear = 'L';//swPos.charAt(0);
 		//swMid = swPos.charAt(1);
-		startPos = pls.getRobotStart();
+		startPos = 0;//pls.getRobotStart();
 		//sidePass = RobotMap.SIDE;
 		//secondBox = RobotMap.SECOND_BOX;
 		

@@ -39,8 +39,8 @@ public class AutoDriveMove extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	drt.drive(-spd, 0.0);
-    	if (counter % 30 == 0)
-    		System.out.println(drt.currentDegreesLeft());
+    	//if (counter % 30 == 0)
+    	//	System.out.println(drt.currentDegreesLeft());
     	counter++;
     }
 

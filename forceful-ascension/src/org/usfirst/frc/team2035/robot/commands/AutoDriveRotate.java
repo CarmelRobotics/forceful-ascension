@@ -39,8 +39,8 @@ public class AutoDriveRotate extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	drt.drive(0.0, spd);
-    	if (counter % 30 == 0)
-    		System.out.println(drt.currentDegreesLeft());
+    	//if (counter % 30 == 0)
+    	//	System.out.println(drt.currentDegreesLeft());
     	counter++;
     }
 

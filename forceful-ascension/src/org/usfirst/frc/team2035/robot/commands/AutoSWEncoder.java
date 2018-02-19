@@ -32,9 +32,13 @@ public class AutoSWEncoder extends Command {
     protected void execute() {
     	
     	if (start == 0) {
+    		System.out.println("start auto");
     		move(AutoValuesBest.STARTPOS_SWITCHSIDE_INCHES, AutoValuesBest.DEFAULT_MOVE_SPEED);
+    		System.out.println("now starting to turn");
     		rotate(AutoValuesBest.TURN90_RIGHT_INCHES, AutoValuesBest.DEFAULT_TURN_SPEED);
+    		System.out.println("approaching switch");
     		move(AutoValuesBest.SWITCHSIDE_APPROACH_INCHES, AutoValuesBest.SLOW_MOVE_SPEED);
+    		System.out.println("done!");
     	} 
     	
     	else if (start == 1 && sw == 'R') {
@@ -63,7 +67,7 @@ public class AutoSWEncoder extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
