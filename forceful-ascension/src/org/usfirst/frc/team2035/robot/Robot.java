@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2035.robot.commands.AutoCL;
 import org.usfirst.frc.team2035.robot.commands.AutoSW1;
+import org.usfirst.frc.team2035.robot.commands.AutoSWEncoder;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
@@ -121,10 +122,13 @@ public class Robot extends TimedRobot {
 		
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
-		swMid = swPos.charAt(1);
+		//swMid = swPos.charAt(1);
 		startPos = pls.getRobotStart();
-		sidePass = RobotMap.SIDE;
-		secondBox = RobotMap.SECOND_BOX;
+		//sidePass = RobotMap.SIDE;
+		//secondBox = RobotMap.SECOND_BOX;
+		
+		autonomousCommand = new AutoSWEncoder(startPos, swNear);
+		
 		/*
 		if (RobotMap.ROUTING == 0) //put box on team switch
 			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);

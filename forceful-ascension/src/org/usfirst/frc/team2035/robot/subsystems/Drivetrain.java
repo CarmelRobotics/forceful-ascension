@@ -64,13 +64,17 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public double currentDegreesLeft() {
-    	return (leftTop.getSelectedSensorPosition(0));
-    	//return (leftTop.getSelectedSensorPosition(0)/(4096/360));
+    	//return (leftTop.getSelectedSensorPosition(0));
+    	return (leftTop.getSelectedSensorPosition(0)/(4096/360));
     }
     
     public double currentDegreesRight() {
-    	return (rightTop.getSelectedSensorPosition(0));
-    	//return (rightTop.getSelectedSensorPosition(0)/(4096/360));
+    	//return (rightTop.getSelectedSensorPosition(0));
+    	return (rightTop.getSelectedSensorPosition(0)/(4096/360));
+    }
+    
+    public void resetEncoderLeft() {
+    	leftTop.setSelectedSensorPosition(0, 0, 0);
     }
 	
 	/*
