@@ -6,15 +6,15 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArmExtend extends Command {
+public class ArmReverse extends Command {
 	
 	private Arm arm;
-	
 	public static OI oi;
 	
-	public ArmExtend() {
+	
+	public ArmReverse() {
 		// Use requires() here to declare subsystem dependencies
-		super("ArmExtend");
+		super("ArmReverse");
 		
 		arm = Robot.getArm();
 		
@@ -31,7 +31,7 @@ public class ArmExtend extends Command {
 	@Override
 	protected void execute() {
 		
-		arm.extend();
+		arm.extendReverse();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

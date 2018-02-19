@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2035.robot.commands;
 
+import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
@@ -9,7 +10,7 @@ public class ArmChangePosition extends Command {
 	
 	private Arm arm;
 	private double desiredPos;
-	
+	public static OI oi;
 	
 	public ArmChangePosition(double desiredPos) {
 		// Use requires() here to declare subsystem dependencies
@@ -17,25 +18,27 @@ public class ArmChangePosition extends Command {
 		
 		arm = Robot.getArm();
 		this.desiredPos = desiredPos;
+		System.out.println("hi from acp");
 		requires(Robot.getArm());
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		oi = new OI();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		
-		arm.armChangeAngle(desiredPos);
+		System.out.println("hi from acp");
+		//arm.armChangeAngle(desiredPos);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return true;
+		return arm.armChangeAngle(desiredPos);
 	}
 
 	// Called once after isFinished returns true

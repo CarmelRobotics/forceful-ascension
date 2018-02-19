@@ -25,7 +25,7 @@ public class RobotMap {
 	
 	//Arm (Tyler and Fang's Code)
 		public static final int ARM_ANGLE_SPEED = 1;
-		public static final int ARM_EXTEND_SPEED = 1;
+		public static final double ARM_EXTEND_SPEED = 1.0;
 		public static final int ARM_STARTING_POSITION = 341; //temp
 		
 	/* PWM (Ari's Code)*/ 
@@ -71,7 +71,7 @@ public class RobotMap {
 	/* Joystick */
 	public static final int JOY_DRIVE_USB = 0;
 	public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
-	public static final int JOY_ARM_USB = 1;
+	public static final int JOY_ARM_USB = 2;
 	public static final Joystick JOY_ARM = new Joystick(JOY_ARM_USB);
 	/* Joystick (Fang/Tyler's) */
 	//public static final int JOYSTICK_A_USB_NUMBER = 0;
@@ -100,6 +100,6 @@ public class RobotMap {
 	//public static final JoystickButton RESET_ARM_ANGLE = new JoystickButton(JOY_DRIVE,11);//change later 
 	  
 	public static final JoystickButton ARM_EXTEND = new JoystickButton(JOY_DRIVE,11);
-	
+	public static final JoystickButton ARM_REVERSE = new JoystickButton(JOY_ARM,11);
 		
 }

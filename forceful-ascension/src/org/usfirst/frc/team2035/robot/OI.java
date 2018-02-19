@@ -14,6 +14,7 @@ import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import org.usfirst.frc.team2035.robot.commands.ArmExtend;
+import org.usfirst.frc.team2035.robot.commands.ArmReverse;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -30,7 +31,7 @@ public class OI {
 	public static Button cubeOut; 
 	public static Button wingsOut;
 	public static Button armExtend;
-	
+	public static Button armReverse;
 	
 	public static Button changeArmAngleTo0;
 	public static Button changeArmAngleTo1;
@@ -58,6 +59,7 @@ public class OI {
 		cubeOut = RobotMap.CUBE_OUT;
 		
 		armExtend = RobotMap.ARM_EXTEND;
+		armReverse = RobotMap.ARM_REVERSE;
 		
 		wingsOut = RobotMap.WINGS_OUT;
 		
@@ -71,6 +73,7 @@ public class OI {
 		
 		wingsOut.whenPressed(new WingsOut());
 		armExtend.whenPressed(new ArmExtend());
+		armReverse.whenPressed(new ArmReverse());
 		gearshiftHigh.whileHeld(new GearshiftHigh());
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
