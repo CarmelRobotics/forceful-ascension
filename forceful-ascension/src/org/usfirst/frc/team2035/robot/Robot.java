@@ -107,7 +107,7 @@ public class Robot extends TimedRobot {
 	        	}
 	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
 	        
-	    });
+	    }); 
 	    visionThread.start();
 	}
 	/**

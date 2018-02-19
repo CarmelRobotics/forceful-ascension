@@ -34,9 +34,9 @@ public class VisTracker implements VisionPipeline {
 
 		static {
 			System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-		}
+		} 
 
-		/**
+		/** 
 		 * This is the primary method that runs the entire pipeline and updates the outputs.
 		 */
 		@Override	public void process(Mat source0) {
@@ -52,7 +52,7 @@ public class VisTracker implements VisionPipeline {
 			double[] hsvThresholdSaturation = {0.0, 89.0909090909091};
 			double[] hsvThresholdValue = {215.1412429378531, 255.0};
 			hsvThreshold(hsvThresholdInput, hsvThresholdHue, hsvThresholdSaturation, hsvThresholdValue, hsvThresholdOutput);
-
+ 
 			// Step Find_Contours0:
 			Mat findContoursInput = hsvThresholdOutput;
 			boolean findContoursExternalOnly = false;
