@@ -27,7 +27,7 @@ public class AutoDriveRotate extends Command {
 		in = inches;
 		spd = speed;
 		degrees = ((360*in)/(4.25*Math.PI));
-		counter = 0.0;
+		counter = 0.0; //test
     }
 
     // Called just before this Command runs the first time
