@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="forceful-ascension/src"/>
+	<classpathentry kind="src" path="testbot/src"/>
+	<classpathentry exported="true" kind="lib" path="testbot/build/jars/cscore.jar"/>
+	<classpathentry exported="true" kind="lib" path="testbot/build/jars/ntcore.jar"/>
+	<classpathentry exported="true" kind="lib" path="testbot/build/jars/opencv.jar"/>
+	<classpathentry exported="true" kind="lib" path="testbot/build/jars/WPILib.jar"/>
+	<classpathentry exported="true" kind="lib" path="testbot/build/jars/wpiutil.jar"/>
+	<classpathentry exported="true" kind="lib" path="testbot/dist/FRCUserProgram.jar"/>
+	<classpathentry kind="output" path="testbot/bin"/>
+</classpath>

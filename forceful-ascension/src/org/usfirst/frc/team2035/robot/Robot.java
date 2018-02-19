@@ -23,8 +23,6 @@ import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
-import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
-
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
@@ -41,12 +39,18 @@ public class Robot extends TimedRobot {
 	 
 	private VisionThread visionThread;
 	private double centerX = 0.0;
+	private double tarPixelWidth = 0.0;
+	private double distance = 0.0;
+	
 	private final Object imgLock = new Object();
 	
 	private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
+	private static final int DISTANCE_CONSTANT = 2560;
+	private static final double FOV_ANGLE = 68.5;
 	
 	private static Arm arm;
+	
 	
 	private String gameData;
 	private CvSource outputStream;
@@ -54,7 +58,6 @@ public class Robot extends TimedRobot {
 	
 	//private char switchLocation;
 	
-	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 
 	Command m_autonomousCommand;
@@ -88,7 +91,12 @@ public class Robot extends TimedRobot {
 	            	Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
 	            	synchronized (imgLock) {
 	                    centerX = r.x + (r.width / 2);
+	                    tarPixelWidth = r.width;
+	        	        distance = (DISTANCE_CONSTANT / 2 * tarPixelWidth * Math.tan(FOV_ANGLE));
+
 		                System.out.println("Center X Value = " + centerX);
+		                System.out.println("Distance = " + centerX + " in");
+		                
 	            	}
 	            	
 		        	//outputStream.putFrame(Imgproc.boundingRect(pipeline.filterContoursOutput().get(0)));
@@ -166,6 +174,7 @@ public class Robot extends TimedRobot {
 		double centerX;
 	    synchronized (imgLock) {
 	        centerX = this.centerX;
+	        distance = this.distance;
 	    }
 	    outputStream.putFrame(tracker.hsvThresholdOutput());
 	    
