@@ -176,7 +176,10 @@ public class Arm extends Subsystem{
 		hasNotMoved = true;
 	}
 	
-	
+	public void armTest () {
+		
+		angler.set(ControlMode.PercentOutput, -0.3);
+	}
 	
 	public void openHangerClaws() {
 		armSolenoid.set(true);

@@ -12,6 +12,7 @@ import org.usfirst.frc.team2035.robot.commands.CubeOut;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
+import org.usfirst.frc.team2035.robot.commands.testArmMotor;
 import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import org.usfirst.frc.team2035.robot.commands.ArmExtend;
 import org.usfirst.frc.team2035.robot.commands.ArmReverse;
@@ -40,6 +41,7 @@ public class OI {
 	public static Button changeArmAngleTo4;
 	public static Button resetArmAngle;
 	
+	public static Button armTest;
 	
 	public static void initialize() {
 		/**
@@ -51,6 +53,7 @@ public class OI {
 		changeArmAngleTo3 = RobotMap.CHANGE_ARM_ANGLE_3;
 		changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_4;
 		//resetArmAngle = RobotMap.RESET_ARM_ANGLE;
+		armTest = RobotMap.ARM_TEST;
 		
 		gearshiftHigh = RobotMap.GEARSHIFT_HIGH;
 		gearshiftLow = RobotMap.GEARSHIFT_LOW;
@@ -78,5 +81,7 @@ public class OI {
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());
+		
+		armTest.whenPressed(new testArmMotor());
 	}
 }
