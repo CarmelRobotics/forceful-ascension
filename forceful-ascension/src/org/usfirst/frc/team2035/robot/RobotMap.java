@@ -88,8 +88,8 @@ public class RobotMap {
 	public static final JoystickButton ARM_REVERSE = new JoystickButton(JOY_ARM,2);
 	public static final JoystickButton ARM_EXTEND = new JoystickButton(JOY_ARM,3);
 	public static final JoystickButton ARM_TEST = new JoystickButton(JOY_ARM,4);
-    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(JOY_ARM,6); 
-	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(JOY_ARM,7);
+    public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(JOY_DRIVE,6); 
+	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(JOY_DRIVE,7);
 	public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(JOY_ARM,8);
 	public static final JoystickButton CHANGE_ARM_ANGLE_3 = new JoystickButton(JOY_ARM,9);
 	public static final JoystickButton CHANGE_ARM_ANGLE_4 = new JoystickButton(JOY_ARM,10);

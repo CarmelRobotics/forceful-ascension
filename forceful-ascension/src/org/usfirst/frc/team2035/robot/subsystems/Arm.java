@@ -99,7 +99,7 @@ public class Arm extends Subsystem{
 	
 	
 	public boolean armChangeAngle(double desiredPos) { //This method serves to change the arm's angle to any given angle
-		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
+		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		if (currentPos < desiredPos && hasNotMoved) {  //If we need to move the arm up
 			armRaiseAngle(currentPos, desiredPos); //calls the method defined below //armRaise
 			return false; //movement not finished
@@ -131,13 +131,13 @@ public class Arm extends Subsystem{
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		if(desiredPos - currentPos >= 5) //If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, -0.2); 
+			angler.set(ControlMode.PercentOutput, 0.2); 
 		}
 		else //If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, -0.15);
+			angler.set(ControlMode.PercentOutput, 0.15);
 		}
-		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
+		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
 		System.out.println("raising, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos >= desiredPos) {
@@ -151,13 +151,13 @@ public class Arm extends Subsystem{
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		if(desiredPos - currentPos <= -5)//If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, 0.2);
+			angler.set(ControlMode.PercentOutput, -0.2);
 		}
 		else//If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, 0.15);
+			angler.set(ControlMode.PercentOutput, -0.15);
 		}
-		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
+		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
 		System.out.println("lowering, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos <= desiredPos) {
