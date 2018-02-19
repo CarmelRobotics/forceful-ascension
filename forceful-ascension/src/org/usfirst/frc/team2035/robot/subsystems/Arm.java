@@ -38,7 +38,8 @@ public class Arm extends Subsystem{
 		hasNotMoved = true;
 		currentPos = startingPos;
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		angler.setSelectedSensorPosition(startingPos, 0, 0);
+		//angler.setSelectedSensorPosition(startingPos, 0, 0);
+		angler.setSelectedSensorPosition(0, 0, 0);
 		//System.out.println(angler.getSelectedSensorPosition(0)/(4096/360));
 		
 		
@@ -58,6 +59,12 @@ public class Arm extends Subsystem{
 		
 		
 		
+	}
+	
+	public void extendReverse() {
+		armExtender1.set(-RobotMap.ARM_EXTEND_SPEED);
+		armExtender2.set(-RobotMap.ARM_EXTEND_SPEED);
+		armExtender3.set(-RobotMap.ARM_EXTEND_SPEED);
 	}
 	
 	public void extendStop() {
@@ -94,14 +101,14 @@ public class Arm extends Subsystem{
 	public boolean armChangeAngle(double desiredPos) { //This method serves to change the arm's angle to any given angle
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		if (currentPos < desiredPos && hasNotMoved) {  //If we need to move the arm up
-			armRaiseAngle(currentPos, desiredPos); //calls the method defined below
+			armRaiseAngle(currentPos, desiredPos); //calls the method defined below //armRaise
 			return false; //movement not finished
 		}
 		
 		
 		
 		else if (currentPos > desiredPos && hasNotMoved) { //If we need to move the arm down
-			armLowerAngle(currentPos, desiredPos); //calls the other method defined below
+			armLowerAngle(currentPos, desiredPos); //calls the other method defined below //armLower
 			return false; //movement not finished
 		}
 		
@@ -122,13 +129,13 @@ public class Arm extends Subsystem{
 	{ //Code to raise the arm
 		//leftArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(RobotMap.ARM_ANGLE_SPEED);
-		if(desiredPos - currentPos >= 10) //If we are far away from our destination angle
+		if(desiredPos - currentPos >= 5) //If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, 0.4); 
+			angler.set(ControlMode.PercentOutput, -0.2); 
 		}
 		else //If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, 0.2);
+			angler.set(ControlMode.PercentOutput, -0.15);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
@@ -142,13 +149,13 @@ public class Arm extends Subsystem{
 	{ //Code to lower the arm
 		//leftArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
 		//rightArmAngler.set(-RobotMap.ARM_ANGLE_SPEED);
-		if(desiredPos - currentPos >= 10)//If we are far away from our destination angle
+		if(desiredPos - currentPos <= -5)//If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, -0.4);
+			angler.set(ControlMode.PercentOutput, 0.2);
 		}
 		else//If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, -0.2);
+			angler.set(ControlMode.PercentOutput, 0.15);
 		}
 		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
 		
