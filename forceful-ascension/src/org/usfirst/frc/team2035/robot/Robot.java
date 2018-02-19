@@ -21,7 +21,6 @@ import org.usfirst.frc.team2035.robot.vision.VisTracker;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
@@ -46,8 +45,8 @@ public class Robot extends TimedRobot {
 	
 	private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
-	private static final int DISTANCE_CONSTANT = 2560;
-	private static final double FOV_ANGLE = 68.5;
+	private static final double DISTANCE_CONSTANT = 7.25*320 ;
+	private static final double FOV_ANGLE = 1.048375115087971;
 	
 	private static Arm arm;
 	
@@ -70,7 +69,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
 		
 		arm = new Arm();
 		// chooser.addObject("My Auto", new MyAutoCommand()); 
@@ -81,25 +79,30 @@ public class Robot extends TimedRobot {
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
 	    tracker = new VisTracker();
+	    
+    	System.out.println("Vision initializing...");
 
 	    visionThread = new VisionThread(camera, tracker, pipeline -> {
-	    	System.out.println("Vision initializing...");
 
 
 	        	if (!pipeline.filterContoursOutput().isEmpty()) {
 	        		
 	            	Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-	            	synchronized (imgLock) {
+	            	synchronized (imgLock) { 
+
 	                    centerX = r.x + (r.width / 2);
 	                    tarPixelWidth = r.width;
-	        	        distance = (DISTANCE_CONSTANT / 2 * tarPixelWidth * Math.tan(FOV_ANGLE));
-
+	        	        //distance = (DISTANCE_CONSTANT / (2 *tarPixelWidth * Math.atan(FOV_ANGLE)));
+	        	        //double angle = Math.atan((8*320)/(tarPixelWidth * 33.5));
+	        	        
+	        	        distance = ((DISTANCE_CONSTANT) / ((tarPixelWidth * Math.tan(FOV_ANGLE))));
+	        	        //System.out.println("FOV Angle = " + angle);
 		                System.out.println("Center X Value = " + centerX);
-		                System.out.println("Distance = " + centerX + " in");
+		                System.out.println("Distance = " + distance + " in");
 		                
 	            	}
 	            	
-		        	//outputStream.putFrame(Imgproc.boundingRect(pipeline.filterContoursOutput().get(0)));
+		        	//outputStream.putFrame(r);
 
 	        	}
 	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
