@@ -45,8 +45,8 @@ public class Robot extends TimedRobot {
 	
 	private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
-	private static final double DISTANCE_CONSTANT = 7.25*320 ;
-	private static final double FOV_ANGLE = 1.048375115087971;
+	private static final double FOV_ANGLE = 1.04; //radian
+	private static final double TARGET_WIDTH = 8; //inches
 	
 	private static Arm arm;
 	
@@ -84,7 +84,6 @@ public class Robot extends TimedRobot {
 
 	    visionThread = new VisionThread(camera, tracker, pipeline -> {
 
-
 	        	if (!pipeline.filterContoursOutput().isEmpty()) {
 	        		
 	            	Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
@@ -92,20 +91,19 @@ public class Robot extends TimedRobot {
 
 	                    centerX = r.x + (r.width / 2);
 	                    tarPixelWidth = r.width;
-	        	        //distance = (DISTANCE_CONSTANT / (2 *tarPixelWidth * Math.atan(FOV_ANGLE)));
+	        	        //distance = (DISTANCE_CONSTANT / (2 *tarPixelWidth * Math.atan()));
 	        	        //double angle = Math.atan((8*320)/(tarPixelWidth * 33.5));
 	        	        
-	        	        distance = ((DISTANCE_CONSTANT) / ((tarPixelWidth * Math.tan(FOV_ANGLE))));
+	        	        distance = (TARGET_WIDTH * IMG_WIDTH) / (2 * Math.tan(FOV_ANGLE) * tarPixelWidth);
 	        	        //System.out.println("FOV Angle = " + angle);
-		                System.out.println("Center X Value = " + centerX);
-		                System.out.println("Distance = " + distance + " in");
 		                
+	    	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
+
 	            	}
 	            	
 		        	//outputStream.putFrame(r);
 
 	        	}
-	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
 	        
 	    }); 
 	    visionThread.start();
@@ -175,15 +173,19 @@ public class Robot extends TimedRobot {
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
 		double centerX;
+		double distance;
+		double tarPixelWidth;
+		
 	    synchronized (imgLock) {
 	        centerX = this.centerX;
+	        tarPixelWidth = this.tarPixelWidth;
 	        distance = this.distance;
 	    }
-	    outputStream.putFrame(tracker.hsvThresholdOutput());
-	    
 	    double turn = centerX - (IMG_WIDTH / 2);
 	    //drive.arcadeDrive(-0.6, turn * 0.005);
-		
+	    System.out.println("Center X Value = " + centerX);
+	    System.out.println("Distance = " + distance + " in");
+        System.out.println("Width = " + tarPixelWidth + " px");
 		//Processing camProcess = new Processing();
 		//System.out.println("yes");
 		
