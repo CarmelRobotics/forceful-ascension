@@ -34,20 +34,20 @@ public class RobotMap {
 	public static final double ARM_POSITION_4 = 2467; // 90 degrees on arm gear
 		
 	// PWM  
-
+	
+	public static final int RB_DRIVETRAIN_MOTOR_PWM = 0; // 0
 	public static final int ARM_EXTEND_1 = 1; 
 	public static final int ARM_EXTEND_2 = 2; 
 	public static final int ARM_EXTEND_3 = 3; 
-		
 	public static final int LB_DRIVETRAIN_MOTOR_PWM = 4; // LB - left bottom	4
-	public static final int RB_DRIVETRAIN_MOTOR_PWM = 0; // 0
+	
+	
 	public static final int R_CUBEMECH_MOTOR_PWM = 6;
-	public static final int L_CUBEMECH_MOTOR_PWM = 9;
+	public static final int L_CUBEMECH_MOTOR_PWM = 7;
 
 	
 	/* DIO */
-	public static final int LIMITSWITCH_L = 0;
-	public static final int LIMITSWITCH_R = 1;
+	
 	
 	/* Motor Speeds */
 	public static final double CUBEMECH_IN_SPEED = 0.6;
@@ -60,7 +60,10 @@ public class RobotMap {
 	public static final int SOLE_GEARSHIFT_HIGH = 0;
 	public static final int SOLE_GEARSHIFT_LOW = 1;
 	public static final int WINGS = 2;
-	public static final int ARM_SOLENOID = 3;
+	public static final int CUBE_SOLENOID_OPEN = 3;
+	public static final int CUBE_SOLENOID_CLOSE = 4;
+	public static final int ARM_LATCH_OPEN = 5;
+	public static final int ARM_LATCH_CLOSE = 6;
 	
 	
 	
@@ -80,18 +83,20 @@ public class RobotMap {
     
 	
 	/* Buttons (Ari's)*/ 
-	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 5);
-	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 4);
-	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 3);
-	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 2);
 	public static final JoystickButton WINGS_OUT = new JoystickButton(JOY_DRIVE, 1);
+	public static final JoystickButton CUBE_OUT = new JoystickButton(JOY_DRIVE, 2);
+	public static final JoystickButton CUBE_IN = new JoystickButton(JOY_DRIVE, 3);
+	public static final JoystickButton GEARSHIFT_LOW = new JoystickButton(JOY_DRIVE, 4);
+	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 5);
 	
+	public static final JoystickButton ARM_LATCH = new JoystickButton(JOY_DRIVE, 6);
+	
+	public static final JoystickButton ARM_MANUAL_LOWER = new JoystickButton(JOY_DRIVE,10); 
 	public static final JoystickButton ARM_MANUAL_RAISE = new JoystickButton(JOY_DRIVE,11); 
-	 public static final JoystickButton ARM_MANUAL_LOWER = new JoystickButton(JOY_DRIVE,10); 
 	
+	public static final JoystickButton OPEN_HANGER = new JoystickButton(JOY_ARM, 1);
 	public static final JoystickButton ARM_CLIMB = new JoystickButton(JOY_ARM,2);
-	public static final JoystickButton ARM_REVERSE = new JoystickButton(JOY_ARM,3);
-	public static final JoystickButton ARM_TEST = new JoystickButton(JOY_ARM,4);
+	public static final JoystickButton ARM_EXTEND = new JoystickButton(JOY_ARM,3);
     public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(JOY_ARM,6); 
 	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(JOY_ARM,7);
 	public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(JOY_ARM,8);

@@ -2,6 +2,7 @@ package org.usfirst.frc.team2035.robot.commands;
 
 import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
+import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,14 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class OpenHangerClaws extends Command{
 	
-	private Arm arm;
+	private CubeMech cm;
 
 	public OpenHangerClaws() {
 		super("OpenHangerClaws");
 		
-		arm = Robot.getArm();
+		cm = Robot.getCubeMech();
 		
-		requires(Robot.getArm());
+		requires(Robot.getCubeMech());
 		
 	}
 	
@@ -29,7 +30,7 @@ public class OpenHangerClaws extends Command{
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		arm.openHangerClaws();
+		cm.openHangerClaws();
 		
 	}
 
@@ -42,7 +43,7 @@ public class OpenHangerClaws extends Command{
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		arm.closeHangerClaws();
+		cm.closeHangerClaws();
 		
 	}
 
@@ -50,7 +51,7 @@ public class OpenHangerClaws extends Command{
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		
+		cm.closeHangerClaws();
 		
 	}
 
