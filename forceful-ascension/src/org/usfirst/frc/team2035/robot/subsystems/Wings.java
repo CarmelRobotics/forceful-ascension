@@ -13,6 +13,7 @@ public class Wings extends Subsystem {
 	private Solenoid wings; //solenoid keeping wings up
 	
 	public Wings() {
+		super("wings");
 		wings = new Solenoid(RobotMap.WINGS);
 	}
 
