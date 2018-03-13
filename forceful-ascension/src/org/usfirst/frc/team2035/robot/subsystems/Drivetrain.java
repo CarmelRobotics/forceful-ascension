@@ -64,14 +64,23 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public double currentDegreesLeft() {
-    	return (leftTop.getSelectedSensorPosition(0));
-    	//return (leftTop.getSelectedSensorPosition(0)/(4096/360));
+    	//return (leftTop.getSelectedSensorPosition(0));
+    	return (.1305*leftTop.getSelectedSensorPosition(0)/(4096/360));//.1305
     }
     
     public double currentDegreesRight() {
-    	return (rightTop.getSelectedSensorPosition(0));
-    	//return (rightTop.getSelectedSensorPosition(0)/(4096/360));
+    	//return (rightTop.getSelectedSensorPosition(0));
+    	return (.1305*rightTop.getSelectedSensorPosition(0)/(4096/360));
     }
+	public void resetLeft() {
+		leftTop.setSelectedSensorPosition(0, 0, 0);
+	}
+    
+	public void stop() {
+		train.arcadeDrive(0,0);
+		
+	}
+	
 	
 	/*
 	public void testMotor(double heyEveryoneThisIsAVariableWow) {

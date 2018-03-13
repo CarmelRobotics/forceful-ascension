@@ -6,19 +6,18 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class testArmMotor extends Command {
+public class ArmClimb extends Command {
 	
 	private Arm arm;
-
+	
 	public static OI oi;
 	
-	public testArmMotor() {
+	public ArmClimb() {
 		// Use requires() here to declare subsystem dependencies
-		super("testArmMotor");
+		super("ArmClimb");
 		
 		arm = Robot.getArm();
 		
-	
 		requires(Robot.getArm());
 	}
 
@@ -31,7 +30,8 @@ public class testArmMotor extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		//arm.armTest();
+		
+		arm.climb();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -43,13 +43,13 @@ public class testArmMotor extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		arm.armAnglerStop();
+		arm.extendStop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		arm.armAnglerStop();
+		arm.extendStop();
 	}
 }

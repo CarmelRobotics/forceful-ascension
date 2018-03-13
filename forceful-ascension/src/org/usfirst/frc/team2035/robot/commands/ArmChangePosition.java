@@ -2,6 +2,7 @@ package org.usfirst.frc.team2035.robot.commands;
 
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
+import org.usfirst.frc.team2035.robot.RobotMap;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -45,6 +46,7 @@ public class ArmChangePosition extends Command {
 	@Override
 	protected void end() {
 		arm.armAnglerStop();
+		//arm.armChangeAngle(RobotMap.ARM_POSITION_0);
 	}
 
 	// Called when another command which requires one or more of the same
