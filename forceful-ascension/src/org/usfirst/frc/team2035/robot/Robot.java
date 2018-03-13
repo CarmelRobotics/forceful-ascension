@@ -25,7 +25,7 @@ import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team2035.robot.subsystems.PositionLSwitch;
+
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 import org.usfirst.frc.team2035.robot.subsystems.ACompressor;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
 	public static CubeMech cbm;
 	public static Wings wing;
 	public static Drivetrain drt;
-	public static PositionLSwitch pls;
+
 	public static CameraServer cms;
 	public static ACompressor compressor;
 	public static OI oi;
@@ -70,7 +70,7 @@ public class Robot extends TimedRobot {
 		cbm = new CubeMech();
 		wing = new Wings();
 		drt = new Drivetrain();
-		pls = new PositionLSwitch();
+
 		putInGear = new GearshiftHigh();
 		putInGear.start();
 		arm = new Arm();
@@ -118,11 +118,11 @@ public class Robot extends TimedRobot {
 		int startPos;
 		char sidePass;
 		boolean secondBox;
-		
+		drt.resetLeft();
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
 		swMid = swPos.charAt(1);
-		startPos = pls.getRobotStart();
+
 		sidePass = RobotMap.SIDE;
 		secondBox = RobotMap.SECOND_BOX;
 		/*
@@ -161,14 +161,24 @@ public class Robot extends TimedRobot {
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
-	public void autonomousPeriodic() {
+	public void autonomousPeriodic() { //works perfectly at drive .4
 		Scheduler.getInstance().run();
-		drt.drive(0.8, 0.0);
-		if (counter%10 == 0) {
 		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
 		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
+		if (360 - drt.currentDegreesLeft() < 100) {
+			drt.drive(.4, 0);
+			System.out.println("slow");
 		}
-		counter++;
+		else if ((drt.currentDegreesLeft()) < 360) {
+			drt.drive(0.6, 0.0);
+			System.out.println("fast");
+		}
+	
+		 if (drt.currentDegreesLeft() > 360){
+			drt.stop();
+		
+			
+		}
 	}
 
 	@Override
@@ -180,6 +190,7 @@ public class Robot extends TimedRobot {
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
+		
 		compressor.start();
 		drive = new TeleopDrive();
 
