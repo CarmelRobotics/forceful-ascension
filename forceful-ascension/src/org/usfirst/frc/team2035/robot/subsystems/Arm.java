@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team2035.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
@@ -28,6 +29,7 @@ public class Arm extends Subsystem{
 	private double currentPos;
 	private boolean hasNotMoved;
 	private SpeedControllerGroup climbers;
+	private DoubleSolenoid latch;
 	
 	
 	public Arm() {
@@ -43,6 +45,7 @@ public class Arm extends Subsystem{
 		hasNotMoved = true;
 		climbers = new SpeedControllerGroup(armClimber1, armClimber2, armClimber3);
 		currentPos = startingPos;
+		latch = new DoubleSolenoid(RobotMap.ARM_LATCH_OPEN, RobotMap.ARM_LATCH_CLOSE);
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		//angler.setSelectedSensorPosition(startingPos, 0, 0);
 		angler.setSelectedSensorPosition(0, 0, 0);
@@ -58,7 +61,11 @@ public class Arm extends Subsystem{
 	}
 	
 	public void latchClose() {
-		
+		latch.set(DoubleSolenoid.Value.kReverse);
+	}
+	
+	public void latchOpen() {
+		latch.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void climb() {
