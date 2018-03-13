@@ -6,15 +6,15 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class manualRaiseAngle extends Command {
+public class ArmLatch extends Command {
 	
 	private Arm arm;
-	
 	public static OI oi;
 	
-	public manualRaiseAngle() {
+	
+	public ArmLatch() {
 		// Use requires() here to declare subsystem dependencies
-		super("raiseangle");
+		super("ArmLatch");
 		
 		arm = Robot.getArm();
 		
@@ -31,12 +31,7 @@ public class manualRaiseAngle extends Command {
 	@Override
 	protected void execute() {
 		
-		arm.manualRaiseAngle();
-		/*
-		if (arm.notMoving()) {
-			System.out.println("stopped");
-		}
-		*/
+		arm.latchClose();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -48,13 +43,13 @@ public class manualRaiseAngle extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		arm.armStop();
+		
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		arm.armStop();
+		
 	}
 }

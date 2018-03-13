@@ -12,14 +12,15 @@ import org.usfirst.frc.team2035.robot.commands.CubeOut;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.ManualLowerAngle;
+import org.usfirst.frc.team2035.robot.commands.ManualRaiseAngle;
 import org.usfirst.frc.team2035.robot.commands.OpenHangerClaws;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
-import org.usfirst.frc.team2035.robot.commands.manualRaiseAngle;
+
 import org.usfirst.frc.team2035.robot.commands.testArmMotor;
 import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import org.usfirst.frc.team2035.robot.commands.ArmClimb;
 import org.usfirst.frc.team2035.robot.commands.ArmExtend;
-
+import org.usfirst.frc.team2035.robot.commands.ArmRetract;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
@@ -37,6 +38,7 @@ public class OI {
 	public static Button wingsOut;
 	public static Button armExtend;
 	public static Button armClimb;
+	public static Button armRetract;
 	public static Button openHanger;
 	
 	public static Button changeArmAngleTo0;
@@ -75,6 +77,7 @@ public class OI {
 		
 		armExtend = RobotMap.ARM_EXTEND;
 		armClimb = RobotMap.ARM_CLIMB;
+		armRetract = RobotMap.ARM_RETRACT;
 		
 		armLatch = RobotMap.ARM_LATCH;
 		
@@ -87,12 +90,13 @@ public class OI {
 		changeArmAngleTo3.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_3));
 		changeArmAngleTo4.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_4));
 		//resetArmAngle.whenPressed(new ArmChangePosition(RobotMap.ARM_STARTING_POSITION));
-		armManualRaise.whileHeld(new manualRaiseAngle());
+		armManualRaise.whileHeld(new ManualRaiseAngle());
 		armManualLower.whileHeld(new ManualLowerAngle());
 		
 		wingsOut.whenPressed(new WingsOut());
 		armExtend.whileHeld(new ArmExtend());
 		armClimb.whenPressed(new ArmClimb());
+		armRetract.whileHeld(new ArmRetract());
 		//armLatch.whenPressed(new );
 		gearshiftHigh.whileHeld(new GearshiftHigh());
 		gearshiftLow.whileHeld(new GearshiftLow());
