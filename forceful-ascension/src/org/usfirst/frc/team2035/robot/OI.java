@@ -47,6 +47,8 @@ public class OI {
 	public static Button resetArmAngle;
 	public static Button armLatch;
 	
+
+	
 	public static Button armManualRaise;
 	public static Button armManualLower;
 	
@@ -89,9 +91,9 @@ public class OI {
 		armManualLower.whileHeld(new ManualLowerAngle());
 		
 		wingsOut.whenPressed(new WingsOut());
-		armExtend.whenPressed(new ArmExtend());
+		armExtend.whileHeld(new ArmExtend());
 		armClimb.whenPressed(new ArmClimb());
-		armLatch.whenPressed(new );
+		//armLatch.whenPressed(new );
 		gearshiftHigh.whileHeld(new GearshiftHigh());
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());

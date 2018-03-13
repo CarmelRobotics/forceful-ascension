@@ -25,7 +25,7 @@ public class RobotMap {
 	
 	//Arm 1:27.41 DO NOT CHANGE!!!
 	
-	public static final double ARM_CLIMB_SPEED = 1.0;
+	public static final double ARM_CLIMB_SPEED = .5;
 	public static final int ARM_STARTING_POSITION = 0; 
 	public static final double ARM_POSITION_0 = 0; // 0 degrees on arm gear 
 	public static final double ARM_POSITION_1 = 548; // 20 degrees on arm gear 
@@ -40,7 +40,7 @@ public class RobotMap {
 	public static final int ARM_EXTEND_2 = 2; 
 	public static final int ARM_EXTEND_3 = 3; 
 	public static final int LB_DRIVETRAIN_MOTOR_PWM = 4; // LB - left bottom	4
-	
+	public static final int ARM_EXTENDER = 5; 
 	
 	public static final int R_CUBEMECH_MOTOR_PWM = 6;
 	public static final int L_CUBEMECH_MOTOR_PWM = 7;
@@ -90,6 +90,7 @@ public class RobotMap {
 	public static final JoystickButton GEARSHIFT_HIGH = new JoystickButton(JOY_DRIVE, 5);
 	
 	public static final JoystickButton ARM_LATCH = new JoystickButton(JOY_DRIVE, 6);
+	
 	
 	public static final JoystickButton ARM_MANUAL_LOWER = new JoystickButton(JOY_DRIVE,10); 
 	public static final JoystickButton ARM_MANUAL_RAISE = new JoystickButton(JOY_DRIVE,11); 

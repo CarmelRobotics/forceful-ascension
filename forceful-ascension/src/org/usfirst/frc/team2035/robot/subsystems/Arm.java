@@ -22,12 +22,12 @@ public class Arm extends Subsystem{
 	private Victor armExtender1;
 	private Victor armExtender2;
 	private Victor armExtender3;
-	
+	private Victor extender;
 	private WPI_TalonSRX angler;
 	private int startingPos;
 	private double currentPos;
 	private boolean hasNotMoved;
-	private SpeedControllerGroup extenders;
+	private SpeedControllerGroup climbers;
 	
 	
 	public Arm() {
@@ -37,11 +37,11 @@ public class Arm extends Subsystem{
 		armExtender1 = new Victor(RobotMap.ARM_EXTEND_1);
 		armExtender2 = new Victor(RobotMap.ARM_EXTEND_2);
 		armExtender3 = new Victor(RobotMap.ARM_EXTEND_3);
-		
+		extender = new Victor(RobotMap.ARM_EXTENDER);
 		angler = new WPI_TalonSRX(RobotMap.ANGLER_ID);
 		startingPos = RobotMap.ARM_STARTING_POSITION;
 		hasNotMoved = true;
-		extenders = new SpeedControllerGroup(armExtender1, armExtender2, armExtender3);
+		climbers = new SpeedControllerGroup(armExtender1, armExtender2, armExtender3);
 		currentPos = startingPos;
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		//angler.setSelectedSensorPosition(startingPos, 0, 0);
@@ -62,18 +62,18 @@ public class Arm extends Subsystem{
 	}
 	
 	public void climb() {
-		extenders.set(RobotMap.ARM_CLIMB_SPEED);
+		climbers.set(RobotMap.ARM_CLIMB_SPEED);
 		
 		
 	}
 	
 	public void extend() {
-		extenders.set(-RobotMap.ARM_CLIMB_SPEED);
+		extender.set(RobotMap.ARM_CLIMB_SPEED);
 		
 	}
 	
 	public void extendStop() {
-		extenders.set(0.0);
+		extender.set(0.0);
 		
 	}
 	/*
