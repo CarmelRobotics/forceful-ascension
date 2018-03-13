@@ -3,6 +3,7 @@ package org.usfirst.frc.team2035.robot.commands;
 import org.usfirst.frc.team2035.robot.AutoValues;
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
+import org.usfirst.frc.team2035.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -15,6 +16,7 @@ public class AutoSW extends Command {
 	private char sw;
 	private int start;
 	Command movement;
+	Command arm;
 	public static boolean nextMove;
 	public static int moveStep;
 	private boolean autoDone;
@@ -45,6 +47,10 @@ public class AutoSW extends Command {
     		if (nextMove && moveStep == 2)
     			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.SLOW_MOVE_SPEED);
     		if (nextMove && moveStep == 3)
+    			armPosition(RobotMap.ARM_POSITION_0);
+    		if (nextMove && moveStep == 4)
+    			releaseCube(2.0);
+    		if (nextMove && moveStep == 5)
     			autoDone = true;
     	} 
     	
@@ -54,6 +60,10 @@ public class AutoSW extends Command {
     		if (nextMove && moveStep == 1)
     			move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
     		if (nextMove && moveStep == 2)
+    			armPosition(RobotMap.ARM_POSITION_0);
+    		if (nextMove && moveStep == 3)
+    			releaseCube(2.0);
+    		if (nextMove && moveStep == 4)
     			autoDone = true;
     	} 
     	
@@ -69,6 +79,10 @@ public class AutoSW extends Command {
     		if (nextMove && moveStep == 4)
     			move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
     		if (nextMove && moveStep == 5)
+    			armPosition(RobotMap.ARM_POSITION_0);
+    		if (nextMove && moveStep == 6)
+    			releaseCube(2.0);
+    		if (nextMove && moveStep == 7)
     			autoDone = true;
     	} 
     	
@@ -80,6 +94,10 @@ public class AutoSW extends Command {
     		if (nextMove && moveStep == 2)
     			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.SLOW_MOVE_SPEED);
     		if (nextMove && moveStep == 3)
+    			armPosition(RobotMap.ARM_POSITION_0);
+    		if (nextMove && moveStep == 4)
+    			releaseCube(2.0);
+    		if (nextMove && moveStep == 5)
     			autoDone = true;
     	}
     	
@@ -113,6 +131,16 @@ public class AutoSW extends Command {
     private void rotate(double inches, double speed) {
     	movement = new AutoDriveRotate(inches, speed);
     	movement.start();
+    }
+    
+    private void armPosition(double position) {
+    	arm = new AutoArmChangePosition(position);
+    	arm.start();
+    }
+    
+    private void releaseCube(double time) {
+    	arm = new AutoCubeOut(time);
+    	arm.start();
     }
     
 }
