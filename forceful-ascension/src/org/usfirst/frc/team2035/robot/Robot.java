@@ -95,7 +95,7 @@ public class Robot extends TimedRobot {
 	        	        //double angle = Math.atan((8*320)/(tarPixelWidth * 33.5));
 	        	        
 	        	        distance = (TARGET_WIDTH * IMG_WIDTH) / (2 * Math.tan(FOV_ANGLE) * tarPixelWidth);
-	        	        System.out.println("Pixel Width =" + tarPixelWidth);
+	        	        System.out.println("Pixel Width =" + tarPixelWidth); 
 		                
 	    	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
 
