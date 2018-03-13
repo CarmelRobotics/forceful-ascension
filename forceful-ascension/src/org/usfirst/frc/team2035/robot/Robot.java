@@ -15,8 +15,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2035.robot.commands.AutoCL;
-import org.usfirst.frc.team2035.robot.commands.AutoSW1;
+import org.usfirst.frc.team2035.robot.commands.AutoSW;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
@@ -125,6 +124,8 @@ public class Robot extends TimedRobot {
 
 		sidePass = RobotMap.SIDE;
 		secondBox = RobotMap.SECOND_BOX;
+		
+		autonomousCommand = new AutoSW(0, 'L');
 		/*
 		if (RobotMap.ROUTING == 0) //put box on team switch
 			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
@@ -163,6 +164,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() { //works perfectly at drive .4
 		Scheduler.getInstance().run();
+		/**
 		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
 		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
 		if (360 - drt.currentDegreesLeft() < 100) {
@@ -179,6 +181,7 @@ public class Robot extends TimedRobot {
 		
 			
 		}
+		 **/
 	}
 
 	@Override
