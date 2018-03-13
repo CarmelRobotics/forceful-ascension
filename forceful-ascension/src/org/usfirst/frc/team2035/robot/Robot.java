@@ -43,10 +43,10 @@ public class Robot extends TimedRobot {
 	
 	private final Object imgLock = new Object();
 	
-	private static final int IMG_WIDTH = 320;
-	private static final int IMG_HEIGHT = 240;
-	private static final double FOV_ANGLE = 1.04; //radian
-	private static final double TARGET_WIDTH = 8; //inches
+	private static final int IMG_WIDTH = 640;
+	private static final int IMG_HEIGHT = 480;
+	private static final double FOV_ANGLE = .918803; //radian
+	private static final double TARGET_WIDTH = 9.5; //inches
 	
 	private static Arm arm;
 	
@@ -95,7 +95,7 @@ public class Robot extends TimedRobot {
 	        	        //double angle = Math.atan((8*320)/(tarPixelWidth * 33.5));
 	        	        
 	        	        distance = (TARGET_WIDTH * IMG_WIDTH) / (2 * Math.tan(FOV_ANGLE) * tarPixelWidth);
-	        	        //System.out.println("FOV Angle = " + angle);
+	        	        System.out.println("Pixel Width =" + tarPixelWidth);
 		                
 	    	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
 
