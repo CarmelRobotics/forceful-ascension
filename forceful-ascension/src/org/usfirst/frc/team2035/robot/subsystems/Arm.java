@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team2035.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
@@ -19,30 +20,32 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class Arm extends Subsystem{
 	
-	private Victor armExtender1;
-	private Victor armExtender2;
-	private Victor armExtender3;
+	private Victor armClimber1;
+	private Victor armClimber2;
+	private Victor armClimber3;
 	private Victor extender;
 	private WPI_TalonSRX angler;
 	private int startingPos;
 	private double currentPos;
 	private boolean hasNotMoved;
 	private SpeedControllerGroup climbers;
+	private DoubleSolenoid latch;
 	
 	
 	public Arm() {
 		
 		super("Arm");
 		
-		armExtender1 = new Victor(RobotMap.ARM_EXTEND_1);
-		armExtender2 = new Victor(RobotMap.ARM_EXTEND_2);
-		armExtender3 = new Victor(RobotMap.ARM_EXTEND_3);
+		armClimber1 = new Victor(RobotMap.ARM_EXTEND_1);
+		armClimber2 = new Victor(RobotMap.ARM_EXTEND_2);
+		armClimber3 = new Victor(RobotMap.ARM_EXTEND_3);
 		extender = new Victor(RobotMap.ARM_EXTENDER);
 		angler = new WPI_TalonSRX(RobotMap.ANGLER_ID);
 		startingPos = RobotMap.ARM_STARTING_POSITION;
 		hasNotMoved = true;
-		climbers = new SpeedControllerGroup(armExtender1, armExtender2, armExtender3);
+		climbers = new SpeedControllerGroup(armClimber1, armClimber2, armClimber3);
 		currentPos = startingPos;
+		latch = new DoubleSolenoid(RobotMap.ARM_LATCH_OPEN, RobotMap.ARM_LATCH_CLOSE);
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		//angler.setSelectedSensorPosition(startingPos, 0, 0);
 		angler.setSelectedSensorPosition(0, 0, 0);
@@ -58,7 +61,11 @@ public class Arm extends Subsystem{
 	}
 	
 	public void latchClose() {
-		
+		latch.set(DoubleSolenoid.Value.kReverse); 
+	} 
+	
+	public void latchOpen() {
+		latch.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void climb() {
@@ -72,6 +79,9 @@ public class Arm extends Subsystem{
 		
 	}
 	
+	public void retract () {
+		extender.set(-RobotMap.ARM_CLIMB_SPEED);
+	}
 	public void extendStop() {
 		extender.set(0.0);
 		
