@@ -61,7 +61,7 @@ public class Arm extends Subsystem{
 	}
 	
 	public void latchClose() {
-		latch.set(DoubleSolenoid.Value.kReverse);
+		latch.set(DoubleSolenoid.Value.kReverse); 
 	}
 	
 	public void latchOpen() {
