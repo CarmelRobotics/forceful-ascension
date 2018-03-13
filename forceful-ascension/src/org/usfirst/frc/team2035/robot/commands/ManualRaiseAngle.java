@@ -6,13 +6,13 @@ import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class manualRaiseAngle extends Command {
+public class ManualRaiseAngle extends Command {
 	
 	private Arm arm;
 	
 	public static OI oi;
 	
-	public manualRaiseAngle() {
+	public ManualRaiseAngle() {
 		// Use requires() here to declare subsystem dependencies
 		super("raiseangle");
 		
