@@ -12,15 +12,17 @@ import org.usfirst.frc.team2035.robot.commands.CubeOut;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 import org.usfirst.frc.team2035.robot.commands.GearshiftLow;
 import org.usfirst.frc.team2035.robot.commands.ManualLowerAngle;
+import org.usfirst.frc.team2035.robot.commands.OpenHangerClaws;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.commands.manualRaiseAngle;
 import org.usfirst.frc.team2035.robot.commands.testArmMotor;
 import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import org.usfirst.frc.team2035.robot.commands.ArmClimb;
-import org.usfirst.frc.team2035.robot.commands.ArmReverse;
+import org.usfirst.frc.team2035.robot.commands.ArmExtend;
+
 
 import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -33,8 +35,9 @@ public class OI {
 	public static Button cubeIn;
 	public static Button cubeOut; 
 	public static Button wingsOut;
-	public static Button armReverse;
+	public static Button armExtend;
 	public static Button armClimb;
+	public static Button openHanger;
 	
 	public static Button changeArmAngleTo0;
 	public static Button changeArmAngleTo1;
@@ -42,8 +45,8 @@ public class OI {
 	public static Button changeArmAngleTo3;
 	public static Button changeArmAngleTo4;
 	public static Button resetArmAngle;
+	public static Button armLatch;
 	
-	public static Button armTest;
 	public static Button armManualRaise;
 	public static Button armManualLower;
 	
@@ -60,7 +63,7 @@ public class OI {
 		changeArmAngleTo3 = RobotMap.CHANGE_ARM_ANGLE_3;
 		changeArmAngleTo4 = RobotMap.CHANGE_ARM_ANGLE_4;
 		//resetArmAngle = RobotMap.RESET_ARM_ANGLE;
-		armTest = RobotMap.ARM_TEST;
+		
 		
 		gearshiftHigh = RobotMap.GEARSHIFT_HIGH;
 		gearshiftLow = RobotMap.GEARSHIFT_LOW;
@@ -68,10 +71,13 @@ public class OI {
 		cubeIn = RobotMap.CUBE_IN;
 		cubeOut = RobotMap.CUBE_OUT;
 		
-		armReverse = RobotMap.ARM_REVERSE;
+		armExtend = RobotMap.ARM_EXTEND;
 		armClimb = RobotMap.ARM_CLIMB;
 		
+		armLatch = RobotMap.ARM_LATCH;
+		
 		wingsOut = RobotMap.WINGS_OUT;
+		openHanger = RobotMap.OPEN_HANGER;
 		
 		changeArmAngleTo0.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_0));
 		changeArmAngleTo1.whenPressed(new ArmChangePosition(RobotMap.ARM_POSITION_1));
@@ -83,13 +89,14 @@ public class OI {
 		armManualLower.whileHeld(new ManualLowerAngle());
 		
 		wingsOut.whenPressed(new WingsOut());
-		armReverse.whenPressed(new ArmReverse());
+		armExtend.whenPressed(new ArmExtend());
 		armClimb.whenPressed(new ArmClimb());
+		armLatch.whenPressed(new );
 		gearshiftHigh.whileHeld(new GearshiftHigh());
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
 		cubeOut.whileHeld(new CubeOut());
-		
-		armTest.whenPressed(new testArmMotor());
+		openHanger.whileHeld(new OpenHangerClaws());
+	
 	}
 }
