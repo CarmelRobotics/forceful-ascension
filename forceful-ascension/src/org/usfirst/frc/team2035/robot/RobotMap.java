@@ -62,7 +62,7 @@ public class RobotMap {
 	public static final int WINGS = 2;
 	public static final int CUBE_SOLENOID_OPEN = 3;
 	public static final int CUBE_SOLENOID_CLOSE = 4;
-	public static final int ARM_LATCH_OPEN = 5;
+	//public static final int ARM_LATCH_OPEN = 5;
 	public static final int ARM_LATCH_CLOSE = 6;
 	
 	
