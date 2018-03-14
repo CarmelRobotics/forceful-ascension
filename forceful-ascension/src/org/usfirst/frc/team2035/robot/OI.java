@@ -20,6 +20,7 @@ import org.usfirst.frc.team2035.robot.commands.testArmMotor;
 import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import org.usfirst.frc.team2035.robot.commands.ArmClimb;
 import org.usfirst.frc.team2035.robot.commands.ArmExtend;
+import org.usfirst.frc.team2035.robot.commands.ArmLatch;
 import org.usfirst.frc.team2035.robot.commands.ArmRetract;
 
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -97,7 +98,7 @@ public class OI {
 		armExtend.whileHeld(new ArmExtend());
 		armClimb.whenPressed(new ArmClimb());
 		armRetract.whileHeld(new ArmRetract());
-		//armLatch.whenPressed(new );
+		armLatch.whenPressed(new ArmLatch());
 		gearshiftHigh.whileHeld(new GearshiftHigh());
 		gearshiftLow.whileHeld(new GearshiftLow());
 		cubeIn.whileHeld(new CubeIn());
