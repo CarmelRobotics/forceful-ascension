@@ -42,11 +42,11 @@ public class Robot extends TimedRobot {
 	private double distance = 0.0;
 	
 	private final Object imgLock = new Object();
-	
+	private static double focalLength = 220.5;
 	private static final int IMG_WIDTH = 640;
 	private static final int IMG_HEIGHT = 480;
 	private static final double FOV_ANGLE = .918803; //radian
-	private static final double TARGET_WIDTH = 9.5; //inches
+	private static final double TARGET_WIDTH = 8; //inches
 	
 	private static Arm arm;
 	
@@ -94,9 +94,12 @@ public class Robot extends TimedRobot {
 	        	        //distance = (DISTANCE_CONSTANT / (2 *tarPixelWidth * Math.atan()));
 	        	        //double angle = Math.atan((8*320)/(tarPixelWidth * 33.5));
 	        	        
-	        	        distance = (TARGET_WIDTH * IMG_WIDTH) / (2 * Math.tan(FOV_ANGLE) * tarPixelWidth);
-	        	        System.out.println("Pixel Width =" + tarPixelWidth); 
-		                
+	                    
+	        	        distance = (TARGET_WIDTH * focalLength) / tarPixelWidth; //Focal Length is determined by (PIXEL_WIDTH * distance)/TARGET_WIDTH 
+	        	        //System.out.println("Pixel Width =" + tarPixelWidth); 
+	    				focalLength = (tarPixelWidth * distance )/TARGET_WIDTH;
+
+	        	        
 	    	        	outputStream.putFrame(pipeline.hsvThresholdOutput());
 
 	            	}
@@ -181,9 +184,13 @@ public class Robot extends TimedRobot {
 	        tarPixelWidth = this.tarPixelWidth;
 	        distance = this.distance;
 	    }
-	    double turn = centerX - (IMG_WIDTH / 2);
+	    double distanceFromCenter = centerX - (IMG_WIDTH / 2);
+	    
+	    double angle = Math.atan((distanceFromCenter * TARGET_WIDTH) / tarPixelWidth ); 
+	    
 	    //drive.arcadeDrive(-0.6, turn * 0.005);
 	    System.out.println("Center X Value = " + centerX);
+	    System.out.println("Angle =" + Math.toDegrees(angle) );
 	    System.out.println("Distance = " + distance + " in");
         System.out.println("Width = " + tarPixelWidth + " px");
 		//Processing camProcess = new Processing();
