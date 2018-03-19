@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team2035.robot.commands;
+package org.usfirst.frc.team2035.robot.commands.auto;
 
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
@@ -23,7 +23,6 @@ public class AutoArmChangePosition extends Command {
 	public AutoArmChangePosition(double desiredPos) {
 		// Use requires() here to declare subsystem dependencies
 		super("ArmChangePosition");
-		AutoSW.nextMove = false;
 		arm = Robot.getArm();
 		this.desiredPos = desiredPos;
 		System.out.println("hi from acp");
