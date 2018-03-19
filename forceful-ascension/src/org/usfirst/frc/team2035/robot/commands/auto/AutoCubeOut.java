@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team2035.robot.commands;
+package org.usfirst.frc.team2035.robot.commands.auto;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -25,7 +25,6 @@ public class AutoCubeOut extends Command {
 	Timer t;
 	
 	public AutoCubeOut(double time) {
-		AutoSW.nextMove = false;
 		cbm = Robot.getCubeMech();
 		t = new Timer();
 		totalTime = time;

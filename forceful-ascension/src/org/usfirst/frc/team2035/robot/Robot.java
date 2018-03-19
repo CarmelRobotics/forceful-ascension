@@ -15,13 +15,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team2035.robot.commands.AutoSW;
 //import org.usfirst.frc.team2035.robot.commands.AutoSW;
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
+import org.usfirst.frc.team2035.robot.commands.auto.AutoSW;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 
