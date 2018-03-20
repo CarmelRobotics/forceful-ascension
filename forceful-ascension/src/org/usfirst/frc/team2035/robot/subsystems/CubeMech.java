@@ -36,8 +36,8 @@ public class CubeMech extends Subsystem {
 	 */
 	public void rollIn() {
 		//sets cube mech motors to positive speed
-		rollerR.set(RobotMap.CUBEMECH_IN_SPEED);
-		rollerL.set(RobotMap.CUBEMECH_IN_SPEED);
+		rollerR.set(RobotMap.CUBEMECH_SPEED);
+		rollerL.set(-RobotMap.CUBEMECH_SPEED);
 	}
 	
 	/**
@@ -45,8 +45,8 @@ public class CubeMech extends Subsystem {
 	 */
 	public void rollOut() {
 		//sets cube mech motors to negative speed
-		rollerR.set(RobotMap.CUBEMECH_OUT_SPEED);
-		rollerL.set(RobotMap.CUBEMECH_OUT_SPEED);
+		rollerR.set(-RobotMap.CUBEMECH_SPEED);
+		rollerL.set(RobotMap.CUBEMECH_SPEED);
 	}
 	
 	/**

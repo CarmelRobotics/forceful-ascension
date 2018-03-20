@@ -15,13 +15,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-//import org.usfirst.frc.team2035.robot.commands.AutoSW;
+
+
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
-import org.usfirst.frc.team2035.robot.commands.auto.AutoSW;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 
@@ -117,6 +117,7 @@ public class Robot extends TimedRobot {
 		int startPos;
 		char sidePass;
 		boolean secondBox;
+		String gameData;
 		drt.resetLeft();
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
@@ -125,7 +126,20 @@ public class Robot extends TimedRobot {
 		sidePass = RobotMap.SIDE;
 		secondBox = RobotMap.SECOND_BOX;
 		
-		autonomousCommand = new AutoSW(0, 'L');
+		
+		
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+        if(gameData.length() > 0)  {
+        	if(gameData.charAt(0) == 'L')
+        	{
+			//Put left auto code here
+        	} 
+        	else {
+			//Put right auto code here
+        	}
+        }
+		
+		//autonomousCommand = new AutoSW(0, 'L');
 		/*
 		if (RobotMap.ROUTING == 0) //put box on team switch
 			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
@@ -138,16 +152,7 @@ public class Robot extends TimedRobot {
 			autonomousCommand.start(); 
 	}
 	
-	/*
-	 * Limit Switch Tester
-	 * 	int startPos = pls.getRobotStart();
-		if(startPos == 1) 
-			System.out.println("Position B");
-		else if(startPos == 0)
-			System.out.println("Position A");
-		else if(startPos == 2) 
-			System.out.println("Position C");
-	 */
+	
 	
 	/*
 	 * m_autonomousCommand = m_chooser.getSelected();
@@ -164,7 +169,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() { //works perfectly at drive .4
 		Scheduler.getInstance().run();
-		/**
+		/*
 		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
 		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
 		if (360 - drt.currentDegreesLeft() < 100) {
@@ -181,7 +186,7 @@ public class Robot extends TimedRobot {
 		
 			
 		}
-		 **/
+		 */
 	}
 
 	@Override

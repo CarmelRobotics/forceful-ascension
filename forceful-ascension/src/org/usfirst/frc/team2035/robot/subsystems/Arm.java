@@ -5,16 +5,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team2035.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.DigitalInput;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Timer;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
-import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
-import com.ctre.phoenix.motorcontrol.RemoteLimitSwitchSource;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 
@@ -29,27 +28,30 @@ public class Arm extends Subsystem{
 	private double currentPos;
 	private boolean hasNotMoved;
 	private SpeedControllerGroup climbers;
-	private Solenoid latch;
-	
+	private DoubleSolenoid latch;
+	private boolean canExtend;
+	private Timer retractTimer;
 	
 	public Arm() {
 		
 		super("Arm");
 		
-		armClimber1 = new Victor(RobotMap.ARM_EXTEND_1);
-		armClimber2 = new Victor(RobotMap.ARM_EXTEND_2);
-		armClimber3 = new Victor(RobotMap.ARM_EXTEND_3);
+		armClimber1 = new Victor(RobotMap.ARM_CLIMBER_1);
+		armClimber2 = new Victor(RobotMap.ARM_CLIMBER_2);
+		armClimber3 = new Victor(RobotMap.ARM_CLIMBER_3);
 		extender = new Victor(RobotMap.ARM_EXTENDER);
 		angler = new WPI_TalonSRX(RobotMap.ANGLER_ID);
 		startingPos = RobotMap.ARM_STARTING_POSITION;
 		hasNotMoved = true;
 		climbers = new SpeedControllerGroup(armClimber1, armClimber2, armClimber3);
-		currentPos = startingPos;
-		latch = new Solenoid(RobotMap.ARM_LATCH_CLOSE);
+
+		latch = new DoubleSolenoid(RobotMap.ARM_LATCH_OPEN, RobotMap.PLACEHOLDER);
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
-		//angler.setSelectedSensorPosition(startingPos, 0, 0);
-		angler.setSelectedSensorPosition(0, 0, 0);
-		//System.out.println(angler.getSelectedSensorPosition(0)/(4096/360));
+		angler.setSelectedSensorPosition(RobotMap.ARM_STARTING_POSITION, 0, 0);
+		//angler.setSelectedSensorPosition(0, 0, 0);
+		canExtend = false;
+		retractTimer = new Timer();
+
 		
 		
 	}
@@ -60,8 +62,8 @@ public class Arm extends Subsystem{
 		
 	}
 	
-	public void latchClose() {
-		latch.set(true); 
+	public void latchOpen() {
+		latch.set(DoubleSolenoid.Value.kForward); 
 	} 
 	
 	
@@ -71,14 +73,21 @@ public class Arm extends Subsystem{
 		
 		
 	}
+	public void reverseClimb() {
+		climbers.set(-RobotMap.ARM_CLIMB_SPEED);
+		
+	}
 	
 	public void extend() {
-		extender.set(RobotMap.ARM_CLIMB_SPEED);
+		extender.set(RobotMap.ARM_EXTEND_SPEED);
 		
 	}
 	
 	public void retract () {
-		extender.set(-RobotMap.ARM_CLIMB_SPEED);
+		extender.set(-RobotMap.ARM_EXTEND_SPEED);
+	}
+	public void climbStop() {
+		climbers.set(0.0);
 	}
 	public void extendStop() {
 		extender.set(0.0);
@@ -102,16 +111,39 @@ public class Arm extends Subsystem{
 			
 		}
 		
-		
-		
 	}
 	
 	*/
-	
-	
-	
 	public boolean armChangeAngle(double desiredPos) { //This method serves to change the arm's angle to any given angle
 		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
+		
+		if (desiredPos == RobotMap.ARM_POSITION_3 || desiredPos == RobotMap.ARM_POSITION_4) {
+			canExtend = true;
+			
+		}
+		else if (currentPos < RobotMap.ARM_POSITION_3){
+			
+			canExtend = false;
+		}
+		/*
+		else if (currentPos >= RobotMap.ARM_POSITION_3) {
+			canExtend = false;
+			retractTimer.start();
+			if (retractTimer.get() < 2) {
+				System.out.println(retractTimer.get());
+				retract();
+				
+			}
+			else {
+				extendStop();
+				retractTimer.stop();
+				retractTimer.reset();
+			}	
+			}
+	*/
+		
+		
+		
 		if (currentPos < desiredPos && hasNotMoved) {  //If we need to move the arm up
 			armRaiseAngle(currentPos, desiredPos); //calls the method defined below //armRaise
 			return false; //movement not finished
@@ -138,8 +170,7 @@ public class Arm extends Subsystem{
 	
 	
 	public void manualRaiseAngle() {
-		//System.out.println(angler.getSelectedSensorPosition(0)/(4096/360));
-		angler.set(ControlMode.PercentOutput, 0.7);
+		angler.set(ControlMode.PercentOutput, .8);
 		System.out.println(-angler.getSelectedSensorPosition(0)/(4096/360));
 		System.out.println("raising here");
 		
@@ -148,10 +179,9 @@ public class Arm extends Subsystem{
 	}
 	
 	public void manualLowerAngle() { 
-		//System.out.println(angler.getSelectedSensorPosition(0)/(4096/360));
 		angler.set(ControlMode.PercentOutput, -0.3);
 		System.out.println(-angler.getSelectedSensorPosition(0)/(4096/360));
-		//System.out.println("lowering here");
+		System.out.println("lowering here");
 		
 		
 	}
@@ -159,17 +189,17 @@ public class Arm extends Subsystem{
 	public void armRaiseAngle(double currentPos, double desiredPos) 
 	{ //Code to raise the arm
 		
-		if(desiredPos - currentPos >= 50) //If we are far away from our destination angle old:5
+		if(desiredPos - currentPos >= 100) //If we are far away from our destination angle old:5
 		{
-			angler.set(ControlMode.PercentOutput, 0.7); //.2
+			angler.set(ControlMode.PercentOutput, .8); //.7
 		}
 		else //If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, 0.7); //.15
+			angler.set(ControlMode.PercentOutput, .5); //.7
 		}
 		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
-		System.out.println("raising, cp: " + currentPos + " dp: " + desiredPos);
+		//System.out.println("raising, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos >= desiredPos || currentPos >= desiredPos + 3 || currentPos >= desiredPos-3) {
 			hasNotMoved = false;
 		}
@@ -188,7 +218,7 @@ public class Arm extends Subsystem{
 		}
 		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
-		System.out.println("lowering, cp: " + currentPos + " dp: " + desiredPos);
+		//System.out.println("lowering, cp: " + currentPos + " dp: " + desiredPos);
 		if (currentPos <= desiredPos || currentPos <= desiredPos + 3 || currentPos <= desiredPos-3) {
 			hasNotMoved = false;
 		}
@@ -211,7 +241,9 @@ public class Arm extends Subsystem{
 		
 	}
 	
-	
+	public boolean getcanExtend() {
+		return canExtend;
+	}
 	
 	
 	/*

@@ -16,12 +16,13 @@ import org.usfirst.frc.team2035.robot.commands.ManualRaiseAngle;
 import org.usfirst.frc.team2035.robot.commands.OpenHangerClaws;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 
-import org.usfirst.frc.team2035.robot.commands.testArmMotor;
+
 import org.usfirst.frc.team2035.robot.commands.ArmChangePosition;
 import org.usfirst.frc.team2035.robot.commands.ArmClimb;
 import org.usfirst.frc.team2035.robot.commands.ArmExtend;
 import org.usfirst.frc.team2035.robot.commands.ArmLatch;
 import org.usfirst.frc.team2035.robot.commands.ArmRetract;
+import org.usfirst.frc.team2035.robot.commands.ArmReverseClimb;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
@@ -39,6 +40,7 @@ public class OI {
 	public static Button wingsOut;
 	public static Button armExtend;
 	public static Button armClimb;
+	public static Button armReverseClimb;
 	public static Button armRetract;
 	public static Button openHanger;
 	
@@ -78,6 +80,7 @@ public class OI {
 		
 		armExtend = RobotMap.ARM_EXTEND;
 		armClimb = RobotMap.ARM_CLIMB;
+		armReverseClimb = RobotMap.ARM_REVERSE_CLIMB;
 		armRetract = RobotMap.ARM_RETRACT;
 		
 		armLatch = RobotMap.ARM_LATCH;
@@ -96,7 +99,8 @@ public class OI {
 		
 		wingsOut.whenPressed(new WingsOut());
 		armExtend.whileHeld(new ArmExtend());
-		armClimb.whenPressed(new ArmClimb());
+		armClimb.whileHeld(new ArmClimb());
+		armReverseClimb.whileHeld(new ArmReverseClimb());
 		armRetract.whileHeld(new ArmRetract());
 		armLatch.whenPressed(new ArmLatch());
 		gearshiftHigh.whileHeld(new GearshiftHigh());
