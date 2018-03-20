@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2035.robot.commands;
 
+import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
@@ -11,7 +12,9 @@ import edu.wpi.first.wpilibj.command.Command;
 public class OpenHangerClaws extends Command{
 	
 	private CubeMech cm;
-
+	
+	public static OI oi;
+	
 	public OpenHangerClaws() {
 		super("OpenHangerClaws");
 		
@@ -24,7 +27,7 @@ public class OpenHangerClaws extends Command{
 	@Override
 	protected void initialize() {
 		
-		
+		oi = new OI();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

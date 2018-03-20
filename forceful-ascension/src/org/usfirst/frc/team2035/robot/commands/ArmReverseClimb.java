@@ -4,19 +4,17 @@ import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
-
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArmExtend extends Command {
+public class ArmReverseClimb extends Command {
 	
 	private Arm arm;
+	
 	public static OI oi;
 	
-	
-	
-	public ArmExtend() {
+	public ArmReverseClimb() {
 		// Use requires() here to declare subsystem dependencies
-		super("ArmExtend");
+		super("ArmReverseClimb");
 		
 		arm = Robot.getArm();
 		
@@ -32,9 +30,8 @@ public class ArmExtend extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		//if (arm.getcanExtend()) {
-			arm.extend();
-		//}
+		
+		arm.reverseClimb();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -46,13 +43,13 @@ public class ArmExtend extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		arm.extendStop();
+		arm.climbStop();
 	}
 
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		arm.extendStop();
+		arm.climbStop();
 	}
 }

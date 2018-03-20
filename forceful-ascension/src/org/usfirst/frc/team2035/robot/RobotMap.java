@@ -25,8 +25,8 @@ public class RobotMap {
 	
 	//Arm 1:27.41 DO NOT CHANGE!!!
 	
-	public static final double ARM_CLIMB_SPEED = .5;
-	public static final int ARM_STARTING_POSITION = 0; 
+	
+	public static final int ARM_STARTING_POSITION = 17158; //raw sensor units
 	public static final double ARM_POSITION_0 = 0; // 0 degrees on arm gear 
 	public static final double ARM_POSITION_1 = 548; // 20 degrees on arm gear 
 	public static final double ARM_POSITION_2 = 1508; // 55 degrees on arm gear
@@ -36,9 +36,9 @@ public class RobotMap {
 	// PWM  
 	
 	public static final int RB_DRIVETRAIN_MOTOR_PWM = 0; // 0
-	public static final int ARM_EXTEND_1 = 1; 
-	public static final int ARM_EXTEND_2 = 2; 
-	public static final int ARM_EXTEND_3 = 3; 
+	public static final int ARM_CLIMBER_1 = 1; 
+	public static final int ARM_CLIMBER_2 = 2; 
+	public static final int ARM_CLIMBER_3 = 3; 
 	public static final int LB_DRIVETRAIN_MOTOR_PWM = 4; // LB - left bottom	4
 	public static final int ARM_EXTENDER = 5; 
 	
@@ -50,8 +50,10 @@ public class RobotMap {
 	
 	
 	/* Motor Speeds */
-	public static final double CUBEMECH_IN_SPEED = 0.6;
-	public static final double CUBEMECH_OUT_SPEED = -0.6;
+	public static final double CUBEMECH_SPEED = 0.6;
+	public static final double ARM_CLIMB_SPEED = 1.0;
+	public static final double ARM_EXTEND_SPEED = .5;
+	
 
 	/* Solenoids */
 	
@@ -62,8 +64,9 @@ public class RobotMap {
 	public static final int WINGS = 2;
 	public static final int CUBE_SOLENOID_OPEN = 3;
 	public static final int CUBE_SOLENOID_CLOSE = 4;
-	//public static final int ARM_LATCH_OPEN = 5;
-	public static final int ARM_LATCH_CLOSE = 6;
+	public static final int PLACEHOLDER = 5;
+	public static final int ARM_LATCH_OPEN = 6;
+	
 	
 	
 	
@@ -77,7 +80,7 @@ public class RobotMap {
 	/* Joystick */
 	public static final int JOY_DRIVE_USB = 0;
 	public static final Joystick JOY_DRIVE = new Joystick(JOY_DRIVE_USB);
-	public static final int JOY_ARM_USB = 2;
+	public static final int JOY_ARM_USB = 1;
 	public static final Joystick JOY_ARM = new Joystick(JOY_ARM_USB);
 	
     
@@ -99,6 +102,7 @@ public class RobotMap {
 	public static final JoystickButton ARM_CLIMB = new JoystickButton(JOY_ARM,2);
 	public static final JoystickButton ARM_EXTEND = new JoystickButton(JOY_ARM,3);
 	public static final JoystickButton ARM_RETRACT = new JoystickButton(JOY_ARM,4);
+	public static final JoystickButton ARM_REVERSE_CLIMB = new JoystickButton(JOY_ARM,5);
     public static final JoystickButton CHANGE_ARM_ANGLE_0 = new JoystickButton(JOY_ARM,6); 
 	public static final JoystickButton CHANGE_ARM_ANGLE_1 = new JoystickButton(JOY_ARM,7);
 	public static final JoystickButton CHANGE_ARM_ANGLE_2 = new JoystickButton(JOY_ARM,8);
