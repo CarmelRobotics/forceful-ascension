@@ -82,6 +82,7 @@ public class Robot extends TimedRobot {
 		compressor = new ACompressor();
 		counter = 0; 
 		x = true;
+		cbm.closeHangerClaws();
 		//cms = CameraServer.getInstance();
 		//cms.startAutomaticCapture();
 		

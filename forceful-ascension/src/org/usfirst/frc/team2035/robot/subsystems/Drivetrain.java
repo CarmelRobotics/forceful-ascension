@@ -49,7 +49,7 @@ public class Drivetrain extends Subsystem {
 	
 	public void driveAuto(double speed) {
 		double encoderDifference = currentDegreesRight() - currentDegreesLeft();
-		double counteractValue = 0;
+		double counteractValue;
 		
 		if (encoderDifference > 0) {
 			if (encoderDifference <= 20)
@@ -66,7 +66,7 @@ public class Drivetrain extends Subsystem {
 				counteractValue = -0.30;
 		}
 		else if (encoderDifference < 0)	{
-			if (encoderDifference >= 20)
+			if (encoderDifference >= -20)
 				counteractValue = 0.05;
 			else if (encoderDifference >= -40)
 				counteractValue = 0.10;

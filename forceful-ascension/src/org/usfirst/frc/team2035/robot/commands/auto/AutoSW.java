@@ -55,8 +55,10 @@ public class AutoSW extends Command {
 	    			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 3)
 	    			armPosition(RobotMap.ARM_POSITION_3);
-	    		else if (moveStep == 4)
-	    			releaseCube(2.0);
+	    		else if (moveStep == 4) {
+	    			rollCubeOut(2.0);
+	    			letCubeGo(2.0);
+	    		}
 	    		else if (moveStep == 5)
 	    			autoDone = true;
 	    	} 
@@ -68,8 +70,10 @@ public class AutoSW extends Command {
 	    			move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 2)
 	    			armPosition(RobotMap.ARM_POSITION_0);
-	    		else if (moveStep == 3)
-	    			releaseCube(2.0);
+	    		else if (moveStep == 3) {
+	    			rollCubeOut(2.0);
+	    			letCubeGo(2.0);
+	    		}
 	    		else if (moveStep == 4)
 	    			autoDone = true;
 	    	} 
@@ -87,8 +91,10 @@ public class AutoSW extends Command {
 	    			move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 5)
 	    			armPosition(RobotMap.ARM_POSITION_0);
-	    		else if (moveStep == 6) 
-	    			releaseCube(2.0);
+	    		else if (moveStep == 6) {
+	    			rollCubeOut(2.0);
+	    			letCubeGo(2.0);
+	    		}
 	    		else if (moveStep == 7)
 	    			autoDone = true;
 	    	} 
@@ -102,8 +108,10 @@ public class AutoSW extends Command {
 	    			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.SLOW_MOVE_SPEED);
 	    		else if (moveStep == 3)
 	    			armPosition(RobotMap.ARM_POSITION_0);
-	    		else if (moveStep == 4)
-	    			releaseCube(2.0);
+	    		else if (moveStep == 4) {
+	    			rollCubeOut(2.0);
+	    			letCubeGo(2.0);
+	    		}
 	    		else if (moveStep == 5)
 	    			autoDone = true;
 	    	}
@@ -152,8 +160,13 @@ public class AutoSW extends Command {
     	arm.start();
     }
     
-    private void releaseCube(double time) {
+    private void rollCubeOut(double time) {
     	arm = new AutoCubeOut(time);
+    	arm.start();
+    }
+    
+    private void letCubeGo(double time) {
+    	arm = new AutoOpenHangerClaws(time);
     	arm.start();
     }
     
