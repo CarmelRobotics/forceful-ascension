@@ -26,7 +26,7 @@ public class RobotMap {
 	//Arm 1:27.41 DO NOT CHANGE!!!
 	
 	
-	public static final int ARM_STARTING_POSITION = 17158; //raw sensor units
+	public static final int ARM_STARTING_POSITION = 0; //17158 //raw sensor units
 	public static final double ARM_POSITION_0 = 0; // 0 degrees on arm gear 
 	public static final double ARM_POSITION_1 = 548; // 20 degrees on arm gear 
 	public static final double ARM_POSITION_2 = 1508; // 55 degrees on arm gear

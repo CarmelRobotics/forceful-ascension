@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
+import org.usfirst.frc.team2035.robot.subsystems.Arm;
+import org.usfirst.frc.team2035.robot.subsystems.CubeDepositer;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 
 /**
@@ -19,10 +21,10 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 public class CubeIn extends Command {
 	
 	public static OI oi;
-	private final CubeMech cbm;
+	private final CubeDepositer cbm;
 	
 	public CubeIn() {
-		cbm = Robot.getCubeMech();
+		cbm = Robot.getCubeDepositer();
 		requires(cbm);
 	}
 

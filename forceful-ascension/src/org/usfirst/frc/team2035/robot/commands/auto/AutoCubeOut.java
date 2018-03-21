@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
+import org.usfirst.frc.team2035.robot.subsystems.Arm;
+import org.usfirst.frc.team2035.robot.subsystems.CubeDepositer;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 
 /**
@@ -20,12 +22,12 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 public class AutoCubeOut extends Command {
 	
 	public static OI oi;
-	private final CubeMech cbm;
+	private final CubeDepositer cbm;
 	private double totalTime;
 	Timer t;
 	
 	public AutoCubeOut(double time) {
-		cbm = Robot.getCubeMech();
+		cbm = Robot.getCubeDepositer();
 		t = new Timer();
 		totalTime = time;
 		requires(cbm);
@@ -59,6 +61,7 @@ public class AutoCubeOut extends Command {
 		cbm.stopRoll();
 		AutoSW.nextMove = true;
     	AutoSW.moveStep++;
+    	System.out.print(AutoSW.moveStep);
 	}
 
 	// Called when another command which requires one or more of the same

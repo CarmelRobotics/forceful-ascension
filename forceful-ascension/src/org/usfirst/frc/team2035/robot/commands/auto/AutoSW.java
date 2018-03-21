@@ -4,6 +4,7 @@ import org.usfirst.frc.team2035.robot.AutoValues;
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
 import org.usfirst.frc.team2035.robot.RobotMap;
+import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -17,6 +18,7 @@ public class AutoSW extends Command {
 	private int start;
 	Command movement;
 	Command arm;
+	Arm a;
 	public static boolean nextMove;
 	public static int moveStep;
 	private boolean autoDone;
@@ -29,11 +31,13 @@ public class AutoSW extends Command {
         nextMove = true;
         moveStep = 0;
         autoDone = false;
+        a = Robot.getArm();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	oi = new OI();
+    	a.setAnglerPosition(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -42,14 +46,15 @@ public class AutoSW extends Command {
     	if (nextMove) {
     		
 	    	if (start == 0) {
+	    		System.out.println("hi there please show me");
 	    		if (moveStep == 0)
-	    			move(AutoValues.STARTPOS_SWITCHSIDE_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+	    			move((4.25*Math.PI), AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
 	    		else if (moveStep == 1)
 	    			rotate(AutoValues.TURN90_RIGHT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
 	    		else if (moveStep == 2)
-	    			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.SLOW_MOVE_SPEED);
+	    			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 3)
-	    			armPosition(RobotMap.ARM_POSITION_0);
+	    			armPosition(RobotMap.ARM_POSITION_3);
 	    		else if (moveStep == 4)
 	    			releaseCube(2.0);
 	    		else if (moveStep == 5)

@@ -22,12 +22,14 @@ import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
+import org.usfirst.frc.team2035.robot.commands.auto.AutoSW;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 import org.usfirst.frc.team2035.robot.subsystems.ACompressor;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
+import org.usfirst.frc.team2035.robot.subsystems.CubeDepositer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,10 +47,14 @@ public class Robot extends TimedRobot {
 	public static CubeMech cbm;
 	public static Wings wing;
 	public static Drivetrain drt;
-
+	public static CubeDepositer cd;
+	
 	public static CameraServer cms;
 	public static ACompressor compressor;
 	public static OI oi;
+	
+	
+	private boolean x;
 	
 	Command wingSetup;
 	Command drive;
@@ -69,12 +75,13 @@ public class Robot extends TimedRobot {
 		cbm = new CubeMech();
 		wing = new Wings();
 		drt = new Drivetrain();
-
+		cd = new CubeDepositer();
 		putInGear = new GearshiftHigh();
 		putInGear.start();
 		arm = new Arm();
 		compressor = new ACompressor();
 		counter = 0; 
+		x = true;
 		//cms = CameraServer.getInstance();
 		//cms.startAutomaticCapture();
 		
@@ -119,6 +126,7 @@ public class Robot extends TimedRobot {
 		boolean secondBox;
 		String gameData;
 		drt.resetLeft();
+		drt.resetRight();
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
 		swMid = swPos.charAt(1);
@@ -128,18 +136,10 @@ public class Robot extends TimedRobot {
 		
 		
 		
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
-        if(gameData.length() > 0)  {
-        	if(gameData.charAt(0) == 'L')
-        	{
-			//Put left auto code here
-        	} 
-        	else {
-			//Put right auto code here
-        	}
-        }
 		
-		//autonomousCommand = new AutoSW(0, 'L');
+        
+        //autonomousCommand = new AutoSW(0, 'L');
+
 		/*
 		if (RobotMap.ROUTING == 0) //put box on team switch
 			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
@@ -168,16 +168,20 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() { //works perfectly at drive .4
+		
 		Scheduler.getInstance().run();
-		/*
+		
 		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
 		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
-		if (360 - drt.currentDegreesLeft() < 100) {
-			drt.drive(.4, 0);
+		if (360 - drt.currentDegreesLeft() < 100 && x) {
+			drt.drive(.5, 0);
 			System.out.println("slow");
+			if(drt.currentDegreesLeft() > 360) {
+				x = false;
+			}
 		}
 		else if ((drt.currentDegreesLeft()) < 360) {
-			drt.drive(0.6, 0.0);
+			drt.drive(0.5, 0.0);
 			System.out.println("fast");
 		}
 	
@@ -186,7 +190,7 @@ public class Robot extends TimedRobot {
 		
 			
 		}
-		 */
+		 
 	}
 
 	@Override
@@ -234,5 +238,8 @@ public class Robot extends TimedRobot {
 	
 	public static Drivetrain getDrivetrain(){
 		return drt;
+	}
+	public static CubeDepositer getCubeDepositer() {
+		return cd;
 	}
 }
