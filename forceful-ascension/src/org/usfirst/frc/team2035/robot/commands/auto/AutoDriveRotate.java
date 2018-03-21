@@ -34,15 +34,16 @@ public class AutoDriveRotate extends Command {
     protected void initialize() {
     	oi = new OI();
     	drt.resetLeft();
+    	drt.resetRight();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//slows movement to 70% of desired speed once destination is 1000 degrees away
     	if (drt.currentDegreesLeft() >= degrees - 1000)
-    		drt.drive(-(spd * 0.7), 0.0);
+    		drt.drive(0.0, -(spd * 0.7));
     	else
-    		drt.drive(-spd, 0.0);
+    		drt.drive(0.0, -spd);
     	//if (counter % 30 == 0)
     		//System.out.println(drt.currentDegreesLeft());
     	counter++;
@@ -50,7 +51,7 @@ public class AutoDriveRotate extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (drt.currentDegreesLeft() >= degrees)
+        if (-drt.currentDegreesLeft() >= degrees)
         	return true;
         else
         	return false;
@@ -60,6 +61,7 @@ public class AutoDriveRotate extends Command {
     protected void end() {
     	AutoSW.nextMove = true;
     	AutoSW.moveStep++;
+    	System.out.print(AutoSW.moveStep);
     }
 
     // Called when another command which requires one or more of the same

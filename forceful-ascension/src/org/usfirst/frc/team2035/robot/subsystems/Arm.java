@@ -30,7 +30,8 @@ public class Arm extends Subsystem{
 	private SpeedControllerGroup climbers;
 	private DoubleSolenoid latch;
 	private boolean canExtend;
-	private Timer retractTimer;
+	//private Timer retractTimer;
+	
 	
 	public Arm() {
 		
@@ -48,9 +49,10 @@ public class Arm extends Subsystem{
 		latch = new DoubleSolenoid(RobotMap.ARM_LATCH_OPEN, RobotMap.PLACEHOLDER);
 		angler.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 0);
 		angler.setSelectedSensorPosition(RobotMap.ARM_STARTING_POSITION, 0, 0);
+		
 		//angler.setSelectedSensorPosition(0, 0, 0);
 		canExtend = false;
-		retractTimer = new Timer();
+		//retractTimer = new Timer();
 
 		
 		
@@ -117,13 +119,14 @@ public class Arm extends Subsystem{
 	public boolean armChangeAngle(double desiredPos) { //This method serves to change the arm's angle to any given angle
 		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
-		if (desiredPos == RobotMap.ARM_POSITION_3 || desiredPos == RobotMap.ARM_POSITION_4) {
+		if (desiredPos == RobotMap.ARM_POSITION_2) {
 			canExtend = true;
-			
+			System.out.println(canExtend);
 		}
-		else if (currentPos < RobotMap.ARM_POSITION_3){
+		else if (desiredPos == RobotMap.ARM_POSITION_0 || desiredPos == RobotMap.ARM_POSITION_1 || desiredPos == RobotMap.ARM_POSITION_3 || desiredPos == RobotMap.ARM_POSITION_4){
 			
 			canExtend = false;
+			System.out.println(canExtend);
 		}
 		/*
 		else if (currentPos >= RobotMap.ARM_POSITION_3) {
@@ -170,7 +173,7 @@ public class Arm extends Subsystem{
 	
 	
 	public void manualRaiseAngle() {
-		angler.set(ControlMode.PercentOutput, .8);
+		angler.set(ControlMode.PercentOutput, .7);
 		System.out.println(-angler.getSelectedSensorPosition(0)/(4096/360));
 		System.out.println("raising here");
 		
@@ -241,10 +244,19 @@ public class Arm extends Subsystem{
 		
 	}
 	
+	
+	
 	public boolean getcanExtend() {
 		return canExtend;
 	}
 	
+	public int getAnglerPosition() {
+		return -(angler.getSelectedSensorPosition(0)/(4096/360));
+	}
+	
+	public void setAnglerPosition(int pos) {
+		angler.setSelectedSensorPosition(pos, 0, 0);
+	}
 	
 	/*
 	public boolean notMoving() {

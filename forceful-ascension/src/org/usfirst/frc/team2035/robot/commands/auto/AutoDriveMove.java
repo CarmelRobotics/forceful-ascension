@@ -34,6 +34,7 @@ public class AutoDriveMove extends Command {
     protected void initialize() {
     	oi = new OI();
     	drt.resetLeft();
+    	drt.resetRight();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -50,7 +51,8 @@ public class AutoDriveMove extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (drt.currentDegreesLeft() >= degrees)
+        //System.out.println(drt.currentDegreesLeft() + " out of " + degrees);
+    	if (-drt.currentDegreesLeft() >= degrees)
         	return true;
         else
         	return false;
@@ -60,7 +62,8 @@ public class AutoDriveMove extends Command {
     protected void end() {
     	AutoSW.nextMove = true;
     	AutoSW.moveStep++;
-    }
+    	System.out.print(AutoSW.moveStep);    
+    	}
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

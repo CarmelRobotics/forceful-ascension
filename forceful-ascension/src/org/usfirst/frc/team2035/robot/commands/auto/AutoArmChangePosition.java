@@ -38,7 +38,7 @@ public class AutoArmChangePosition extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println("hi from acp");
+		System.out.println(arm.getAnglerPosition());
 		//arm.armChangeAngle(desiredPos);
 	}
 
@@ -54,6 +54,7 @@ public class AutoArmChangePosition extends Command {
 		arm.armAnglerStop();
 		AutoSW.nextMove = true;
     	AutoSW.moveStep++;
+    	System.out.print(AutoSW.moveStep);
 		//arm.armChangeAngle(RobotMap.ARM_POSITION_0);
 	}
 

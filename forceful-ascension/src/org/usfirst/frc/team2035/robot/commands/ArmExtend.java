@@ -32,9 +32,9 @@ public class ArmExtend extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		//if (arm.getcanExtend()) {
+		if (arm.getcanExtend()) {
 			arm.extend();
-		//}
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
