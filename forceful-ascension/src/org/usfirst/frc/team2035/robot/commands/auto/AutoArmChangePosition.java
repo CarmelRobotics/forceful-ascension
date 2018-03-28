@@ -32,13 +32,14 @@ public class AutoArmChangePosition extends Command {
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
+		arm.setAnglerPosition(-20275);
 		oi = new OI();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		System.out.println(arm.getAnglerPosition());
+		System.out.println("from auto arm: " + arm.getAnglerPosition());
 		//arm.armChangeAngle(desiredPos);
 	}
 

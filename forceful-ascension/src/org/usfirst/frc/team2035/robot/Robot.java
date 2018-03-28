@@ -19,13 +19,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team2035.robot.commands.CubeIn;
 import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
+import org.usfirst.frc.team2035.robot.commands.ManualLowerAngle;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
 import org.usfirst.frc.team2035.robot.commands.auto.AutoSW;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
-
+import org.usfirst.frc.team2035.robot.subsystems.RotarySwitch;
 import org.usfirst.frc.team2035.robot.subsystems.Wings;
 import org.usfirst.frc.team2035.robot.subsystems.ACompressor;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
@@ -48,10 +49,13 @@ public class Robot extends TimedRobot {
 	public static Wings wing;
 	public static Drivetrain drt;
 	public static CubeDepositer cd;
+	public static RotarySwitch rs;
 	
 	public static CameraServer cms;
 	public static ACompressor compressor;
 	public static OI oi;
+	
+
 	
 	
 	private boolean x;
@@ -59,7 +63,7 @@ public class Robot extends TimedRobot {
 	Command wingSetup;
 	Command drive;
 	Command putInGear;
-	
+	Command manualLowerAngle;
 	 Command autonomousCommand;
 	 
 	
@@ -76,15 +80,17 @@ public class Robot extends TimedRobot {
 		wing = new Wings();
 		drt = new Drivetrain();
 		cd = new CubeDepositer();
-		putInGear = new GearshiftHigh();
-		putInGear.start();
+		rs = new RotarySwitch();
+		//putInGear = new GearshiftHigh();
+		//putInGear.start();
 		arm = new Arm();
 		compressor = new ACompressor();
 		counter = 0; 
 		x = true;
+		wing.wingsSolenoidsOff();
 		//cms = CameraServer.getInstance();
 		//cms.startAutomaticCapture();
-		
+
 		System.out.println("ghostbusters");
 		OI.initialize();
 	}
@@ -122,21 +128,25 @@ public class Robot extends TimedRobot {
 		char swNear;
 		char swMid;
 		int startPos;
-		char sidePass;
-		boolean secondBox;
+		//char sidePass;
+		//boolean secondBox;
 		String gameData;
 		drt.resetLeft();
 		drt.resetRight();
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
 		swMid = swPos.charAt(1);
-
-		sidePass = RobotMap.SIDE;
-		secondBox = RobotMap.SECOND_BOX;
+		startPos = rs.getSwitchPosition();
+		if (startPos == -1)
+			startPos = 0;
+		//sidePass = RobotMap.SIDE;
+		//secondBox = RobotMap.SECOND_BOX;
 		
+		drt.gearshiftHigh();
 		
+		System.out.println(startPos + "tetteteteaa");
 		
-		
+		autonomousCommand = new AutoSW(startPos, swNear);
         
         //autonomousCommand = new AutoSW(0, 'L');
 
@@ -148,8 +158,9 @@ public class Robot extends TimedRobot {
 		else if (RobotMap.ROUTING == 2) //put box on middle switch
 			autonomousCommand = new AutoCL(sidePass, startPos, swMid, secondBox);
 		*/
-		if (autonomousCommand != null)
-			autonomousCommand.start(); 
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
+		}
 	}
 	
 	
@@ -171,8 +182,9 @@ public class Robot extends TimedRobot {
 		
 		Scheduler.getInstance().run();
 		
-		System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
-		System.out.println("Right Encoder: "+ drt.currentDegreesRight());
+		//System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
+		//System.out.println("Right Encoder: "+ drt.currentDegreesRight());
+		/*
 		if (360 - drt.currentDegreesLeft() < 100 && x) {
 			drt.drive(.5, 0);
 			System.out.println("slow");
@@ -190,7 +202,7 @@ public class Robot extends TimedRobot {
 		
 			
 		}
-		 
+		 */
 	}
 
 	@Override
@@ -204,8 +216,10 @@ public class Robot extends TimedRobot {
 		}
 		
 		compressor.start();
-		drive = new TeleopDrive();
-
+		//drive = new TeleopDrive();
+		drt.gearshiftHigh();
+		arm.setAnglerPosition(-20275);
+	//	manualLowerAngle = new ManualLowerAngle();
 	}
 
 	/**
@@ -214,7 +228,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		drive.start();
+		//1System.out.println(rs.getSwitchPosition());
+		//drt.gearshiftHigh();
+		drt.drive();
+		//drive.start();
+	//	manualLowerAngle.start();
+		
+		
+		
 	}
 
 	/**

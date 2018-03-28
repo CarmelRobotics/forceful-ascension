@@ -17,12 +17,12 @@ import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 /**
  * Rolls the cube carrying mechanism's rollers in, taking in cubes.
  */
-public class GearshiftHigh extends Command {
+public class GearshiftToggle extends Command {
 	
 	public static OI oi;
 	private final Drivetrain drt;
 	
-	public GearshiftHigh() {
+	public GearshiftToggle() {
 		drt = Robot.getDrivetrain();
 		requires(drt);
 	}
@@ -31,13 +31,15 @@ public class GearshiftHigh extends Command {
 	@Override
 	protected void initialize() {
 		oi = new OI();
-		drt.gearshiftHigh();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		drt.gearshiftHigh();
+		if (Drivetrain.inGearshiftHigh)
+			drt.gearshiftLowT();
+		else
+			drt.gearshiftHighT();
 	}
 
 	//only runs once
@@ -49,7 +51,6 @@ public class GearshiftHigh extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		drt.gearshiftLow();
 		//System.out.println("hi from gsh end");
 	}
 
@@ -57,6 +58,5 @@ public class GearshiftHigh extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		drt.gearshiftLow();
 	}
 }

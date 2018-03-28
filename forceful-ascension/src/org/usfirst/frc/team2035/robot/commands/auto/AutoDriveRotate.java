@@ -20,6 +20,8 @@ public class AutoDriveRotate extends Command {
 	private double spd;
 	private double degrees;
 	private double counter;
+	private int first;
+	private double previousMovement;
 	
     public AutoDriveRotate(double inches, double speed) {
     	drt = Robot.getDrivetrain();
@@ -28,21 +30,32 @@ public class AutoDriveRotate extends Command {
 		spd = speed;
 		degrees = ((360*in)/(4.25*Math.PI));
 		counter = 0.0;
+		first = 0;
+		previousMovement = drt.currentDegreesLeft();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	oi = new OI();
-    	drt.resetLeft();
-    	drt.resetRight();
+    	//drt.resetLeft();
+    	//drt.resetRight();
+    	System.out.println("Left Encoder Rotate Init: " + drt.currentDegreesLeft() + "                     Right Encoder Rotate Init: " + drt.currentDegreesRight());
+    	double target = degrees + previousMovement;
+    	System.out.println(target);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//slows movement to 70% of desired speed once destination is 1000 degrees away
-    	if (drt.currentDegreesLeft() >= degrees - 1000)
-    		drt.drive(0.0, -(spd * 0.7));
-    	else
+    	//if (drt.currentDegreesLeft() >= degrees - 1000)
+    		//drt.drive(0.0, -(spd * 0.7));
+    	//else
+    	//if (first < 1)
+    	//{
+    		//drt.resetLeft();
+        	//drt.resetRight();
+        	//first++;
+    	//}
     		drt.drive(0.0, -spd);
     	//if (counter % 30 == 0)
     		//System.out.println(drt.currentDegreesLeft());
@@ -51,7 +64,7 @@ public class AutoDriveRotate extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (-drt.currentDegreesLeft() >= degrees)
+        if ((drt.currentDegreesLeft()) >= (degrees+previousMovement)) //&& first > 3)
         	return true;
         else
         	return false;
@@ -61,7 +74,7 @@ public class AutoDriveRotate extends Command {
     protected void end() {
     	AutoSW.nextMove = true;
     	AutoSW.moveStep++;
-    	System.out.print(AutoSW.moveStep);
+    	System.out.println(AutoSW.moveStep);
     }
 
     // Called when another command which requires one or more of the same

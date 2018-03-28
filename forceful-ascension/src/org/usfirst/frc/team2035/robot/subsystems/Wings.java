@@ -15,6 +15,7 @@ public class Wings extends Subsystem {
 	public Wings() {
 		super("wings");
 		wings = new Solenoid(RobotMap.WINGS);
+		wingsSolenoidsOff();
 	}
 
 	//turns wing solenoids on, keeping the wings up
