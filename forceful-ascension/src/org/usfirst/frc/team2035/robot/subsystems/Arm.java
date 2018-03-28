@@ -7,6 +7,7 @@ import org.usfirst.frc.team2035.robot.RobotMap;
 
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Timer;
@@ -97,33 +98,36 @@ public class Arm extends Subsystem{
 	}
 	/*
 	public void resetAngle() {
+		boolean y = false;
+		if (!y) {
+		setAnglerPosition(0);
+		}
+		System.out.println(getAnglerPosition());
+		if (getAnglerPosition() == 0) {
+			armChangeAngle(RobotMap.ARM_POSITION_3);
+			y = true;
+		}
+		System.out.println(getAnglerPosition());
 		
-		currentPos = (angler.getSelectedSensorPosition(0)/(4096/360));
-		if ((currentPos - startingPos) > 0) {
-			armLowerAngle();
-			
+		
+		if(getAnglerPosition() >= RobotMap.ARM_POSITION_3 || getAnglerPosition() >= RobotMap.ARM_POSITION_3 + 3 || getAnglerPosition() >= RobotMap.ARM_POSITION_3-3 && y) {
+			armStop();
+			setAnglerPosition(-20275);
 		}
 		
-		else if ((currentPos - startingPos) < 0) {
-			armRaiseAngle();
-			
-		}
-		else {
-			armAnglerStop();
-			
-		}
+		
 		
 	}
-	
 	*/
+	
 	public boolean armChangeAngle(double desiredPos) { //This method serves to change the arm's angle to any given angle
 		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
-		if (desiredPos == RobotMap.ARM_POSITION_2) {
+		if (desiredPos == RobotMap.ARM_POSITION_3|| desiredPos == RobotMap.ARM_POSITION_4) {
 			canExtend = true;
 			System.out.println(canExtend);
 		}
-		else if (desiredPos == RobotMap.ARM_POSITION_0 || desiredPos == RobotMap.ARM_POSITION_1 || desiredPos == RobotMap.ARM_POSITION_3 || desiredPos == RobotMap.ARM_POSITION_4){
+		else if (desiredPos == RobotMap.ARM_POSITION_0 || desiredPos == RobotMap.ARM_POSITION_1 || desiredPos == RobotMap.ARM_POSITION_2 ){
 			
 			canExtend = false;
 			System.out.println(canExtend);
@@ -182,10 +186,17 @@ public class Arm extends Subsystem{
 	}
 	
 	public void manualLowerAngle() { 
-		angler.set(ControlMode.PercentOutput, -0.3);
-		System.out.println(-angler.getSelectedSensorPosition(0)/(4096/360));
-		System.out.println("lowering here");
 		
+		
+		
+		angler.set(ControlMode.PercentOutput, -0.3);
+	
+		System.out.println(getAnglerPosition());
+		System.out.println("lowering here");
+	//	if(stk.getY()!= 0) {
+		//	System.out.println(-0.3/stk.getY());
+		//	angler.set(ControlMode.PercentOutput, -0.3/stk.getY());
+		//}
 		
 	}
 	
@@ -213,11 +224,11 @@ public class Arm extends Subsystem{
 		
 		if(desiredPos - currentPos <= -50)//If we are far away from our destination angle
 		{
-			angler.set(ControlMode.PercentOutput, -0.3);
+			angler.set(ControlMode.PercentOutput, -0.5);
 		}
 		else//If we are close to destination angle (serves to prevent overshooting the angle)
 		{
-			angler.set(ControlMode.PercentOutput, -0.2);
+			angler.set(ControlMode.PercentOutput, -0.3);
 		}
 		currentPos = -(angler.getSelectedSensorPosition(0)/(4096/360));
 		
@@ -239,8 +250,7 @@ public class Arm extends Subsystem{
 	
 	public void armStop() {  
 		
-		angler.stopMotor();
-		
+		angler.set(ControlMode.PercentOutput, 0.0);
 		
 	}
 	

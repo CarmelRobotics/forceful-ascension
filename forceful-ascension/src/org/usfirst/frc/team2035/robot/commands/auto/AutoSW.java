@@ -43,33 +43,107 @@ public class AutoSW extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+    	//move(4.25*(Math.PI), 0.5);
+    	//rotate(AutoValues.TURN90_RIGHT_INCHES, 0.7);
+    	//autoDone = true;
+    	
     	if (nextMove) {
+    	
+    		System.out.println("weeeee got it");
     		
-	    	if (start == 0) {
-	    		System.out.println("hi there please show me");
+    		
+    		if (moveStep == 0)
+    			move(350, AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
+    		//else if (moveStep == 1)
+    			//armPosition(RobotMap.ARM_POSITION_1);
+    		//else if (moveStep == 2)
+    			//rollCubeOut(1.0);
+    		else if (moveStep == 1)
+    			autoDone = true;
+    		    	//hello world
+    		/*
+    		if (moveStep == 0) {
+    			System.out.println("Forward");
+    			move(350, AutoValues.DEFAULT_MOVE_SPEED);
+    		}//AutoValues.STARTPOS_SWITCHSIDE_INCHES
+    		else if (moveStep == 1) {
+    			System.out.println("Rotate");
+    			if (sw == 'L' && start == 0) {
+    				rotate(AutoValues.TURN90_RIGHT_INCHES, AutoValues.DEFAULT_TURN_SPEED); 
+    				System.out.println("successful");
+    						}
+    			//else if (sw == 'R' && start == 2)
+    				//rotate(AutoValues.TURN90_LEFT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
+    			//else
+    				//rotate(2, AutoValues.DEFAULT_TURN_SPEED);
+    		}
+    		else if (moveStep == 2) {
+    			System.out.println("Stop");
+    			//armPosition(RobotMap.ARM_POSITION_1);
+    			autoDone = true;
+    		}
+    		else if (moveStep == 3) {
+    			//autoDone = true;
+    		}
+    		*/
+    		/*
+	    	if (start == 0 && sw == 'L') {
 	    		if (moveStep == 0)
-	    			move((4.25*Math.PI), AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
+	    			move(AutoValues.STARTPOS_SWITCHSIDE_INCHES+20, AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
 	    		else if (moveStep == 1)
 	    			rotate(AutoValues.TURN90_RIGHT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
 	    		else if (moveStep == 2)
-	    			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
-	    		else if (moveStep == 3)
-	    			armPosition(RobotMap.ARM_POSITION_3);
+	    			armPosition(RobotMap.ARM_POSITION_1);
+	    		else if (moveStep == 3) {
+	    			rollCubeOut(1.0);
+	    			//letCubeGo(1.0);
+	    		}
 	    		else if (moveStep == 4)
-	    			releaseCube(2.0);
-	    		else if (moveStep == 5)
 	    			autoDone = true;
-	    	} 
+	    	}
+	    	
+	    	else if (start == 0 && sw == 'R') {
+		    	if (AutoValues.COMPLEX_AUTO) {	
+	    			if (moveStep == 0)
+		    			move(AutoValues.STARTPOS2_RIGHTSWITCHFRONT_INCHES, AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
+		    		else if (moveStep == 1)
+		    			rotate(AutoValues.TURN90_RIGHT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
+		    		else if (moveStep == 2)
+			    		move(AutoValues.POSITIONFRONT_OPPOSITESWITCHFRONT_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+		    		else if (moveStep == 3)
+		    			rotate(AutoValues.TURN90_LEFT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
+		    		else if (moveStep == 4)
+			    		move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+		    		else if (moveStep == 5)
+		    			armPosition(RobotMap.ARM_POSITION_1);
+		    		else if (moveStep == 6) {
+		    			rollCubeOut(1.0);
+		    			//letCubeGo(1.0);
+		    		}
+		    		else if (moveStep == 7)
+		    			autoDone = true;
+		    	}
+		    	else {
+		    		if (moveStep == 0)
+		    			move(AutoValues.STARTPOS_SWITCHSIDE_INCHES+20, AutoValues.DEFAULT_MOVE_SPEED);
+		    		else if (moveStep == 1)
+		    			autoDone = true;
+		    	}
+		    		
+	    	}
 	    	
 	    	else if (start == 1 && sw == 'R') {
+	    		System.out.println("made it");
 	    		if (moveStep == 0)
 	    			move(AutoValues.STARTPOS2_RIGHTSWITCHFRONT_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 1)
-	    			move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+	    			move(AutoValues.SWITCHFRONT_APPROACH_INCHES+10, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 2)
-	    			armPosition(RobotMap.ARM_POSITION_0);
-	    		else if (moveStep == 3)
-	    			releaseCube(2.0);
+	    			armPosition(RobotMap.ARM_POSITION_1);
+	    		else if (moveStep == 3) {
+	    			rollCubeOut(1.0);
+	    			//letCubeGo(2.0);
+	    		}
 	    		else if (moveStep == 4)
 	    			autoDone = true;
 	    	} 
@@ -86,37 +160,69 @@ public class AutoSW extends Command {
 	    		else if (moveStep == 4)
 	    			move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
 	    		else if (moveStep == 5)
-	    			armPosition(RobotMap.ARM_POSITION_0);
-	    		else if (moveStep == 6) 
-	    			releaseCube(2.0);
+	    			armPosition(RobotMap.ARM_POSITION_1);
+	    		else if (moveStep == 6) {
+	    			rollCubeOut(1.0);
+	    			//letCubeGo(1.0);
+	    		}
 	    		else if (moveStep == 7)
 	    			autoDone = true;
 	    	} 
 	    	
-	    	else if (start == 2) {
+	    	else if (start == 2 && sw == 'R') {
 	    		if (moveStep == 0)
-	    			move(AutoValues.STARTPOS_SWITCHSIDE_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+	    			move(AutoValues.STARTPOS_SWITCHSIDE_INCHES, AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
 	    		else if (moveStep == 1)
 	    			rotate(AutoValues.TURN90_LEFT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
 	    		else if (moveStep == 2)
-	    			move(AutoValues.SWITCHSIDE_APPROACH_INCHES, AutoValues.SLOW_MOVE_SPEED);
-	    		else if (moveStep == 3)
-	    			armPosition(RobotMap.ARM_POSITION_0);
+	    			armPosition(RobotMap.ARM_POSITION_1);
+	    		else if (moveStep == 3) {
+	    			rollCubeOut(1.0);
+	    			//letCubeGo(1.0);
+	    		}
 	    		else if (moveStep == 4)
-	    			releaseCube(2.0);
-	    		else if (moveStep == 5)
 	    			autoDone = true;
+	    	}
+	    	
+	    	else if (start == 2 && sw == 'L') {
+		    	if (AutoValues.COMPLEX_AUTO) {	
+	    			if (moveStep == 0)
+		    			move(AutoValues.STARTPOS2_RIGHTSWITCHFRONT_INCHES, AutoValues.DEFAULT_MOVE_SPEED); //AutoValues.STARTPOS_SWITCHSIDE_INCHES
+		    		else if (moveStep == 1)
+		    			rotate(AutoValues.TURN90_LEFT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
+		    		else if (moveStep == 2)
+			    		move(AutoValues.POSITIONFRONT_OPPOSITESWITCHFRONT_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+		    		else if (moveStep == 3)
+		    			rotate(AutoValues.TURN90_RIGHT_INCHES, AutoValues.DEFAULT_TURN_SPEED);
+		    		else if (moveStep == 4)
+			    		move(AutoValues.SWITCHFRONT_APPROACH_INCHES, AutoValues.DEFAULT_MOVE_SPEED);
+		    		else if (moveStep == 5)
+		    			armPosition(RobotMap.ARM_POSITION_1);
+		    		else if (moveStep == 6) {
+		    			rollCubeOut(1.0);
+		    			//letCubeGo(1.0);
+		    		}
+		    		else if (moveStep == 7)
+		    			autoDone = true;
+		    	}
+		    	else {
+		    		if (moveStep == 0)
+		    			move(AutoValues.STARTPOS_SWITCHSIDE_INCHES+20, AutoValues.DEFAULT_MOVE_SPEED);
+		    		else if (moveStep == 1)
+		    			autoDone = true;
+		    	}
+		    		
 	    	}
 	    	
 	    	else {
 	    		//do nothing
-	    	}
+	    	} */
 	    	
 	    	nextMove = false;
 	    	
     	}
-    	
     	//simultaneous actions can be placed here as new 'if' blocks
+    	 
     	
     }
 
@@ -152,8 +258,13 @@ public class AutoSW extends Command {
     	arm.start();
     }
     
-    private void releaseCube(double time) {
+    private void rollCubeOut(double time) {
     	arm = new AutoCubeOut(time);
+    	arm.start();
+    }
+    
+    private void letCubeGo(double time) {
+    	arm = new AutoOpenHangerClaws(time);
     	arm.start();
     }
     
