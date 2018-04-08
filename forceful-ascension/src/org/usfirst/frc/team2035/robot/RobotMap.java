@@ -18,10 +18,6 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class RobotMap {
 	
-	//Autonomous Choices
-	public static final int ROUTING = 0; //choose between nearest switch (0), only cross line (1), and high switch (2)
-	public static final char SIDE = 'L'; //choose which side to use to cross line or get to middle switch ('L' or 'R')
-	public static final boolean SECOND_BOX = false; //choose whether to obtain another box after placing first box
 	
 	//Arm 1:27.41 DO NOT CHANGE!!!
 	

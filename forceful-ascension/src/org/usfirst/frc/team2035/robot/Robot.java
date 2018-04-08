@@ -23,7 +23,7 @@ import org.usfirst.frc.team2035.robot.commands.ManualLowerAngle;
 //import org.usfirst.frc.team2035.robot.commands.CurveDrive;
 import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
 import org.usfirst.frc.team2035.robot.commands.WingsOut;
-import org.usfirst.frc.team2035.robot.commands.auto.AutoSW;
+import org.usfirst.frc.team2035.robot.commands.auto.AutoMain;
 import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team2035.robot.subsystems.RotarySwitch;
@@ -124,40 +124,37 @@ public class Robot extends TimedRobot {
 	@SuppressWarnings("unused")
 	@Override
 	public void autonomousInit() {
+		
+		//initializing variables that are passed to autonomous code
 		String swPos;
 		char swNear;
 		char swMid;
 		int startPos;
-		//char sidePass;
-		//boolean secondBox;
 		String gameData;
+		
+		//resetting drivetrain encoders in preparation for the running of the autonomous code
 		drt.resetLeft();
 		drt.resetRight();
+		
+		//sets variables that are based on data in the driver station's Game Data
 		swPos = DriverStation.getInstance().getGameSpecificMessage();
 		swNear = swPos.charAt(0);
 		swMid = swPos.charAt(1);
+		
+		//sets variable based on position of rotary switch
 		startPos = rs.getSwitchPosition();
+		
+		//ensures that the rotary switch variable is set to a value the autonomous code can use
 		if (startPos == -1)
 			startPos = 0;
-		//sidePass = RobotMap.SIDE;
-		//secondBox = RobotMap.SECOND_BOX;
 		
+		//ensures that the robot is in high gear
 		drt.gearshiftHigh();
 		
-		System.out.println(startPos + "tetteteteaa");
+		//sets the command variable to the autonomous object with parameters set to the variables obtained above
+		autonomousCommand = new AutoMain(startPos, swNear);
 		
-		autonomousCommand = new AutoSW(startPos, swNear);
-        
-        //autonomousCommand = new AutoSW(0, 'L');
-
-		/*
-		if (RobotMap.ROUTING == 0) //put box on team switch
-			autonomousCommand = new AutoSW1(swNear, startPos, sidePass, secondBox);
-		else if (RobotMap.ROUTING == 1)  //only cross line
-			autonomousCommand = new AutoCL(sidePass, sidePass, 'N', secondBox);
-		else if (RobotMap.ROUTING == 2) //put box on middle switch
-			autonomousCommand = new AutoCL(sidePass, startPos, swMid, secondBox);
-		*/
+		//runs command
 		if (autonomousCommand != null) {
 			autonomousCommand.start();
 		}

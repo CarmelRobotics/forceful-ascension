@@ -37,8 +37,6 @@ public class AutoDriveRotate extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	oi = new OI();
-    	//drt.resetLeft();
-    	//drt.resetRight();
     	System.out.println("Left Encoder Rotate Init: " + drt.currentDegreesLeft() + "                     Right Encoder Rotate Init: " + drt.currentDegreesRight());
     	double target = degrees + previousMovement;
     	System.out.println(target);
@@ -46,25 +44,13 @@ public class AutoDriveRotate extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//slows movement to 70% of desired speed once destination is 1000 degrees away
-    	//if (drt.currentDegreesLeft() >= degrees - 1000)
-    		//drt.drive(0.0, -(spd * 0.7));
-    	//else
-    	//if (first < 1)
-    	//{
-    		//drt.resetLeft();
-        	//drt.resetRight();
-        	//first++;
-    	//}
-    		drt.drive(0.0, -spd);
-    	//if (counter % 30 == 0)
-    		//System.out.println(drt.currentDegreesLeft());
+    	drt.drive(0.0, -spd);
     	counter++;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if ((drt.currentDegreesLeft()) >= (degrees+previousMovement)) //&& first > 3)
+        if ((drt.currentDegreesLeft()) >= (degrees+previousMovement))
         	return true;
         else
         	return false;
@@ -72,9 +58,9 @@ public class AutoDriveRotate extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	AutoSW.nextMove = true;
-    	AutoSW.moveStep++;
-    	System.out.println(AutoSW.moveStep);
+    	AutoMain.nextMove = true;
+    	AutoMain.moveStep++;
+    	System.out.println(AutoMain.moveStep);
     }
 
     // Called when another command which requires one or more of the same

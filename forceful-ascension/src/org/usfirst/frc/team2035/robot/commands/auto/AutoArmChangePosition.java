@@ -9,7 +9,6 @@ package org.usfirst.frc.team2035.robot.commands.auto;
 
 import org.usfirst.frc.team2035.robot.OI;
 import org.usfirst.frc.team2035.robot.Robot;
-import org.usfirst.frc.team2035.robot.RobotMap;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -53,9 +52,9 @@ public class AutoArmChangePosition extends Command {
 	@Override
 	protected void end() {
 		arm.armAnglerStop();
-		AutoSW.nextMove = true;
-    	AutoSW.moveStep++;
-    	System.out.print(AutoSW.moveStep);
+		AutoMain.nextMove = true;
+    	AutoMain.moveStep++;
+    	System.out.print(AutoMain.moveStep);
 		//arm.armChangeAngle(RobotMap.ARM_POSITION_0);
 	}
 

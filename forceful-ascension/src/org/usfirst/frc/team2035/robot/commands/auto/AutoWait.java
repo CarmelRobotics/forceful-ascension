@@ -19,18 +19,15 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
 /**
  * Rolls the cube carrying mechanism's rollers out, rejecting cubes.
  */
-public class AutoCubeOut extends Command {
+public class AutoWait extends Command {
 	
 	public static OI oi;
-	private final CubeDepositer cbm;
 	private double totalTime;
 	Timer t;
 	
-	public AutoCubeOut(double time) {
-		cbm = Robot.getCubeDepositer();
+	public AutoWait(double time) {
 		t = new Timer();
 		totalTime = time;
-		requires(cbm);
 	}
 
 	// Called just before this Command runs the first time
@@ -43,7 +40,7 @@ public class AutoCubeOut extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		cbm.rollOut();
+		//do nothing
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
@@ -58,7 +55,6 @@ public class AutoCubeOut extends Command {
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
-		cbm.stopRoll();
 		AutoMain.nextMove = true;
     	AutoMain.moveStep++;
     	System.out.print(AutoMain.moveStep);
