@@ -57,9 +57,9 @@ public class AutoOpenHangerClaws extends Command{
 	@Override
 	protected void end() {
 		cm.closeHangerClaws();
-		AutoSW.nextMove = true;
-    	AutoSW.moveStep++;
-    	System.out.print(AutoSW.moveStep);    
+		AutoMain.nextMove = true;
+    	AutoMain.moveStep++;
+    	System.out.print(AutoMain.moveStep);    
 	}
 
 	// Called when another command which requires one or more of the same

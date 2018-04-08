@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team2035.robot;
+package org.usfirst.frc.team2035.robot.commands.auto;
 
 /**
  * the best

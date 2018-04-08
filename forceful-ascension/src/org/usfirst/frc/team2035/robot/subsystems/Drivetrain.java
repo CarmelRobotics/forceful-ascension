@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2035.robot.subsystems;
-import org.usfirst.frc.team2035.robot.AutoValues;
 import org.usfirst.frc.team2035.robot.RobotMap;
+import org.usfirst.frc.team2035.robot.commands.auto.AutoValues;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -56,44 +56,6 @@ public class Drivetrain extends Subsystem {
 			train.arcadeDrive(-speed, -rotation);
 		else
 			train.arcadeDrive(speed, rotation);
-	}
-	
-	public void driveAuto(double speed) {
-		double encoderDifference = currentDegreesRight() - currentDegreesLeft();
-		double counteractValue;
-		/*
-		if (encoderDifference > 0) {
-			if (encoderDifference <= 20)
-				counteractValue = -0.05;
-			else if (encoderDifference <= 40)
-				counteractValue = -0.10;
-			else if (encoderDifference <= 60)
-				counteractValue = -0.15;
-			else if (encoderDifference <= 80)
-				counteractValue = -0.20;
-			else if (encoderDifference <= 100)
-				counteractValue = -0.25;
-			else
-				counteractValue = -0.30;
-		}
-		else if (encoderDifference < 0)	{
-			if (encoderDifference >= -20)
-				counteractValue = 0.05;
-			else if (encoderDifference >= -40)
-				counteractValue = 0.10;
-			else if (encoderDifference >= -60)
-				counteractValue = 0.15;
-			else if (encoderDifference >= -80)
-				counteractValue = 0.20;
-			else if (encoderDifference >= -100)
-				counteractValue = 0.25;
-			else
-				counteractValue = -0.30;
-		}
-		else
-			counteractValue = 0.0;
-		*/
-		train.arcadeDrive(speed, 0.0);
 	}
 	
 	//takes set doubles as speed and direction, drives using those values; boolean is whether to turn in place
