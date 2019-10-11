@@ -7,16 +7,43 @@
 
 package org.usfirst.frc.team2035.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
+
+
+import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
+
+import org.usfirst.frc.team2035.robot.commands.CubeIn;
+import org.usfirst.frc.team2035.robot.commands.GearshiftHigh;
+import org.usfirst.frc.team2035.robot.commands.ManualLowerAngle;
+//import org.usfirst.frc.team2035.robot.commands.CurveDrive;
+import org.usfirst.frc.team2035.robot.commands.TeleopDrive;
+import org.usfirst.frc.team2035.robot.commands.WingsOut;
+import org.usfirst.frc.team2035.robot.commands.auto.AutoMain;
+import org.usfirst.frc.team2035.robot.subsystems.CubeMech;
+import org.usfirst.frc.team2035.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team2035.robot.subsystems.RotarySwitch;
+import org.usfirst.frc.team2035.robot.subsystems.Wings;
+import org.usfirst.frc.team2035.robot.subsystems.ACompressor;
+import org.usfirst.frc.team2035.robot.subsystems.Arm;
+import org.usfirst.frc.team2035.robot.subsystems.CubeDepositer;
+
+
 import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
 
 
 //Your supreme leader Fang was here
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -25,24 +52,75 @@ import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
+
+	
+	private int counter;
+	
+	private static Arm arm;
+	private String gameData;
+	public static CubeMech cbm;
+	public static Wings wing;
+	public static Drivetrain drt;
+	public static CubeDepositer cd;
+	public static RotarySwitch rs;
+	
+	public static CameraServer cms;
+	public static ACompressor compressor;
+	public static OI oi;
+	
+
+	
+	
+	private boolean x;
+	
+	Command wingSetup;
+	Command drive;
+	Command putInGear;
+	Command manualLowerAngle;
+	 Command autonomousCommand;
+	 
+	
+	//SendableChooser<Command> m_chooser = new SendableChooser<>();
+
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
+		oi = new OI();
+		cbm = new CubeMech();
+		wing = new Wings();
+		drt = new Drivetrain();
+		cd = new CubeDepositer();
+		rs = new RotarySwitch();
+		//putInGear = new GearshiftHigh();
+		//putInGear.start();
+		arm = new Arm();
+		compressor = new ACompressor();
+		counter = 0; 
+		x = true;
+		wing.wingsSolenoidsOff();
+		//cms = CameraServer.getInstance();
+		//cms.startAutomaticCapture();
+
+		System.out.println("ghostbusters");
+		OI.initialize();
+	}
+	
+
 		m_oi = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
+
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
@@ -70,6 +148,58 @@ public class Robot extends TimedRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
+
+	@SuppressWarnings("unused")
+	@Override
+	public void autonomousInit() {
+		
+		//initializing variables that are passed to autonomous code
+		String swPos;
+		char swNear;
+		char swMid;
+		int startPos;
+		String gameData;
+		
+		//resetting drivetrain encoders in preparation for the running of the autonomous code
+		drt.resetLeft();
+		drt.resetRight();
+		
+		//sets variables that are based on data in the driver station's Game Data
+		swPos = DriverStation.getInstance().getGameSpecificMessage();
+		swNear = swPos.charAt(0);
+		swMid = swPos.charAt(1);
+		
+		//sets variable based on position of rotary switch
+		startPos = rs.getSwitchPosition();
+		
+		//ensures that the rotary switch variable is set to a value the autonomous code can use
+		if (startPos == -1)
+			startPos = 0;
+		
+		//ensures that the robot is in high gear
+		drt.gearshiftHigh();
+		
+		//sets the command variable to the autonomous object with parameters set to the variables obtained above
+		autonomousCommand = new AutoMain(startPos, swNear);
+		
+		//runs command
+		if (autonomousCommand != null) {
+			autonomousCommand.start();
+		}
+	}
+	
+	
+	
+	/*
+	 * m_autonomousCommand = m_chooser.getSelected();
+	 * 
+	 * String autoSelected = SmartDashboard.getString("Auto Selector",
+	 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+	 * = new MyAutoCommand(); break; case "Default Auto": default:
+	 * autonomousCommand = new ExampleCommand(); break; }
+	 */
+	
+
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
@@ -87,12 +217,41 @@ public class Robot extends TimedRobot {
 		}
 	}
 
+
 	/**
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
+
+	public void autonomousPeriodic() { //works perfectly at drive .4
+		
+		Scheduler.getInstance().run();
+		
+		//System.out.println("Left Encoder: "+ drt.currentDegreesLeft());
+		//System.out.println("Right Encoder: "+ drt.currentDegreesRight());
+		/*
+		if (360 - drt.currentDegreesLeft() < 100 && x) {
+			drt.drive(.5, 0);
+			System.out.println("slow");
+			if(drt.currentDegreesLeft() > 360) {
+				x = false;
+			}
+		}
+		else if ((drt.currentDegreesLeft()) < 360) {
+			drt.drive(0.5, 0.0);
+			System.out.println("fast");
+		}
+	
+		 if (drt.currentDegreesLeft() > 360){
+			drt.stop();
+		
+			
+		}
+		 */
+
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+
 	}
 
 	@Override
@@ -101,9 +260,21 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+
+		if (autonomousCommand != null) {
+			autonomousCommand.cancel();
+		}
+		
+		compressor.start();
+		//drive = new TeleopDrive();
+		drt.gearshiftHigh();
+		arm.setAnglerPosition(-20275);
+	//	manualLowerAngle = new ManualLowerAngle();
+
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+
 	}
 
 	/**
@@ -112,6 +283,16 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+
+		//1System.out.println(rs.getSwitchPosition());
+		//drt.gearshiftHigh();
+		drt.drive();
+		//drive.start();
+	//	manualLowerAngle.start();
+		
+		
+		
+
 	}
 
 	/**
@@ -120,4 +301,24 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testPeriodic() {
 	}
+
+	public static Arm getArm() {
+		return Robot.arm;
+	}
+	
+	public static CubeMech getCubeMech(){
+		return cbm;
+	}
+	
+	public static Wings getWings(){
+		return wing;
+	}
+	
+	public static Drivetrain getDrivetrain(){
+		return drt;
+	}
+	public static CubeDepositer getCubeDepositer() {
+		return cd;
+	}
+
 }
