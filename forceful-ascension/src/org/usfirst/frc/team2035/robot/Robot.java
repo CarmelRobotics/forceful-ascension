@@ -6,10 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team2035.robot;
+
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
+
+
+import edu.wpi.first.wpilibj.TimedRobot;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -32,6 +37,13 @@ import org.usfirst.frc.team2035.robot.subsystems.ACompressor;
 import org.usfirst.frc.team2035.robot.subsystems.Arm;
 import org.usfirst.frc.team2035.robot.subsystems.CubeDepositer;
 
+
+import org.usfirst.frc.team2035.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2035.robot.subsystems.ExampleSubsystem;
+
+
+//Your supreme leader Fang was here
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -40,6 +52,7 @@ import org.usfirst.frc.team2035.robot.subsystems.CubeDepositer;
  * project.
  */
 public class Robot extends TimedRobot {
+
 	
 	private int counter;
 	
@@ -69,6 +82,12 @@ public class Robot extends TimedRobot {
 	
 	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+	public static final ExampleSubsystem kExampleSubsystem
+			= new ExampleSubsystem();
+	public static OI m_oi;
+
+	Command m_autonomousCommand;
+	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -95,6 +114,14 @@ public class Robot extends TimedRobot {
 		OI.initialize();
 	}
 	
+
+		m_oi = new OI();
+		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		// chooser.addObject("My Auto", new MyAutoCommand());
+		SmartDashboard.putData("Auto mode", m_chooser);
+	}
+
+
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -121,6 +148,7 @@ public class Robot extends TimedRobot {
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the switch structure below with additional strings & commands.
 	 */
+
 	@SuppressWarnings("unused")
 	@Override
 	public void autonomousInit() {
@@ -171,10 +199,30 @@ public class Robot extends TimedRobot {
 	 * autonomousCommand = new ExampleCommand(); break; }
 	 */
 	
+
+	@Override
+	public void autonomousInit() {
+		m_autonomousCommand = m_chooser.getSelected();
+
+		/*
+		 * String autoSelected = SmartDashboard.getString("Auto Selector",
+		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+		 * = new MyAutoCommand(); break; case "Default Auto": default:
+		 * autonomousCommand = new ExampleCommand(); break; }
+		 */
+
+		// schedule the autonomous command (example)
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.start();
+		}
+	}
+
+
 	/**
 	 * This function is called periodically during autonomous.
 	 */
 	@Override
+
 	public void autonomousPeriodic() { //works perfectly at drive .4
 		
 		Scheduler.getInstance().run();
@@ -200,6 +248,10 @@ public class Robot extends TimedRobot {
 			
 		}
 		 */
+
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+
 	}
 
 	@Override
@@ -208,6 +260,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+
 		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
 		}
@@ -217,6 +270,11 @@ public class Robot extends TimedRobot {
 		drt.gearshiftHigh();
 		arm.setAnglerPosition(-20275);
 	//	manualLowerAngle = new ManualLowerAngle();
+
+		if (m_autonomousCommand != null) {
+			m_autonomousCommand.cancel();
+		}
+
 	}
 
 	/**
@@ -225,6 +283,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+
 		//1System.out.println(rs.getSwitchPosition());
 		//drt.gearshiftHigh();
 		drt.drive();
@@ -233,6 +292,7 @@ public class Robot extends TimedRobot {
 		
 		
 		
+
 	}
 
 	/**
@@ -241,7 +301,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void testPeriodic() {
 	}
-	
+
 	public static Arm getArm() {
 		return Robot.arm;
 	}
@@ -260,4 +320,5 @@ public class Robot extends TimedRobot {
 	public static CubeDepositer getCubeDepositer() {
 		return cd;
 	}
+
 }
